@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="GothamHTF-Bold.otf">
+            <string>GothamHTF-Bold</string>
+        </array>
+        <array key="GothamHTF-Book.otf">
+            <string>GothamHTF-Book</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="MTFeaturedHeroView" customModule="MathTutor" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="543" height="392"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="FEATURED COURSES" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="U2o-zF-7un">
+                    <rect key="frame" x="179" y="10" width="185.5" height="19"/>
+                    <fontDescription key="fontDescription" name="GothamHTF-Bold" family="Gotham HTF" pointSize="17"/>
+                    <color key="textColor" red="0.40000000600000002" green="0.80000001190000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HEa-Jj-MHV">
+                    <rect key="frame" x="51" y="282" width="441" height="60"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="60" id="8Nx-fd-thZ"/>
+                        <constraint firstAttribute="width" constant="441" id="eQh-2P-NpD"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="GothamHTF-Book" family="Gotham HTF" pointSize="14"/>
+                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="Kxp-ac-wVq">
+                    <rect key="frame" x="252" y="347" width="39" height="40"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="40" id="qnd-ec-AD5"/>
+                    </constraints>
+                </pageControl>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="knd-X9-452" customClass="iCarousel">
+                    <rect key="frame" x="0.0" y="47" width="543" height="225"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="225" id="XuE-pl-4cf"/>
+                    </constraints>
+                </view>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bKP-HJ-Hql">
+                    <rect key="frame" x="51" y="29" width="441" height="21"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="441" id="Od7-12-pKQ"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="GothamHTF-Bold" family="Gotham HTF" pointSize="15"/>
+                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <color key="backgroundColor" red="0.043137254901960784" green="0.17254901960784313" blue="0.30980392156862746" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="HEa-Jj-MHV" firstAttribute="top" secondItem="knd-X9-452" secondAttribute="bottom" constant="10" id="7HW-lp-AJO"/>
+                <constraint firstItem="knd-X9-452" firstAttribute="top" secondItem="bKP-HJ-Hql" secondAttribute="bottom" constant="5" id="8H7-8a-ZBd"/>
+                <constraint firstItem="Kxp-ac-wVq" firstAttribute="top" secondItem="HEa-Jj-MHV" secondAttribute="bottom" constant="5" id="9c0-bE-fTY"/>
+                <constraint firstItem="bKP-HJ-Hql" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="HfB-Lv-bYi"/>
+                <constraint firstAttribute="trailing" secondItem="knd-X9-452" secondAttribute="trailing" id="Jzo-Kn-BzE"/>
+                <constraint firstItem="U2o-zF-7un" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="N2r-86-EQI"/>
+                <constraint firstItem="bKP-HJ-Hql" firstAttribute="top" secondItem="U2o-zF-7un" secondAttribute="bottom" constant="10" id="bEI-I4-3jn"/>
+                <constraint firstItem="Kxp-ac-wVq" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="d8b-s1-YgQ"/>
+                <constraint firstItem="HEa-Jj-MHV" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="dvK-6C-Aow"/>
+                <constraint firstItem="knd-X9-452" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="mN1-Sx-q6T"/>
+                <constraint firstAttribute="bottom" secondItem="Kxp-ac-wVq" secondAttribute="bottom" constant="5" id="nVy-d2-vna"/>
+                <constraint firstItem="U2o-zF-7un" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="10" id="qiE-Fs-N8R"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="carousel" destination="knd-X9-452" id="5qN-e7-RD2"/>
+                <outlet property="carouselHeightConstraint" destination="XuE-pl-4cf" id="LRq-mv-E8G"/>
+                <outlet property="coursePageControl" destination="Kxp-ac-wVq" id="h85-04-WS8"/>
+                <outlet property="courseTitleLabel" destination="bKP-HJ-Hql" id="HJz-H4-Ehl"/>
+                <outlet property="courseTitleWidthConstraint" destination="Od7-12-pKQ" id="Onv-PE-CrM"/>
+                <outlet property="currentCourseLabel" destination="HEa-Jj-MHV" id="H4M-8n-wh5"/>
+                <outlet property="labelWidthConstraint" destination="eQh-2P-NpD" id="CZ2-K5-WbV"/>
+            </connections>
+            <point key="canvasLocation" x="84.5" y="-73"/>
+        </view>
+    </objects>
+</document>

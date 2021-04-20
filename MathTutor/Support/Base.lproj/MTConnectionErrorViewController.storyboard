@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="tAF-ar-1qq">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="GothamHTF-Book.otf">
+            <string>GothamHTF-Book</string>
+        </array>
+    </customFonts>
+    <scenes>
+        <!--Connection Error View Controller-->
+        <scene sceneID="cVT-qD-i1W">
+            <objects>
+                <viewController storyboardIdentifier="MTConnectionErrorViewController" id="tAF-ar-1qq" customClass="MTConnectionErrorViewController" customModule="MathTutor" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="nkO-r3-GRk"/>
+                        <viewControllerLayoutGuide type="bottom" id="5po-Jb-VDS"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="HXz-Ud-PLa">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg_gradient" translatesAutoresizingMaskIntoConstraints="NO" id="AlE-cv-bao">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                            </imageView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Q1e-gJ-fAl">
+                                <rect key="frame" x="47" y="255.5" width="281" height="157"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="The MathTutor app requires an internet connection. Please check your network settings and try again." textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iPW-fc-Thr">
+                                        <rect key="frame" x="30" y="30" width="221" height="97"/>
+                                        <fontDescription key="fontDescription" name="GothamHTF-Book" family="Gotham HTF" pointSize="18"/>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" red="0.0" green="0.44705882352941173" blue="0.63921568627450975" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstItem="iPW-fc-Thr" firstAttribute="centerX" secondItem="Q1e-gJ-fAl" secondAttribute="centerX" id="42v-M4-ctj"/>
+                                    <constraint firstItem="iPW-fc-Thr" firstAttribute="leading" secondItem="Q1e-gJ-fAl" secondAttribute="leading" constant="30" id="Pse-2z-Nyg"/>
+                                    <constraint firstAttribute="trailing" secondItem="iPW-fc-Thr" secondAttribute="trailing" constant="30" id="QTd-A9-QxM"/>
+                                    <constraint firstAttribute="bottom" secondItem="iPW-fc-Thr" secondAttribute="bottom" constant="30" id="bUm-Pe-hnb"/>
+                                    <constraint firstItem="iPW-fc-Thr" firstAttribute="top" secondItem="Q1e-gJ-fAl" secondAttribute="top" constant="30" id="hxe-Bv-7RY"/>
+                                    <constraint firstItem="iPW-fc-Thr" firstAttribute="centerY" secondItem="Q1e-gJ-fAl" secondAttribute="centerY" id="mJk-Mx-ECU"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" red="0.0039215686269999999" green="0.18039215689999999" blue="0.3411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="Q1e-gJ-fAl" firstAttribute="centerY" secondItem="HXz-Ud-PLa" secondAttribute="centerY" id="1Hv-jq-sqK"/>
+                            <constraint firstItem="Q1e-gJ-fAl" firstAttribute="width" secondItem="HXz-Ud-PLa" secondAttribute="width" multiplier="0.75" id="561-Jm-aWe"/>
+                            <constraint firstItem="AlE-cv-bao" firstAttribute="leading" secondItem="HXz-Ud-PLa" secondAttribute="leading" id="IN5-Lc-jLq"/>
+                            <constraint firstItem="AlE-cv-bao" firstAttribute="top" secondItem="nkO-r3-GRk" secondAttribute="bottom" id="J4X-wM-tiy"/>
+                            <constraint firstItem="5po-Jb-VDS" firstAttribute="top" secondItem="AlE-cv-bao" secondAttribute="bottom" id="Vfs-pl-84U"/>
+                            <constraint firstItem="AlE-cv-bao" firstAttribute="top" secondItem="HXz-Ud-PLa" secondAttribute="top" id="ktm-Iy-nUd"/>
+                            <constraint firstAttribute="trailing" secondItem="AlE-cv-bao" secondAttribute="trailing" id="lq9-wB-QZG"/>
+                            <constraint firstItem="Q1e-gJ-fAl" firstAttribute="centerX" secondItem="HXz-Ud-PLa" secondAttribute="centerX" id="yf7-NH-FUt"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="J4X-wM-tiy"/>
+                            </mask>
+                        </variation>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="WMK-w8-bXX" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="464.80000000000001" y="98.50074962518741"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="bg_gradient" width="2048" height="1536"/>
+    </resources>
+</document>

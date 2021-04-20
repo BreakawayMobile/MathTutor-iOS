@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="6E8-I4-Sex">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Waiting View Controller-->
+        <scene sceneID="2f1-BV-nfe">
+            <objects>
+                <viewController storyboardIdentifier="MTWaitingViewController" id="6E8-I4-Sex" customClass="MTWaitingViewController" customModule="MathTutor" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="wBK-cq-h4m"/>
+                        <viewControllerLayoutGuide type="bottom" id="S93-Ut-IJe"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Edj-39-iOo">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg_gradient" translatesAutoresizingMaskIntoConstraints="NO" id="E6R-F7-Wk8">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="MathTutor_Logo_White" translatesAutoresizingMaskIntoConstraints="NO" id="jPV-N4-i5q">
+                                <rect key="frame" x="75" y="271" width="225" height="125"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="jPV-N4-i5q" secondAttribute="height" multiplier="1133:628" id="qoW-lV-p7X"/>
+                                </constraints>
+                            </imageView>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="9l2-7M-wvc">
+                                <rect key="frame" x="169" y="315" width="37" height="37"/>
+                            </activityIndicatorView>
+                        </subviews>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="E6R-F7-Wk8" secondAttribute="trailing" id="7BD-V9-SUW"/>
+                            <constraint firstItem="jPV-N4-i5q" firstAttribute="centerX" secondItem="Edj-39-iOo" secondAttribute="centerX" id="AtE-cM-385"/>
+                            <constraint firstItem="9l2-7M-wvc" firstAttribute="centerX" secondItem="Edj-39-iOo" secondAttribute="centerX" id="D4t-He-nfW"/>
+                            <constraint firstItem="jPV-N4-i5q" firstAttribute="width" secondItem="Edj-39-iOo" secondAttribute="width" multiplier="0.6" id="EcZ-4f-HEM"/>
+                            <constraint firstItem="jPV-N4-i5q" firstAttribute="centerY" secondItem="Edj-39-iOo" secondAttribute="centerY" id="IQN-Jk-qEs"/>
+                            <constraint firstItem="9l2-7M-wvc" firstAttribute="centerY" secondItem="Edj-39-iOo" secondAttribute="centerY" id="TVh-jU-3NK"/>
+                            <constraint firstItem="E6R-F7-Wk8" firstAttribute="top" secondItem="Edj-39-iOo" secondAttribute="top" id="gxf-eP-6dC"/>
+                            <constraint firstItem="S93-Ut-IJe" firstAttribute="top" secondItem="E6R-F7-Wk8" secondAttribute="bottom" id="uya-rT-mEO"/>
+                            <constraint firstItem="E6R-F7-Wk8" firstAttribute="leading" secondItem="Edj-39-iOo" secondAttribute="leading" id="xPI-G5-AKo"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="bootImage" destination="jPV-N4-i5q" id="kXi-Pd-JHI"/>
+                        <outlet property="loadingSpinner" destination="9l2-7M-wvc" id="kET-6h-oYo"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="eXc-H7-A3A" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="479.19999999999999" y="83.208395802098963"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="MathTutor_Logo_White" width="1133" height="628"/>
+        <image name="bg_gradient" width="2048" height="1536"/>
+    </resources>
+</document>

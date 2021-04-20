@@ -1,0 +1,290 @@
+PODS:
+  - Alamofire (4.5.1)
+  - BGSMobilePackage/Analytics (0.0.1):
+    - Brightcove-Player-Core/dynamic
+    - CarbonKit
+    - ChameleonFramework
+    - CustomIOSAlertView
+    - iOSSharedViewTransition (= 1.0.2)
+    - Kingfisher (= 3.13.0)
+    - MBProgressHUD
+    - RATreeView
+    - SDWebImage
+    - SlideMenuControllerSwift
+    - StorageKit
+    - SwipeView
+    - treemapkit
+  - BGSMobilePackage/Auth (0.0.1):
+    - Brightcove-Player-Core/dynamic
+    - CarbonKit
+    - ChameleonFramework
+    - CustomIOSAlertView
+    - iOSSharedViewTransition (= 1.0.2)
+    - Kingfisher (= 3.13.0)
+    - MBProgressHUD
+    - RATreeView
+    - SDWebImage
+    - SlideMenuControllerSwift
+    - StorageKit
+    - SwipeView
+    - treemapkit
+  - BGSMobilePackage/Base (0.0.1):
+    - BGSMobilePackage/Analytics (= 0.0.1)
+    - BGSMobilePackage/CMS (= 0.0.1)
+    - BGSMobilePackage/Core (= 0.0.1)
+    - BGSMobilePackage/Download (= 0.0.1)
+    - BGSMobilePackage/UI (= 0.0.1)
+    - BGSMobilePackage/UI-Media (= 0.0.1)
+    - Brightcove-Player-Core/dynamic
+    - CarbonKit
+    - ChameleonFramework
+    - CustomIOSAlertView
+    - iOSSharedViewTransition (= 1.0.2)
+    - Kingfisher (= 3.13.0)
+    - MBProgressHUD
+    - RATreeView
+    - ReactiveCocoa (= 2.5)
+    - SDWebImage
+    - SlideMenuControllerSwift
+    - StorageKit
+    - SwipeView
+    - treemapkit
+    - UIView-Autolayout
+  - BGSMobilePackage/CMS (0.0.1):
+    - Brightcove-Player-Core/dynamic
+    - CarbonKit
+    - ChameleonFramework
+    - CustomIOSAlertView
+    - iOSSharedViewTransition (= 1.0.2)
+    - Kingfisher (= 3.13.0)
+    - MBProgressHUD
+    - RATreeView
+    - SDWebImage
+    - SlideMenuControllerSwift
+    - StorageKit
+    - SwipeView
+    - treemapkit
+  - BGSMobilePackage/Core (0.0.1):
+    - Brightcove-Player-Core/dynamic
+    - CarbonKit
+    - ChameleonFramework
+    - CustomIOSAlertView
+    - iOSSharedViewTransition (= 1.0.2)
+    - Kingfisher (= 3.13.0)
+    - MBProgressHUD
+    - RATreeView
+    - SDWebImage
+    - SlideMenuControllerSwift
+    - StorageKit
+    - SwipeView
+    - treemapkit
+  - BGSMobilePackage/Download (0.0.1):
+    - Brightcove-Player-Core/dynamic
+    - CarbonKit
+    - ChameleonFramework
+    - CustomIOSAlertView
+    - iOSSharedViewTransition (= 1.0.2)
+    - Kingfisher (= 3.13.0)
+    - libCommonCrypto
+    - MBProgressHUD
+    - PromiseKit
+    - PromiseKit/Alamofire
+    - RATreeView
+    - SDWebImage
+    - SlideMenuControllerSwift
+    - StorageKit
+    - SwipeView
+    - treemapkit
+  - BGSMobilePackage/UI (0.0.1):
+    - Brightcove-Player-Core/dynamic
+    - CarbonKit
+    - ChameleonFramework
+    - CustomIOSAlertView
+    - iOSSharedViewTransition (= 1.0.2)
+    - Kingfisher (= 3.13.0)
+    - MBProgressHUD
+    - RATreeView
+    - SDWebImage
+    - SlideMenuControllerSwift
+    - StorageKit
+    - SwipeView
+    - treemapkit
+  - BGSMobilePackage/UI-Media (0.0.1):
+    - Brightcove-Player-Core/dynamic
+    - CarbonKit
+    - ChameleonFramework
+    - CustomIOSAlertView
+    - iOSSharedViewTransition (= 1.0.2)
+    - Kingfisher (= 3.13.0)
+    - MBProgressHUD
+    - RATreeView
+    - SDWebImage
+    - SlideMenuControllerSwift
+    - StorageKit
+    - SwipeView
+    - treemapkit
+  - Brightcove-Player-Core/dynamic (6.0.6)
+  - CarbonKit (2.1.10)
+  - ChameleonFramework (2.1.0):
+    - ChameleonFramework/Default (= 2.1.0)
+  - ChameleonFramework/Default (2.1.0)
+  - Crashlytics (3.8.6):
+    - Fabric (~> 1.6.3)
+  - CustomIOSAlertView (0.9.5)
+  - Fabric (1.6.13)
+  - Firebase/Core (4.5.0):
+    - FirebaseAnalytics (= 4.0.4)
+    - FirebaseCore (= 4.0.10)
+  - FirebaseAnalytics (4.0.4):
+    - FirebaseCore (~> 4.0)
+    - FirebaseInstanceID (~> 2.0)
+    - "GoogleToolboxForMac/NSData+zlib (~> 2.1)"
+    - nanopb (~> 0.3)
+  - FirebaseCore (4.0.10):
+    - "GoogleToolboxForMac/NSData+zlib (~> 2.1)"
+    - nanopb (~> 0.3)
+  - FirebaseInstanceID (2.0.5)
+  - GoogleToolboxForMac/Defines (2.1.3)
+  - "GoogleToolboxForMac/NSData+zlib (2.1.3)":
+    - GoogleToolboxForMac/Defines (= 2.1.3)
+  - iCarousel (1.8.3)
+  - iOSSharedViewTransition (1.0.2)
+  - Kingfisher (3.13.0)
+  - libCommonCrypto (0.1.1)
+  - MBProgressHUD (1.0.0)
+  - nanopb (0.3.8):
+    - nanopb/decode (= 0.3.8)
+    - nanopb/encode (= 0.3.8)
+  - nanopb/decode (0.3.8)
+  - nanopb/encode (0.3.8)
+  - PromiseKit (4.4.0):
+    - PromiseKit/Foundation (= 4.4.0)
+    - PromiseKit/QuartzCore (= 4.4.0)
+    - PromiseKit/UIKit (= 4.4.0)
+  - PromiseKit/Alamofire (4.4.0):
+    - Alamofire (~> 4.0)
+    - PromiseKit/CorePromise
+  - PromiseKit/CorePromise (4.4.0)
+  - PromiseKit/Foundation (4.4.0):
+    - PromiseKit/CorePromise
+  - PromiseKit/QuartzCore (4.4.0):
+    - PromiseKit/CorePromise
+  - PromiseKit/UIKit (4.4.0):
+    - PromiseKit/CorePromise
+  - RATreeView (2.1.2)
+  - ReactiveCocoa (2.5):
+    - ReactiveCocoa/UI (= 2.5)
+  - ReactiveCocoa/Core (2.5):
+    - ReactiveCocoa/no-arc
+  - ReactiveCocoa/no-arc (2.5)
+  - ReactiveCocoa/UI (2.5):
+    - ReactiveCocoa/Core
+  - Realm (2.8.3):
+    - Realm/Headers (= 2.8.3)
+  - Realm/Headers (2.8.3)
+  - RealmSwift (2.8.3):
+    - Realm (= 2.8.3)
+  - ScrollableStackView (1.0.3)
+  - SDWebImage (4.1.0):
+    - SDWebImage/Core (= 4.1.0)
+  - SDWebImage/Core (4.1.0)
+  - SlideMenuControllerSwift (3.0.2)
+  - StorageKit (0.1.2):
+    - RealmSwift (= 2.8.3)
+  - SwiftLint (0.22.0)
+  - SwipeView (1.3.2)
+  - treemapkit (0.0.1)
+  - UIView-Autolayout (0.2.1)
+
+DEPENDENCIES:
+  - BGSMobilePackage/Auth (from `https://github.com/BrightcovePS/BGSMobilePackage.git`, branch `development`)
+  - BGSMobilePackage/Base (from `https://github.com/BrightcovePS/BGSMobilePackage.git`, branch `development`)
+  - Crashlytics
+  - Fabric
+  - Firebase/Core
+  - iCarousel
+  - ScrollableStackView
+  - SwiftLint
+
+SPEC REPOS:
+  https://github.com/brightcove/BrightcoveSpecs.git:
+    - Brightcove-Player-Core
+  https://github.com/cocoapods/specs.git:
+    - Alamofire
+    - CarbonKit
+    - ChameleonFramework
+    - Crashlytics
+    - CustomIOSAlertView
+    - Fabric
+    - Firebase
+    - FirebaseAnalytics
+    - FirebaseCore
+    - FirebaseInstanceID
+    - GoogleToolboxForMac
+    - iCarousel
+    - iOSSharedViewTransition
+    - Kingfisher
+    - libCommonCrypto
+    - MBProgressHUD
+    - nanopb
+    - PromiseKit
+    - RATreeView
+    - ReactiveCocoa
+    - Realm
+    - RealmSwift
+    - ScrollableStackView
+    - SDWebImage
+    - SlideMenuControllerSwift
+    - StorageKit
+    - SwiftLint
+    - SwipeView
+    - treemapkit
+    - UIView-Autolayout
+
+EXTERNAL SOURCES:
+  BGSMobilePackage:
+    :branch: development
+    :git: https://github.com/BrightcovePS/BGSMobilePackage.git
+
+CHECKOUT OPTIONS:
+  BGSMobilePackage:
+    :commit: c98b02dbdd7d8748b37afc898444895782d73991
+    :git: https://github.com/BrightcovePS/BGSMobilePackage.git
+
+SPEC CHECKSUMS:
+  Alamofire: 2d95912bf4c34f164fdfc335872e8c312acaea4a
+  BGSMobilePackage: 75782876d3767b7aad4a402f18ee07d284e3e824
+  Brightcove-Player-Core: 6e133d49983dc3c31a7b3892af4899df5f07a8cd
+  CarbonKit: f5037447bf6fcb9b41800ba8d991cd779575a9d7
+  ChameleonFramework: d21a3cc247abfe5e37609a283a8238b03575cf64
+  Crashlytics: 95d05f4e4c19a771250c4bd9ce344d996de32bbf
+  CustomIOSAlertView: cc4fa8e36219be3fd5ebcd40789f5b4aaae0f38e
+  Fabric: 2fb5676bc811af011a04513451f463dac6803206
+  Firebase: d83d287bdb6b1c78320561482706d1fcfc8ddfc1
+  FirebaseAnalytics: 722b53c7b32bfc7806b06e0093a2f5180d4f2c5a
+  FirebaseCore: da5e8e372cb6046212739a4d81e42d32c22907cc
+  FirebaseInstanceID: f2b688c66b972f30d7fa9f5f9f91455454a03b47
+  GoogleToolboxForMac: 2501e2ad72a52eb3dfe7bd9aee7dad11b858bd20
+  iCarousel: d782f635afac190c49bb8ee455882284cff8b85f
+  iOSSharedViewTransition: d4bdb3662b51d780b7a0646da8ff2158dbb2e43c
+  Kingfisher: 7eebf6000ac64401839f10da37f21eefa7d88970
+  libCommonCrypto: 8bc2f53375ef9815ddd9dd663e110e1cced41747
+  MBProgressHUD: 4890f671c94e8a0f3cf959aa731e9de2f036d71a
+  nanopb: 5601e6bca2dbf1ed831b519092ec110f66982ca3
+  PromiseKit: ecf5fe92275d57ee77c9ede858af47a162e9b97e
+  RATreeView: 380cde0090cfde21dc6ac29137f49d3b768fdd28
+  ReactiveCocoa: e2db045570aa97c695e7aa97c2bcab222ae51f4a
+  Realm: 3601ef091c8c499a31101d8563b991e75546cdce
+  RealmSwift: 8183818515471b01a99abdd2970f8e4fd52b6f4a
+  ScrollableStackView: c97d7b8cb4432616a7233601ba92455889f94cd4
+  SDWebImage: 0e435c14e402a6730315a0fb79f95e68654d55a4
+  SlideMenuControllerSwift: 16001e1fd9963fd089fa6c91dbe18d4c148f0ce9
+  StorageKit: 7af57e41d841a1a58d78392a5ed67e7cb5e64e3c
+  SwiftLint: 1134786caedd2caab0560d2f36b76414a5a56808
+  SwipeView: bd67cfaf7760c036438446b3ccb28a3b84fce009
+  treemapkit: 818b88bc794374c3687d532529e9b3ddc242c319
+  UIView-Autolayout: 042510c499403f58620998278ddd60fa7b6cd4a7
+
+PODFILE CHECKSUM: fa3fcb6f12562a8bf12e1a0a3d7447e929ecf4a4
+
+COCOAPODS: 1.5.3

@@ -1,0 +1,630 @@
+{
+    "remote_url": "https://s3.amazonaws.com/bc-ios-app-json/MathTutor.json",
+    "uiConfig": {
+        "stringsFilename": "Localizable"
+    },
+    "urlConfig": {
+        "share_url": "http://www.mathtutorapp.com",
+        "about_url": "http://www.mathtutordvd.com/public/department90.cfm",
+        "faq_url": "",
+        "privacy_url": "http://www.mathtutordvd.com/public/department12.cfm",
+        "terms_url": "http://www.mathtutordvd.com/public/73.cfm",
+        "support_url": "",
+        "contactus_url": ""
+    },
+    "sessionConfig": {
+        "kBCGSSessionType": "kBCGSSessionTypeVCCache",
+        "kVCAPIToken": "l1Ap8pCOIzyoyxsrKTJ-RHrWuBHay2gihRlPAoCOefTCTkoTFTKANw..",
+        "kVCSessionCacheIntervalInHours": 60,
+        "kBCGSSessionTags": [],
+        "kWVAccountID": "61991422001",
+        "kWVPolicyKey": "BCpkADawqM3IHJ2eoVWggztYsIJiXJhevAgSWmH0c8xAzYdpOb9K5vgjbpO7tERtTWf69iLCskauOHlXPYy0o_h-CPBgORLV4nzdq0Bpg83ZLApEWLdRJJp45Uo",
+        "kBCGSPlaylistJSItems": []
+    },
+    "landingConfig": [
+        "5456343896001",
+        "5457640675001",
+        "5453744445001",
+        "5454617649001",
+        "5455901780001"
+    ],
+    "heroConfig": [
+        "5452603551001",
+        "5454138014001",
+        "5455903759001",
+        "5455901758001",
+        "5455801690001",
+        "5455901785001",
+        "5457947484001",
+        "5455801737001",
+        "5455901782001",
+        "5455903807001"
+    ],
+    "appConfig": {
+        "waitingPage": "Waiting",
+        "waitingClass": "MTWaitingViewController"
+    },
+    "pageConfig": [
+    ],
+    "cellConfig": [
+    ],
+    "menu_config": {
+        "items": [
+             {
+             "name": "Basic Math",
+             "playlist": "",
+             "children": [
+                  {
+                  "name": "Basic Math Tutor",
+                  "playlist": "5456011842001",
+                  "children": []
+                  },
+                  {
+                  "name": "Basic Math Word Problems",
+                  "playlist": "5456343809001",
+                  "children": []
+                  },
+                  {
+                  "name": "5th Grade Math Vol 1",
+                  "playlist": "5453744376001",
+                  "children": []
+                  },
+                  {
+                  "name": "5th Grade Math Vol 2",
+                  "playlist": "5452603551001",
+                  "children": []
+                  },
+                  {
+                  "name": "5th Grade Math Vol 3",
+                  "playlist": "5453744433001",
+                  "children": []
+                  },
+                  {
+                  "name": "5th Grade Math Vol 4",
+                  "playlist": "5454157218001",
+                  "children": []
+                  },
+                  {
+                  "name": "Mental Math - Vol 1",
+                  "playlist": "5456011888001",
+                  "children": []
+                  }
+                  ]
+             },
+             {
+             "name": "Algebra, Geometry & Trig",
+             "playlist": "",
+             "children": [
+                  {
+                  "name": "Pre-Algebra",
+                  "playlist": "",
+                  "children": [
+                       {
+                       "name": "Pre-Algebra: Vol 1",
+                       "playlist": "5455801736001",
+                       "children": []
+                       },
+                       {
+                       "name": "Pre-Algebra: Vol 2",
+                       "playlist": "5456011899001",
+                       "children": []
+                       },
+                       ]
+                  },
+                  {
+                  "name": "Algebra 1 Tutor",
+                  "playlist": "",
+                  "children": [
+                       {
+                       "name": "Algebra 1 Tutor: Vol 1",
+                       "playlist": "5454138014001",
+                       "children": []
+                       },
+                       {
+                       "name": "Algebra 1 Tutor: Vol 2",
+                       "playlist": "5453744434001",
+                       "children": []
+                       }
+                       ]
+                  },
+                  {
+                  "name": "Algebra 1 Course",
+                  "playlist": "",
+                  "children": [
+                       {
+                       "name": "Algebra 1 Course: Unit 1",
+                       "playlist": "5454617638001",
+                       "children": []
+                       },
+                       {
+                       "name": "Algebra 1 Course: Unit 2",
+                       "playlist": "5454028133001",
+                       "children": []
+                       },
+                       {
+                       "name": "Algebra 1 Course: Unit 3",
+                       "playlist": "5454138022001",
+                       "children": []
+                       },
+                       {
+                       "name": "Algebra 1 Course: Unit 4",
+                       "playlist": "5453744443001",
+                       "children": []
+                       },
+                       {
+                       "name": "Algebra 1 Course: Unit 5",
+                       "playlist": "5454617649001",
+                       "children": []
+                       },
+                       {
+                       "name": "Algebra 1 Course: Unit 6",
+                       "playlist": "5453744445001",
+                       "children": []
+                       },
+                       {
+                       "name": "Algebra 1 Course: Unit 7",
+                       "playlist": "5454138026001",
+                       "children": []
+                       },
+                       {
+                       "name": "Algebra 1 Course: Unit 8",
+                       "playlist": "5454138027001",
+                       "children": []
+                       },
+                       {
+                       "name": "Algebra 1 Course: Unit 9",
+                       "playlist": "5454028139001",
+                       "children": []
+                       },
+                       {
+                       "name": "Algebra 1 Course: Unit 10",
+                       "playlist": "5454143076001",
+                       "children": []
+                       },
+                       {
+                       "name": "Algebra 1 Course: Unit 11",
+                       "playlist": "5453744435001",
+                       "children": []
+                       }
+                       ]
+                  },
+                  {
+                  "name": "Algebra 2 & College Algebra",
+                  "playlist": "",
+                  "children": [
+                       {
+                       "name": "Algebra 2 Tutor",
+                       "playlist": "5455801663001",
+                       "children": []
+                       },
+                       {
+                       "name": "Algebra Word Problems",
+                       "playlist": "5454617693001",
+                       "children": []
+                       },
+                       {
+                       "name": "Advanced Algebra",
+                       "playlist": "5454617637001",
+                       "children": []
+                       },
+                       {
+                       "name": "Matrix Algebra",
+                       "playlist": "5456282764001",
+                       "children": []
+                       }
+                       ]
+                  },
+                  {
+                  "name": "Geometry & Trig",
+                  "playlist": "",
+                  "children": [
+                       {
+                       "name": "Geometry Tutor",
+                       "playlist": "5455903827001",
+                       "children": []
+                       },
+                       {
+                       "name": "Trig & Pre-Calculus: Vol 1",
+                       "playlist": "5457640677001",
+                       "children": []
+                       },
+                       {
+                       "name": "Trig & Pre-Calculus: Vol 2",
+                       "playlist": "5456343899001",
+                       "children": []
+                       }
+                       ]
+                  }
+                  ]
+              },
+              {
+              "name": "Calculator Tutorials",
+              "playlist": "",
+              "children": [
+                   {
+                   "name": "TI-84 Calculator Tutorial",
+                   "playlist": "5456343897001",
+                   "children": []
+                   },
+                   {
+                   "name": "TI-89 Calculator - Vol 1",
+                   "playlist": "5456343898001",
+                   "children": []
+                   },
+                   {
+                   "name": "TI-89 Calculator - Vol 2",
+                   "playlist": "5458254423001",
+                   "children": []
+                   },
+                   {
+                   "name": "HP50 Calculator Tutor - Vol 1",
+                   "playlist": "5460247412001",
+                   "children": []
+                   }
+                   ]
+              },
+              {
+              "name": "Calculus & Statistics",
+              "playlist": "",
+              "children": [
+                   {
+                   "name": "Calculus 1",
+                   "playlist": "",
+                   "children": [
+                        {
+                        "name": "Calculus 1 Limits",
+                        "playlist": "5455801682001",
+                        "children": []
+                        },
+                        {
+                        "name": "Calculus 1 Tutor",
+                        "playlist": "5455801687001",
+                        "children": []
+                        },
+                        {
+                        "name": "Calculus 1 Derivatives",
+                        "playlist": "5456343810001",
+                        "children": []
+                        },
+                        {
+                        "name": "Calculus 1 Integrals: Vol 1",
+                        "playlist": "5455901758001",
+                        "children": []
+                        },
+                        {
+                        "name": "Calculus 1 Integrals: Vol 2",
+                        "playlist": "5455801679001",
+                        "children": []
+                        }
+                        ]
+                   },
+                   {
+                   "name": "Calculus 2 & 3",
+                   "playlist": "",
+                   "children": [
+                        {
+                        "name": "Calculus 2 Tutor",
+                        "playlist": "5455901771001",
+                        "children": []
+                        },
+                        {
+                        "name": "Calculus 3 Tutor: Vol 1",
+                        "playlist": "5455903798001",
+                        "children": []
+                        },
+                        {
+                        "name": "Calculus 3 Tutor: Vol 2",
+                        "playlist": "5455801688001",
+                        "children": []
+                        }
+                        ]
+                   },
+                   {
+                   "name": "Differential Equations",
+                   "playlist": "",
+                   "children": [
+                        {
+                        "name": "Differential Equations: Vol 1",
+                        "playlist": "5455901785001",
+                        "children": []
+                        },
+                        {
+                        "name": "Differential Equations: Vol 2",
+                        "playlist": "5455901786001",
+                        "children": []
+                        }
+                        ]
+                   },
+                   {
+                   "name": "Probability & Statistics",
+                   "playlist": "",
+                   "children": [
+                        {
+                        "name": "Probability Tutor",
+                        "playlist": "5456282773001",
+                        "children": []
+                        },
+                        {
+                        "name": "Statistics: Vol 1",
+                        "playlist": "5456011901001",
+                        "children": []
+                        },
+                        {
+                        "name": "Statistics: Vol 2",
+                        "playlist": "5457640673001",
+                        "children": []
+                        },
+                        {
+                        "name": "Statistics: Vol 3",
+                        "playlist": "5456282774001",
+                        "children": []
+                        },
+                        {
+                        "name": "Statistics: Vol 4",
+                        "playlist": "5455801737001",
+                        "children": []
+                        },
+                        {
+                        "name": "Statistics: Vol 5",
+                        "playlist": "5457947486001",
+                        "children": []
+                        },
+                        {
+                        "name": "Statistics: Vol 6",
+                        "playlist": "5455801738001",
+                        "children": []
+                        },
+                        {
+                        "name": "Statistics: Vol 7",
+                        "playlist": "5457640675001",
+                        "children": []
+                        },
+                        {
+                        "name": "Statistics: Vol 8",
+                        "playlist": "5456343896001",
+                        "children": []
+                        }
+                        ]
+                   }
+                   ]
+              },
+              {
+              "name": "Science Experiments",
+              "playlist": "",
+              "children": [
+                   {
+                   "name": "Amazing Science: Vol 1",
+                   "playlist": "5455903759001",
+                   "children": []
+                   }
+                   ]
+              },
+              {
+              "name": "Physics",
+              "playlist": "",
+              "children": [
+                   {
+                   "name": "Physics 1",
+                   "playlist": "5457947484001",
+                   "children": []
+                   },
+                   {
+                   "name": "Physics 2: Vol 1",
+                   "playlist": "5457947485001",
+                   "children": []
+                   },
+                   {
+                   "name": "Physics 2: Vol 2",
+                   "playlist": "5456011894001",
+                   "children": []
+                   },
+                   {
+                   "name": "Physics 3: Vol 1",
+                   "playlist": "5456011895001",
+                   "children": []
+                   },
+                   {
+                   "name": "Physics 3: Vol 2",
+                   "playlist": "5456011896001",
+                   "children": []
+                   }
+                   ]
+              },
+              {
+              "name": "Chemistry",
+              "playlist": "",
+              "children": [
+                   {
+                   "name": "Chemistry 1: Vol 1",
+                   "playlist": "5456343817001",
+                   "children": []
+                   },
+                   {
+                   "name": "Chemistry 1: Vol 2",
+                   "playlist": "5456343819001",
+                   "children": []
+                   },
+                   {
+                   "name": "Chemistry 1: Vol 3",
+                   "playlist": "5455801690001",
+                   "children": []
+                   },
+                   {
+                   "name": "Chemistry 1: Vol 4",
+                   "playlist": "5456343821001",
+                   "children": []
+                   },
+                   {
+                   "name": "Chemistry 1: Vol 5",
+                   "playlist": "5455901772001",
+                   "children": []
+                   },
+                   {
+                   "name": "Unit Conversions",
+                   "playlist": "5469763208001",
+                   "children": []
+                   }
+                   ]
+              },
+              {
+              "name": "Electrical Engineering",
+              "playlist": "",
+              "children": [
+                   {
+                   "name": "Engineering DC Circuits",
+                   "playlist": "",
+                   "children": [
+                        {
+                        "name": "DC Circuits: Vol 1",
+                        "playlist": "5455901781001",
+                        "children": []
+                        },
+                        {
+                        "name": "DC Circuits: Vol 2",
+                        "playlist": "5455901782001",
+                        "children": []
+                        },
+                        {
+                        "name": "DC Circuits: Vol 3",
+                        "playlist": "5456011852001",
+                        "children": []
+                        },
+                        {
+                        "name": "DC Circuits: Vol 4",
+                        "playlist": "5456343826001",
+                        "children": []
+                        },
+                        {
+                        "name": "DC Circuits: Vol 5",
+                        "playlist": "5455901784001",
+                        "children": []
+                        }
+                        ]
+                   },
+                   {
+                   "name": "Engineering AC Circuits",
+                   "playlist": "",
+                   "children": [
+                        {
+                        "name": "AC Circuits: Vol 1",
+                        "playlist": "5455801697001",
+                        "children": []
+                        },
+                        {
+                        "name": "AC Circuits: Vol 2",
+                        "playlist": "5455903806001",
+                        "children": []
+                        },
+                        {
+                        "name": "AC Circuits: Vol 3",
+                        "playlist": "5455901780001",
+                        "children": []
+                        }
+                        ]
+                   },
+                   ]
+              },
+              {
+              "name": "Mechanical Engineering",
+              "playlist": "",
+              "children": [
+                   {
+                   "name": "Engineering Statics: Vol 1",
+                   "playlist": "5456343827001",
+                   "children": []
+                   },
+                   {
+                   "name": "Engineering Statics: Vol 2",
+                   "playlist": "5456343828001",
+                   "children": []
+                   },
+                   {
+                   "name": "Engineering Statics: Vol 3",
+                   "playlist": "5455903807001",
+                        "children": []
+                        }
+                   ]
+              },
+              {
+              "name": "Engineering Math",
+              "playlist": "",
+              "children": [
+                   {
+                   "name": "Laplace Transform",
+                   "playlist": "5456343885001",
+                   "children": []
+                   },
+                   {
+                   "name": "Linear Algebra: Vol 1",
+                   "playlist": "5457640659001",
+                   "children": []
+                   },
+                   {
+                   "name": "Linear Algebra: Vol 2",
+                   "playlist": "5456343886001",
+                   "children": []
+                   }
+                   ]
+              },
+              {
+              "name": "Software Tutorials",
+              "playlist": "",
+              "children": [
+                   {
+                   "name": "Microsoft Excel & Word",
+                   "playlist": "",
+                   "children": [
+                        {
+                        "name": "Excel Tutorial",
+                        "playlist": "5457640662001",
+                        "children": []
+                        },
+                        {
+                        "name": "Word Tutorial",
+                        "playlist": "5457640667001",
+                        "children": []
+                        }
+                        ]
+                   },
+                   {
+                   "name": "Matlab Tutorial",
+                   "playlist": "",
+                   "children": [
+                        {
+                        "name": "Matlab Tutorial",
+                        "playlist": "5456343888001",
+                        "children": []
+                        }
+                        ]
+                   },
+                   {
+                   "name": "Java Programming",
+                   "playlist": "",
+                   "children": [
+                        {
+                        "name": "Mastering Java: Vol 1",
+                        "playlist": "5456343861001",
+                        "children": []
+                        },
+                        {
+                        "name": "Mastering Java: Vol 2",
+                        "playlist": "5455801717001",
+                        "children": []
+                        },
+                        {
+                        "name": "Mastering Java: Vol 3",
+                        "playlist": "5456343864001",
+                        "children": []
+                        },
+                        {
+                        "name": "Mastering Java: Vol 4",
+                        "playlist": "5455903830001",
+                        "children": []
+                        }
+                        ]
+                   }
+                   ]
+              }
+            ]
+    }
+}

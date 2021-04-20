@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="FC4-7g-zbH" customClass="MTCourseHeroView" customModule="MathTutor" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="j2N-gb-lI5">
+                    <rect key="frame" x="5" y="0.0" width="365" height="205.5"/>
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="j2N-gb-lI5" secondAttribute="height" multiplier="16:9" id="Ps4-RE-EYu"/>
+                    </constraints>
+                </imageView>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="j2N-gb-lI5" secondAttribute="trailing" constant="5" id="60b-uT-09s"/>
+                <constraint firstAttribute="bottom" secondItem="j2N-gb-lI5" secondAttribute="bottom" priority="999" id="J6E-cT-lB2"/>
+                <constraint firstItem="j2N-gb-lI5" firstAttribute="top" secondItem="FC4-7g-zbH" secondAttribute="top" id="LsL-bl-6k6"/>
+                <constraint firstItem="j2N-gb-lI5" firstAttribute="leading" secondItem="FC4-7g-zbH" secondAttribute="leading" constant="5" id="YDP-dE-Q6x"/>
+            </constraints>
+            <connections>
+                <outlet property="courseImage" destination="j2N-gb-lI5" id="d8W-ZO-RrP"/>
+            </connections>
+            <point key="canvasLocation" x="133.5" y="54.5"/>
+        </view>
+    </objects>
+</document>

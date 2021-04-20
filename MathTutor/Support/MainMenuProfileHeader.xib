@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina5_5" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="GothamHTF-Bold.otf">
+            <string>GothamHTF-Bold</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MainMenuViewController" customModule="MathTutor" customModuleProvider="target"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="DeK-RH-hRD" customClass="MainMenuProfileHeader" customModule="MathTutor" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <view opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="g0j-lj-BKO">
+                    <rect key="frame" x="0.0" y="0.0" width="340" height="92"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="MATH TUTOR" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ymh-EP-Vam">
+                            <rect key="frame" x="112" y="36.666666666666664" width="117" height="19"/>
+                            <fontDescription key="fontDescription" name="GothamHTF-Bold" family="Gotham HTF" pointSize="17"/>
+                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstItem="Ymh-EP-Vam" firstAttribute="centerY" secondItem="g0j-lj-BKO" secondAttribute="centerY" id="Rsk-bX-tMT"/>
+                        <constraint firstAttribute="width" constant="340" id="SOx-Jd-YXh"/>
+                        <constraint firstItem="Ymh-EP-Vam" firstAttribute="centerX" secondItem="g0j-lj-BKO" secondAttribute="centerX" id="i6n-LP-Nuj"/>
+                        <constraint firstAttribute="height" constant="92" id="mGV-Ya-kXh"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <constraints>
+                <constraint firstItem="g0j-lj-BKO" firstAttribute="leading" secondItem="DeK-RH-hRD" secondAttribute="leading" id="Bc7-Sv-aZZ"/>
+                <constraint firstItem="g0j-lj-BKO" firstAttribute="top" secondItem="DeK-RH-hRD" secondAttribute="top" id="s1o-zn-F38"/>
+            </constraints>
+            <connections>
+                <outlet property="usernameLabel" destination="Ymh-EP-Vam" id="Mdg-I3-aiL"/>
+            </connections>
+            <point key="canvasLocation" x="-15" y="46"/>
+        </view>
+    </objects>
+</document>

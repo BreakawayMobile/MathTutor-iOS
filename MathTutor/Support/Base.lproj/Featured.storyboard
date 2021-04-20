@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="6tN-YH-nRm">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Featured View Controller-->
+        <scene sceneID="ZeL-Lh-Di2">
+            <objects>
+                <viewController storyboardIdentifier="FeaturedViewController" id="6tN-YH-nRm" customClass="FeaturedViewController" customModule="MathTutor" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="osb-ME-L9J"/>
+                        <viewControllerLayoutGuide type="bottom" id="qhZ-dO-3MO"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="coT-YN-4AW">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg_gradient" translatesAutoresizingMaskIntoConstraints="NO" id="XRm-r3-DYy">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                            </imageView>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lLm-Pi-CUF">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="zYj-MA-l1N">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                    </stackView>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="zYj-MA-l1N" secondAttribute="bottom" id="3FL-CI-AAv"/>
+                                    <constraint firstItem="zYj-MA-l1N" firstAttribute="leading" secondItem="lLm-Pi-CUF" secondAttribute="leading" id="8Li-Pp-7Wp"/>
+                                    <constraint firstItem="zYj-MA-l1N" firstAttribute="top" secondItem="lLm-Pi-CUF" secondAttribute="top" id="Y5K-zy-kt3"/>
+                                    <constraint firstItem="zYj-MA-l1N" firstAttribute="width" secondItem="lLm-Pi-CUF" secondAttribute="width" id="dtI-nE-crA"/>
+                                    <constraint firstAttribute="trailing" secondItem="zYj-MA-l1N" secondAttribute="trailing" id="mtS-gU-gjg"/>
+                                </constraints>
+                            </scrollView>
+                        </subviews>
+                        <color key="backgroundColor" red="0.0" green="0.31764705882352939" blue="0.45882352941176469" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="XRm-r3-DYy" firstAttribute="top" secondItem="coT-YN-4AW" secondAttribute="top" id="1lM-HI-jmL"/>
+                            <constraint firstItem="qhZ-dO-3MO" firstAttribute="top" secondItem="XRm-r3-DYy" secondAttribute="bottom" id="AML-GY-O7P"/>
+                            <constraint firstAttribute="trailing" secondItem="lLm-Pi-CUF" secondAttribute="trailing" id="H8h-OV-LrT"/>
+                            <constraint firstAttribute="trailing" secondItem="XRm-r3-DYy" secondAttribute="trailing" id="NSo-Mu-EHE"/>
+                            <constraint firstItem="qhZ-dO-3MO" firstAttribute="top" secondItem="lLm-Pi-CUF" secondAttribute="bottom" id="UaI-Si-A9Y"/>
+                            <constraint firstItem="lLm-Pi-CUF" firstAttribute="leading" secondItem="coT-YN-4AW" secondAttribute="leading" id="aGJ-9A-GxL"/>
+                            <constraint firstItem="XRm-r3-DYy" firstAttribute="leading" secondItem="coT-YN-4AW" secondAttribute="leading" id="eOy-TE-LwB"/>
+                            <constraint firstItem="lLm-Pi-CUF" firstAttribute="top" secondItem="osb-ME-L9J" secondAttribute="bottom" id="lca-gy-CLS"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="scrollView" destination="lLm-Pi-CUF" id="FIk-T7-pIe"/>
+                        <outlet property="stackView" destination="zYj-MA-l1N" id="6gH-Fc-eRA"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="me7-wx-hRl" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-282.39999999999998" y="149.77511244377811"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="bg_gradient" width="2048" height="1536"/>
+    </resources>
+</document>

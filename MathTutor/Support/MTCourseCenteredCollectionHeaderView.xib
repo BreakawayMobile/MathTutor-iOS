@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="GothamHTF-Book.otf">
+            <string>GothamHTF-Book</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionReusableView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="4ue-DY-XLR" customClass="MTCourseCenteredCollectionHeaderView" customModule="MathTutor" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="50"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QI9-ch-Dmp">
+                    <rect key="frame" x="10" y="16" width="355" height="18.5"/>
+                    <fontDescription key="fontDescription" name="GothamHTF-Book" family="Gotham HTF" pointSize="17"/>
+                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <color key="backgroundColor" red="0.0039215686274509803" green="0.30980392156862746" blue="0.49019607843137253" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="QI9-ch-Dmp" firstAttribute="centerX" secondItem="4ue-DY-XLR" secondAttribute="centerX" id="VbR-JY-3Se"/>
+                <constraint firstItem="QI9-ch-Dmp" firstAttribute="centerY" secondItem="4ue-DY-XLR" secondAttribute="centerY" id="cpX-QL-n34"/>
+                <constraint firstItem="QI9-ch-Dmp" firstAttribute="leading" secondItem="4ue-DY-XLR" secondAttribute="leading" constant="10" id="mvA-rt-Pon"/>
+                <constraint firstAttribute="trailing" secondItem="QI9-ch-Dmp" secondAttribute="trailing" constant="10" id="vao-tF-B3u"/>
+            </constraints>
+            <connections>
+                <outlet property="courseLabel" destination="QI9-ch-Dmp" id="CV3-c6-nbp"/>
+            </connections>
+            <point key="canvasLocation" x="-61" y="29"/>
+        </collectionReusableView>
+    </objects>
+</document>

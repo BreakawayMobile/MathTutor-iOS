@@ -1,0 +1,54 @@
+//
+//  MathTutor.strings
+//  MathTutor
+//
+//  Created by Matthew Daigle on 6/7/17.
+//  Copyright © 2017 bgs. All rights reserved.
+//
+
+// Common
+"OK" = "OK";
+"TRY_AGAIN" = "Please try again";
+"LOADING" = "Loading...";
+"APP_NAME" = "MATH TUTOR";
+"SEARCH_TITLE" = "Search";
+"RECENT_TITLE" = "Recently Watched";
+"FAVORITES_TITLE" = "Favorites";
+
+"SHARE_URL_COURSE" = "I'm watching lessons from the \"%@\" course on the Math Tutor app for iOS.\n\nDownload now:";
+
+"SHARE_URL_LESSON" = "I'm watching the \"%@\" course on the Math Tutor app for iOS.\n\nDownload now:";
+
+"SUBSCRIPTION_EXPIRED_MSG" = "We have detected that your subscription has expired\n\nPlease re-subscribe if you would like access to this content.";
+
+"SUBSCRIPTION_RESTORED_MSG" = "We have detected that you have purchased a subscription on another device.\n\nYour subscription has been added on this device.";
+
+"SUBSCRIPTION_BUY_MSG" = "Purchase a subscription for $19.99 per month to unlock all 1,500+ lessons & courses. Cancel anytime.\n\nPurchase now?";
+
+"SUBSCRIPTION_PURCHASE_FAILED" = "Subscription purchase failed. Please try again.";
+
+"TRANSACTION_NOT_FOUND" = "A transaction could not be found. Please try again.";
+
+"YES" = "Yes";
+"NO" = "No";
+
+// Menu
+"APP_VERSION" = "Version: %@ (%@)";
+
+// Errors
+"SERVER_ERROR" = "Server error";
+"SERVER_ERROR_WITH_MESSAGE" = "Server error: %@";
+"NO_CAMERA_ERROR" = "No Camera";
+"NO_CAMERA_MESSAGE" = "Sorry, this device has no camera";
+
+// Favorites
+"MAX_FAVORITES" = "The maximum number of favorites is %d.";
+
+"SUBSCRIPTION_INFO" = "Subscription Info";
+"PRIVACY_POLICY" = "Privacy Policy";
+"TERMS_OF_USE" = "Terms of Use";
+"ABOUT_US" = "About MathTutor";
+"ABOUT_INSTRUCTOR" = "About The Instructor";
+
+"SUBSCRIPTION_TEXT" = "Information about Math Tutor subscriptions:\n\n- For $19.99 a month, you will get access to all 1,500+ lessons and courses.\n\n- Payment will be charged to your iTunes account at confirmation of purchase.\n\n- Your subscription will automatically renew unless auto-renew is turned off at least 24-hours before the end of the current subscription period.\n\n- Your account will be charged for renewal within 24-hours prior to the end of the current subscription period. Automatic renewals will cost the same price you were originally charged for the subscription.\n\n- You can manage your subscriptions and turn off auto-renewal by going to your Account Settings on the App Store after purchase.\n\n- Read our terms of service and privacy policy for more information.";
+
