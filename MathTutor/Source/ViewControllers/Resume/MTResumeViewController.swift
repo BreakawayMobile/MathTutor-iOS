@@ -8,7 +8,7 @@
 
 // swiftlint:disable [ file_header sorted_imports ]
 
-import BGSMobilePackage
+import BMMobilePackage
 import UIKit
 
 open class MTResumeViewController: UIViewController {
@@ -92,27 +92,39 @@ open class MTResumeViewController: UIViewController {
     
     // MARK: - Orientation
     
-    override open var shouldAutorotate: Bool {
-        let orientation = UIApplication.shared.statusBarOrientation
-        let idiom = UIDevice.current.userInterfaceIdiom
-        
-        if idiom == .phone {
-            if orientation == .landscapeLeft ||
-               orientation == .landscapeRight ||
-               orientation == .unknown {
-                return false
-            } else {
-                return true
-            }
+//    override open var shouldAutorotate: Bool {
+//        let orientation = UIApplication.shared.statusBarOrientation
+//        let idiom = UIDevice.current.userInterfaceIdiom
+//
+//        if idiom == .phone {
+//            if orientation == .landscapeLeft ||
+//               orientation == .landscapeRight ||
+//               orientation == .unknown {
+//                return false
+//            } else {
+//                return true
+//            }
+//        }
+//
+//        return true
+//    }
+//
+//    override open var supportedInterfaceOrientations: UIInterfaceOrientationMask {
+//        return UIDevice.current.userInterfaceIdiom == .phone ? [UIInterfaceOrientationMask.landscape] : [UIInterfaceOrientationMask.all]
+//    }
+    open override var shouldAutorotate: Bool {
+        return UIDevice.current.userInterfaceIdiom == .phone ? false : true
+    }
+    
+    open override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
+        if UIDevice.current.userInterfaceIdiom == .phone {
+//            return viewIsLoaded ? [UIInterfaceOrientationMask.landscape] : [UIInterfaceOrientationMask.all]
+            return [UIInterfaceOrientationMask.landscape]
         }
         
-        return true
+        return [UIInterfaceOrientationMask.all]
     }
-    
-    override open var supportedInterfaceOrientations: UIInterfaceOrientationMask {
-        return UIDevice.current.userInterfaceIdiom == .phone ? [UIInterfaceOrientationMask.landscape] : [UIInterfaceOrientationMask.all]
-    }
-    
+
     // MARK: - IBAction
 
     @IBAction func restartButtonPressed(_ sender: UIButton) {
@@ -127,7 +139,7 @@ open class MTResumeViewController: UIViewController {
         displayEnded()
     }
     
-    func backTapped(_ sender: UIBarButtonItem) {
+    @objc func backTapped(_ sender: UIBarButtonItem) {
         self.completion?(.cancel)
         self.completion = nil
         displayEnded()

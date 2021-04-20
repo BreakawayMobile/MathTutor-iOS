@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import BGSMobilePackage
+import BMMobilePackage
 import ScrollableStackView
 
 class FeaturedViewController: UIViewController {

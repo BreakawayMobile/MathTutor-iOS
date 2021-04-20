@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import BGSMobilePackage
+import BMMobilePackage
 
 class MTSearchViewController: UIViewController,
                               UICollectionViewDataSource,
@@ -69,7 +69,7 @@ class MTSearchViewController: UIViewController,
         self.waitSpinner.isHidden = true
         self.setBarButtonItems(animated: true)
 
-        searchController.searchBar.autoresizingMask = [UIViewAutoresizing.flexibleWidth, UIViewAutoresizing.flexibleHeight]
+        searchController.searchBar.autoresizingMask = [UIView.AutoresizingMask.flexibleWidth, UIView.AutoresizingMask.flexibleHeight]
         searchBarContainerView.addSubview(searchController.searchBar)
         searchController.searchBar.sizeToFit()
         

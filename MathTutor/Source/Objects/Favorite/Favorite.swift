@@ -16,8 +16,8 @@ import StorageKit
 
 open class Favorite: RealmSwift.Object {
 
-    open dynamic var videoId = ""
-    open dynamic var title = ""
+    @objc open dynamic var videoId = ""
+    @objc open dynamic var title = ""
     
     open override static func primaryKey() -> String? {
         return "videoId"
@@ -39,7 +39,7 @@ open class Favorite: RealmSwift.Object {
             return
         }
         
-        storage.performBackgroundTask { (backgroundContext, _) in
+        storage.performBackgroundTask { backgroundContext in
             guard let backgroundContext = backgroundContext else { return }
             
             Favorite.fetch(favoriteItem: backgroundContext,
@@ -52,15 +52,19 @@ open class Favorite: RealmSwift.Object {
                       predicate: NSPredicate,
                       completion: ((Favorite?) -> Void)!) {
         
-        context.fetch(predicate: predicate,
-                      sortDescriptors: nil,
-                      completion: { (entities: [Favorite]?) in
-            if let item = entities?.first {
-                completion?(item)
-            } else {
-                completion?(nil)
-            }
-        })
+        do {
+            try context.fetch(predicate: predicate,
+                          sortDescriptors: nil,
+                          completion: { (entities: [Favorite]?) in
+                if let item = entities?.first {
+                    completion?(item)
+                } else {
+                    completion?(nil)
+                }
+            })
+        } catch {
+            
+        }
     }
     
     static func add(favorite videoId: String,
@@ -94,7 +98,7 @@ open class Favorite: RealmSwift.Object {
                         favoriteObject.videoId = videoId
                         favoriteObject.title = title
                         
-                        try context.add(favoriteObject)
+                        try context.addOrUpdate(favoriteObject)
                         print("Favorite Object Added")
                         
                         MTUser.add(favoriteObject,
@@ -167,7 +171,7 @@ open class Favorite: RealmSwift.Object {
             return
         }
         
-        storage.performBackgroundTask { (backgroundContext, _) in
+        storage.performBackgroundTask { backgroundContext in
             guard let backgroundContext = backgroundContext else { return }
             
             Favorite.fetch(favoriteObjects: backgroundContext,
@@ -180,18 +184,22 @@ open class Favorite: RealmSwift.Object {
                       storage: Storage,
                       completion: (([Favorite]) -> Void)!) {
         
-        let sortByTitle = SortDescriptor(key: #keyPath(Favorite.title),
-                                         ascending: true)
-        
-        context.fetch(predicate: nil,
-                      sortDescriptors: [sortByTitle],
-                      completion: { (entities: [Favorite]?) in
+        do {
+            let sortByTitle = SortDescriptor(key: #keyPath(Favorite.title),
+                                             ascending: true)
             
-            if let item = entities {
-                completion?(item)
-            } else {
-                completion?([])
-            }
-        })
+            try context.fetch(predicate: nil,
+                          sortDescriptors: [sortByTitle],
+                          completion: { (entities: [Favorite]?) in
+                
+                if let item = entities {
+                    completion?(item)
+                } else {
+                    completion?([])
+                }
+            })
+        } catch {
+            
+        }
     }
 }

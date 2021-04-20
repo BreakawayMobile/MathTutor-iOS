@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import BGSMobilePackage
+import BMMobilePackage
 
 extension BCGSDataManager {
     enum NewProps: String {

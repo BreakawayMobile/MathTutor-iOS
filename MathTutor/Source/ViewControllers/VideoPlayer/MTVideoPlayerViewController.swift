@@ -8,7 +8,7 @@
 
 import AVFoundation
 import AVKit
-import BGSMobilePackage
+import BMMobilePackage
 import UIKit
 
 class MTVideoPlayerViewController: AVPlayerViewController, BCGSPlaybackDelegate {
@@ -83,7 +83,6 @@ class MTVideoPlayerViewController: AVPlayerViewController, BCGSPlaybackDelegate 
         super.viewWillAppear(animated)
         
         isPresented = true
-        UIApplication.shared.isStatusBarHidden = true
 
         if viewAdded == false {
             self.viewAdded = true
@@ -125,9 +124,7 @@ class MTVideoPlayerViewController: AVPlayerViewController, BCGSPlaybackDelegate 
         super.viewWillDisappear(animated)
         isPresented = false
         
-        UIApplication.shared.isStatusBarHidden = false
-
-        if self.isMovingFromParentViewController || self.isBeingDismissed {
+        if self.isMovingFromParent || self.isBeingDismissed {
 #if BASIC_CASE
             videoPlayerView.pause()
             videoPlayerView.releasePlaybackResources()
@@ -153,27 +150,42 @@ class MTVideoPlayerViewController: AVPlayerViewController, BCGSPlaybackDelegate 
     
     // MARK: - Orientation
     
+//    override var shouldAutorotate: Bool {
+//        let orientation = UIApplication.shared.statusBarOrientation
+//        let idiom = UIDevice.current.userInterfaceIdiom
+//
+//        if idiom == .phone {
+//            if orientation == .landscapeRight ||
+//               orientation == .landscapeLeft ||
+//               orientation == .unknown {
+//                return false
+//            } else {
+//                return true
+//            }
+//        }
+//
+//        return true
+//    }
+//
+//    override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
+//        return UIDevice.current.userInterfaceIdiom == .phone ? [UIInterfaceOrientationMask.landscape] : [UIInterfaceOrientationMask.all]
+//    }
+    
+    // MARK: - Orientation
+    
     override var shouldAutorotate: Bool {
-        let orientation = UIApplication.shared.statusBarOrientation
-        let idiom = UIDevice.current.userInterfaceIdiom
-        
-        if idiom == .phone {
-            if orientation == .landscapeRight ||
-               orientation == .landscapeLeft ||
-               orientation == .unknown {
-                return false
-            } else {
-                return true
-            }
-        }
-        
-        return true
+        return UIDevice.current.userInterfaceIdiom == .phone ? false : true
     }
     
     override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
-        return UIDevice.current.userInterfaceIdiom == .phone ? [UIInterfaceOrientationMask.landscape] : [UIInterfaceOrientationMask.all]
+        if UIDevice.current.userInterfaceIdiom == .phone {
+//            return viewIsLoaded ? [UIInterfaceOrientationMask.landscape] : [UIInterfaceOrientationMask.all]
+            return [UIInterfaceOrientationMask.landscape]
+        }
+        
+        return [UIInterfaceOrientationMask.all]
     }
-    
+
     // MARK: - Player Notifications
     
     func itemDidFinishPlaying(_ notification: Notification) {
@@ -192,12 +204,12 @@ class MTVideoPlayerViewController: AVPlayerViewController, BCGSPlaybackDelegate 
     }
 
 #if !BASIC_CASE
-    func nextVideo(_ notification: Notification) {
+    @objc func nextVideo(_ notification: Notification) {
         self.playPosition = TimeInterval(0)
 //        self.playVideo(self.content.nextEpisode())
     }
     
-    func previousVideo(_ notification: Notification) {
+    @objc func previousVideo(_ notification: Notification) {
         self.playPosition = TimeInterval(0)
 //        self.playVideo(self.content.previousEpisode())
     }

@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import BGSMobilePackage
+import BMMobilePackage
 import iCarousel
 
 class MTFeaturedHeroView: UIView,
@@ -207,7 +207,7 @@ class MTFeaturedHeroView: UIView,
         }
     }
     
-    func updateCell() {
+    @objc func updateCell() {
         weak var weakSelf = self
         if Thread.current != Thread.main {
             DispatchQueue.main.async(execute: { () -> Void in

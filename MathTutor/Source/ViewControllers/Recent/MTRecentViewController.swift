@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import BGSMobilePackage
+import BMMobilePackage
 
 class MTRecentViewController: UIViewController,
                               UICollectionViewDataSource,

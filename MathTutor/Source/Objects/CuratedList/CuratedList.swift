@@ -6,7 +6,7 @@
 //  Copyright © 2017 bgs. All rights reserved.
 //
 
-import BGSMobilePackage
+import BMMobilePackage
 import UIKit
 
 class CuratedList: NSObject {

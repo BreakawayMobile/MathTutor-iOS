@@ -72,10 +72,10 @@ class MTVideoPlayerView: UIView {
         // Do any additional setup after loading the view.
         self.videoViewContainer.addSubview(self.playerView)
         
-        for attribute in [NSLayoutAttribute.top,
-                          NSLayoutAttribute.bottom,
-                          NSLayoutAttribute.leading,
-                          NSLayoutAttribute.trailing] {
+        for attribute in [NSLayoutConstraint.Attribute.top,
+                          NSLayoutConstraint.Attribute.bottom,
+                          NSLayoutConstraint.Attribute.leading,
+                          NSLayoutConstraint.Attribute.trailing] {
                 
                 let constraint = NSLayoutConstraint(item: self.playerView,
                                                     attribute: attribute,

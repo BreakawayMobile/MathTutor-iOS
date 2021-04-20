@@ -10,7 +10,7 @@
 
 import BrightcovePlayerSDK
 import MediaPlayer
-import BGSMobilePackage
+import BMMobilePackage
 import UIKit
 
 public protocol BCGSPlaybackDelegate: class {
@@ -104,21 +104,23 @@ class MTVODPlayerControls: BCCiOSControls,
         self.fadeTime = kDefaultFadeTime
         self.rewindTime = kDefaultSeekTime
         self.slider.isHidden = true
-        self.progressSlider.setThumbImage(UIImage(named: sliderImage), for: UIControlState())
+        self.progressSlider.setThumbImage(UIImage(named: sliderImage), for: UIControl.State())
         self.progressSlider.minimumTrackTintColor = UIColor(hexString: "7AD2F6")
         
         let podBundle = Bundle(for: BCCiOSControls.self)
         let playImage = UIImage(named: "play_btn", in: podBundle, compatibleWith: nil)
         let pauseImage = UIImage(named: "pause_btn", in: podBundle, compatibleWith: nil)
-        self.playPauseButton?.setImage(playImage, for: UIControlState())
-        self.playPauseButton?.setImage(pauseImage, for: UIControlState.selected)
+        self.playPauseButton?.setImage(playImage, for: UIControl.State())
+        self.playPauseButton?.setImage(pauseImage, for: UIControl.State.selected)
         
         self.tapGesture = UITapGestureRecognizer(target: self, action: #selector(MTVODPlayerControls.backTapped(_:)))
         backArrowImageView.isUserInteractionEnabled = true
         backArrowImageView.addGestureRecognizer(tapGesture)
         
         do {
-            try AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayback)
+            if #available(iOS 10.0, *) {
+                try AVAudioSession.sharedInstance().setCategory(AVAudioSession.Category.playback, mode: AVAudioSession.Mode.default)
+            }
         } catch _ { }
         
         self.airPlayButton.showsVolumeSlider = false
@@ -363,7 +365,7 @@ class MTVODPlayerControls: BCCiOSControls,
     }
 
     func enableSubtitlesForCountryCode(_ countryCode: String, emitEvent: Bool) {
-        if let selectionGroup = self.currentPlayer?.currentItem?.asset.mediaSelectionGroup(forMediaCharacteristic: AVMediaCharacteristicLegible) {
+        if let selectionGroup = self.currentPlayer?.currentItem?.asset.mediaSelectionGroup(forMediaCharacteristic: AVMediaCharacteristic.legible) {
             var selectedTrack: AVMediaSelectionOption! = nil
     
             // Try to find the selected subtitle locale in the available tracks. If one
@@ -386,7 +388,7 @@ class MTVODPlayerControls: BCCiOSControls,
             
                 // Add the non-translated version of the language name to the event details
                 if selectedTrack != nil {
-                    let metadata = AVMetadataItem.metadataItems(from: selectedTrack.commonMetadata, withKey: "title", keySpace: "comn")
+                    let metadata = AVMetadataItem.metadataItems(from: selectedTrack.commonMetadata, withKey: "title", keySpace: convertToOptionalAVMetadataKeySpace("comn"))
                     eventDetails["language"] = metadata[0].stringValue as AnyObject?
                 }
             }
@@ -431,7 +433,7 @@ class MTVODPlayerControls: BCCiOSControls,
     
     // MARK: - Tap Gesture
     
-    func backTapped(_ sender: UITapGestureRecognizer) {
+    @objc func backTapped(_ sender: UITapGestureRecognizer) {
         if sender.state == .ended {
 //            if self.parentVC.parentViewController is UINavigationController {
 //                let navController = self.parentVC.parentViewController as! UINavigationController
@@ -459,7 +461,7 @@ class MTVODPlayerControls: BCCiOSControls,
                     return
                 }
                 
-                guard let selectionGroup = asset.mediaSelectionGroup(forMediaCharacteristic: AVMediaCharacteristicLegible) else {
+                guard let selectionGroup = asset.mediaSelectionGroup(forMediaCharacteristic: AVMediaCharacteristic.legible) else {
                     print("Failed to get media selection group")
                     return
                 }
@@ -585,9 +587,9 @@ class MTVODPlayerControls: BCCiOSControls,
             progress = 0
         }
         
-        self.currentPlayer?.seek(to: CMTimeMakeWithSeconds(Float64(progress), 1),
-            toleranceBefore: kCMTimeZero,
-            toleranceAfter: kCMTimeZero, completionHandler: { (_) -> Void in
+        self.currentPlayer?.seek(to: CMTimeMakeWithSeconds(Float64(progress), preferredTimescale: 1),
+            toleranceBefore: CMTime.zero,
+            toleranceAfter: CMTime.zero, completionHandler: { (_) -> Void in
                 self.updateCurrentTime(Float(progress))
         }) 
     }
@@ -598,9 +600,9 @@ class MTVODPlayerControls: BCCiOSControls,
         let progress = self.progressSlider.value * self.segmentDuration
         
         if progress.isFinite && progress > 0 && progress < self.segmentDuration {
-            self.currentPlayer?.seek(to: CMTimeMakeWithSeconds(Float64(progress), 1),
-                                          toleranceBefore: kCMTimeZero,
-                                          toleranceAfter: kCMTimeZero, completionHandler: { (_) -> Void in
+            self.currentPlayer?.seek(to: CMTimeMakeWithSeconds(Float64(progress), preferredTimescale: 1),
+                                          toleranceBefore: CMTime.zero,
+                                          toleranceAfter: CMTime.zero, completionHandler: { (_) -> Void in
                 self.updateCurrentTime(Float(progress))
             })
         }
@@ -680,4 +682,15 @@ class MTVODPlayerControls: BCCiOSControls,
     deinit {
         print("deinit")
     }
+}
+
+// Helper function inserted by Swift 4.2 migrator.
+fileprivate func convertFromAVAudioSessionCategory(_ input: AVAudioSession.Category) -> String {
+	return input.rawValue
+}
+
+// Helper function inserted by Swift 4.2 migrator.
+fileprivate func convertToOptionalAVMetadataKeySpace(_ input: String?) -> AVMetadataKeySpace? {
+	guard let input = input else { return nil }
+	return AVMetadataKeySpace(rawValue: input)
 }

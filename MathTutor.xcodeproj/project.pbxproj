@@ -217,7 +217,6 @@
 		707646241F5AE9450078D109 /* MTWebViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 707646211F5AE9450078D109 /* MTWebViewController.storyboard */; };
 		707646261F5AE9550078D109 /* MTWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 707646251F5AE9550078D109 /* MTWebViewController.swift */; };
 		707646271F5AE9550078D109 /* MTWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 707646251F5AE9550078D109 /* MTWebViewController.swift */; };
-		707646281F5AFAE40078D109 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 70B772811F156BBA004AF2F5 /* Info.plist */; };
 		707FF2411F3E3D3B002B3EEB /* MTUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 707FF2401F3E3D3B002B3EEB /* MTUser.swift */; };
 		707FF2441F3E3F9F002B3EEB /* MTUserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 707FF2431F3E3F9F002B3EEB /* MTUserManager.swift */; };
 		707FF2471F3E5788002B3EEB /* Favorite.swift in Sources */ = {isa = PBXBuildFile; fileRef = 707FF2461F3E5788002B3EEB /* Favorite.swift */; };
@@ -290,7 +289,7 @@
 		35A4749B28446ABD6547A6DC /* Pods_MathTutor.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MathTutor.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		35FD541EF85CFF48B3F57E10 /* Pods_MathTutorTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MathTutorTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		379D557CD220502CB87B040F /* Pods-MathTutorUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MathTutorUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MathTutorUITests/Pods-MathTutorUITests.debug.xcconfig"; sourceTree = "<group>"; };
-		7018D86A1F44613600B0F2B2 /* MathTutor BGS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "MathTutor BGS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		7018D86A1F44613600B0F2B2 /* MathTutor BWAY.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "MathTutor BWAY.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7018D86C1F4461AA00B0F2B2 /* MathTutor_BGS-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "MathTutor_BGS-Info.plist"; path = "Support/MathTutor_BGS-Info.plist"; sourceTree = "<group>"; };
 		7018D87D1F447B2B00B0F2B2 /* MathTutor-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "MathTutor-Bridging-Header.h"; path = "Source/Bridge/MathTutor-Bridging-Header.h"; sourceTree = "<group>"; };
 		7018D8851F44826700B0F2B2 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
@@ -874,7 +873,7 @@
 				70B772491F156835004AF2F5 /* MathTutor.app */,
 				70B7725D1F156837004AF2F5 /* MathTutorTests.xctest */,
 				70B772681F156837004AF2F5 /* MathTutorUITests.xctest */,
-				7018D86A1F44613600B0F2B2 /* MathTutor BGS.app */,
+				7018D86A1F44613600B0F2B2 /* MathTutor BWAY.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -1021,9 +1020,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		7018D7F61F44613600B0F2B2 /* MathTutor BGS */ = {
+		7018D7F61F44613600B0F2B2 /* MathTutor BWAY */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 7018D8671F44613600B0F2B2 /* Build configuration list for PBXNativeTarget "MathTutor BGS" */;
+			buildConfigurationList = 7018D8671F44613600B0F2B2 /* Build configuration list for PBXNativeTarget "MathTutor BWAY" */;
 			buildPhases = (
 				E5B11C42E8D78CCA4151BA04 /* [CP] Check Pods Manifest.lock */,
 				7018D7F81F44613600B0F2B2 /* Sources */,
@@ -1038,9 +1037,9 @@
 			);
 			dependencies = (
 			);
-			name = "MathTutor BGS";
+			name = "MathTutor BWAY";
 			productName = MathTutor;
-			productReference = 7018D86A1F44613600B0F2B2 /* MathTutor BGS.app */;
+			productReference = 7018D86A1F44613600B0F2B2 /* MathTutor BWAY.app */;
 			productType = "com.apple.product-type.application";
 		};
 		70B772481F156835004AF2F5 /* MathTutor */ = {
@@ -1114,15 +1113,16 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0830;
-				LastUpgradeCheck = 0830;
+				LastUpgradeCheck = 1240;
 				ORGANIZATIONNAME = bgs;
 				TargetAttributes = {
 					7018D7F61F44613600B0F2B2 = {
-						DevelopmentTeam = RP7C3H2395;
+						DevelopmentTeam = W9XKUZNL6V;
 					};
 					70B772481F156835004AF2F5 = {
 						CreatedOnToolsVersion = 8.3.3;
 						DevelopmentTeam = 2Z63L3A4H5;
+						LastSwiftMigration = 1010;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.Push = {
@@ -1132,13 +1132,15 @@
 					};
 					70B7725C1F156837004AF2F5 = {
 						CreatedOnToolsVersion = 8.3.3;
-						DevelopmentTeam = RP7C3H2395;
+						DevelopmentTeam = 2Z63L3A4H5;
+						LastSwiftMigration = 1010;
 						ProvisioningStyle = Automatic;
 						TestTargetID = 70B772481F156835004AF2F5;
 					};
 					70B772671F156837004AF2F5 = {
 						CreatedOnToolsVersion = 8.3.3;
-						DevelopmentTeam = RP7C3H2395;
+						DevelopmentTeam = 2Z63L3A4H5;
+						LastSwiftMigration = 1010;
 						ProvisioningStyle = Automatic;
 						TestTargetID = 70B772481F156835004AF2F5;
 					};
@@ -1146,7 +1148,7 @@
 			};
 			buildConfigurationList = 70B772441F156835004AF2F5 /* Build configuration list for PBXProject "MathTutor" */;
 			compatibilityVersion = "Xcode 3.2";
-			developmentRegion = English;
+			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
@@ -1160,7 +1162,7 @@
 				70B772481F156835004AF2F5 /* MathTutor */,
 				70B7725C1F156837004AF2F5 /* MathTutorTests */,
 				70B772671F156837004AF2F5 /* MathTutorUITests */,
-				7018D7F61F44613600B0F2B2 /* MathTutor BGS */,
+				7018D7F61F44613600B0F2B2 /* MathTutor BWAY */,
 			);
 		};
 /* End PBXProject section */
@@ -1266,7 +1268,6 @@
 				7054FDB71F35133700C0DDBF /* MTLessonCollectionViewCell.xib in Resources */,
 				70B7728C1F1572B4004AF2F5 /* MathTutor.json in Resources */,
 				7054FE0C1F362C6600C0DDBF /* GothamHTF-BoldCondensed.otf in Resources */,
-				707646281F5AFAE40078D109 /* Info.plist in Resources */,
 				7054FE0E1F362C6600C0DDBF /* GothamHTF-Book.otf in Resources */,
 				70ECF0B71F3A57FE00267A17 /* MTSearchViewController.storyboard in Resources */,
 				7054FE0F1F362C6600C0DDBF /* GothamHTF-BookCondensed.otf in Resources */,
@@ -1364,7 +1365,7 @@
 			files = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-MathTutor/Pods-MathTutor-resources.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-MathTutor/Pods-MathTutor-resources.sh",
 				"${PODS_CONFIGURATION_BUILD_DIR}/Brightcove-Player-Core/BCOVPUIResources.bundle",
 			);
 			name = "[CP] Copy Pods Resources";
@@ -1373,7 +1374,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MathTutor/Pods-MathTutor-resources.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-MathTutor/Pods-MathTutor-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		625ABFBAD84AF4D8A691A300 /* [CP] Embed Pods Frameworks */ = {
@@ -1382,9 +1383,9 @@
 			files = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-MathTutor BGS/Pods-MathTutor BGS-frameworks.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-MathTutor BGS/Pods-MathTutor BGS-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
-				"${BUILT_PRODUCTS_DIR}/BGSMobilePackage/BGSMobilePackage.framework",
+				"${BUILT_PRODUCTS_DIR}/BMMobilePackage/BMMobilePackage.framework",
 				"${PODS_ROOT}/Brightcove-Player-Core/ios/dynamic/BrightcovePlayerSDK.framework",
 				"${BUILT_PRODUCTS_DIR}/CarbonKit/CarbonKit.framework",
 				"${BUILT_PRODUCTS_DIR}/ChameleonFramework/ChameleonFramework.framework",
@@ -1405,14 +1406,13 @@
 				"${BUILT_PRODUCTS_DIR}/UIView-Autolayout/UIView_Autolayout.framework",
 				"${BUILT_PRODUCTS_DIR}/iCarousel/iCarousel.framework",
 				"${BUILT_PRODUCTS_DIR}/iOSSharedViewTransition/iOSSharedViewTransition.framework",
-				"${BUILT_PRODUCTS_DIR}/libCommonCrypto/CommonCrypto.framework",
 				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 				"${BUILT_PRODUCTS_DIR}/treemapkit/treemapkit.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/BGSMobilePackage.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/BMMobilePackage.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/BrightcovePlayerSDK.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CarbonKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ChameleonFramework.framework",
@@ -1433,13 +1433,12 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/UIView_Autolayout.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/iCarousel.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/iOSSharedViewTransition.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CommonCrypto.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/treemapkit.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MathTutor BGS/Pods-MathTutor BGS-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-MathTutor BGS/Pods-MathTutor BGS-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		7018D8651F44613600B0F2B2 /* Linter */ = {
@@ -1504,9 +1503,9 @@
 			files = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-MathTutorTests/Pods-MathTutorTests-frameworks.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-MathTutorTests/Pods-MathTutorTests-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
-				"${BUILT_PRODUCTS_DIR}/BGSMobilePackage/BGSMobilePackage.framework",
+				"${BUILT_PRODUCTS_DIR}/BMMobilePackage/BMMobilePackage.framework",
 				"${PODS_ROOT}/Brightcove-Player-Core/ios/dynamic/BrightcovePlayerSDK.framework",
 				"${BUILT_PRODUCTS_DIR}/CarbonKit/CarbonKit.framework",
 				"${BUILT_PRODUCTS_DIR}/ChameleonFramework/ChameleonFramework.framework",
@@ -1527,14 +1526,13 @@
 				"${BUILT_PRODUCTS_DIR}/UIView-Autolayout/UIView_Autolayout.framework",
 				"${BUILT_PRODUCTS_DIR}/iCarousel/iCarousel.framework",
 				"${BUILT_PRODUCTS_DIR}/iOSSharedViewTransition/iOSSharedViewTransition.framework",
-				"${BUILT_PRODUCTS_DIR}/libCommonCrypto/CommonCrypto.framework",
 				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 				"${BUILT_PRODUCTS_DIR}/treemapkit/treemapkit.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/BGSMobilePackage.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/BMMobilePackage.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/BrightcovePlayerSDK.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CarbonKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ChameleonFramework.framework",
@@ -1555,13 +1553,12 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/UIView_Autolayout.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/iCarousel.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/iOSSharedViewTransition.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CommonCrypto.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/treemapkit.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MathTutorTests/Pods-MathTutorTests-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-MathTutorTests/Pods-MathTutorTests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		B104F298AF3E9DE82507B8FA /* [CP] Embed Pods Frameworks */ = {
@@ -1570,9 +1567,9 @@
 			files = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-MathTutor/Pods-MathTutor-frameworks.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-MathTutor/Pods-MathTutor-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
-				"${BUILT_PRODUCTS_DIR}/BGSMobilePackage/BGSMobilePackage.framework",
+				"${BUILT_PRODUCTS_DIR}/BMMobilePackage/BMMobilePackage.framework",
 				"${PODS_ROOT}/Brightcove-Player-Core/ios/dynamic/BrightcovePlayerSDK.framework",
 				"${BUILT_PRODUCTS_DIR}/CarbonKit/CarbonKit.framework",
 				"${BUILT_PRODUCTS_DIR}/ChameleonFramework/ChameleonFramework.framework",
@@ -1593,14 +1590,13 @@
 				"${BUILT_PRODUCTS_DIR}/UIView-Autolayout/UIView_Autolayout.framework",
 				"${BUILT_PRODUCTS_DIR}/iCarousel/iCarousel.framework",
 				"${BUILT_PRODUCTS_DIR}/iOSSharedViewTransition/iOSSharedViewTransition.framework",
-				"${BUILT_PRODUCTS_DIR}/libCommonCrypto/CommonCrypto.framework",
 				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 				"${BUILT_PRODUCTS_DIR}/treemapkit/treemapkit.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/BGSMobilePackage.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/BMMobilePackage.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/BrightcovePlayerSDK.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CarbonKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ChameleonFramework.framework",
@@ -1621,13 +1617,12 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/UIView_Autolayout.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/iCarousel.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/iOSSharedViewTransition.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CommonCrypto.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/treemapkit.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MathTutor/Pods-MathTutor-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-MathTutor/Pods-MathTutor-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		B420AF9364C863A70E816A66 /* [CP] Copy Pods Resources */ = {
@@ -1636,7 +1631,7 @@
 			files = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-MathTutorTests/Pods-MathTutorTests-resources.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-MathTutorTests/Pods-MathTutorTests-resources.sh",
 				"${PODS_CONFIGURATION_BUILD_DIR}/Brightcove-Player-Core/BCOVPUIResources.bundle",
 			);
 			name = "[CP] Copy Pods Resources";
@@ -1645,7 +1640,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MathTutorTests/Pods-MathTutorTests-resources.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-MathTutorTests/Pods-MathTutorTests-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		C23CDA1EBF61EF2EA0F095A1 /* [CP] Copy Pods Resources */ = {
@@ -1654,7 +1649,7 @@
 			files = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-MathTutor BGS/Pods-MathTutor BGS-resources.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-MathTutor BGS/Pods-MathTutor BGS-resources.sh",
 				"${PODS_CONFIGURATION_BUILD_DIR}/Brightcove-Player-Core/BCOVPUIResources.bundle",
 			);
 			name = "[CP] Copy Pods Resources";
@@ -1663,7 +1658,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MathTutor BGS/Pods-MathTutor BGS-resources.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-MathTutor BGS/Pods-MathTutor BGS-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		C98F4114C22F146DD2807195 /* [CP] Embed Pods Frameworks */ = {
@@ -1672,9 +1667,9 @@
 			files = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-MathTutorUITests/Pods-MathTutorUITests-frameworks.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-MathTutorUITests/Pods-MathTutorUITests-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
-				"${BUILT_PRODUCTS_DIR}/BGSMobilePackage/BGSMobilePackage.framework",
+				"${BUILT_PRODUCTS_DIR}/BMMobilePackage/BMMobilePackage.framework",
 				"${PODS_ROOT}/Brightcove-Player-Core/ios/dynamic/BrightcovePlayerSDK.framework",
 				"${BUILT_PRODUCTS_DIR}/CarbonKit/CarbonKit.framework",
 				"${BUILT_PRODUCTS_DIR}/ChameleonFramework/ChameleonFramework.framework",
@@ -1695,14 +1690,13 @@
 				"${BUILT_PRODUCTS_DIR}/UIView-Autolayout/UIView_Autolayout.framework",
 				"${BUILT_PRODUCTS_DIR}/iCarousel/iCarousel.framework",
 				"${BUILT_PRODUCTS_DIR}/iOSSharedViewTransition/iOSSharedViewTransition.framework",
-				"${BUILT_PRODUCTS_DIR}/libCommonCrypto/CommonCrypto.framework",
 				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 				"${BUILT_PRODUCTS_DIR}/treemapkit/treemapkit.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/BGSMobilePackage.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/BMMobilePackage.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/BrightcovePlayerSDK.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CarbonKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ChameleonFramework.framework",
@@ -1723,13 +1717,12 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/UIView_Autolayout.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/iCarousel.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/iOSSharedViewTransition.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CommonCrypto.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/treemapkit.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MathTutorUITests/Pods-MathTutorUITests-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-MathTutorUITests/Pods-MathTutorUITests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		DFFA6C2790A62390EFF533F1 /* [CP] Copy Pods Resources */ = {
@@ -1738,7 +1731,7 @@
 			files = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-MathTutorUITests/Pods-MathTutorUITests-resources.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-MathTutorUITests/Pods-MathTutorUITests-resources.sh",
 				"${PODS_CONFIGURATION_BUILD_DIR}/Brightcove-Player-Core/BCOVPUIResources.bundle",
 			);
 			name = "[CP] Copy Pods Resources";
@@ -1747,7 +1740,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MathTutorUITests/Pods-MathTutorUITests-resources.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-MathTutorUITests/Pods-MathTutorUITests-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		E5B11C42E8D78CCA4151BA04 /* [CP] Check Pods Manifest.lock */ = {
@@ -2069,7 +2062,7 @@
 			baseConfigurationReference = 8633252E04EA38B51FC6B5D3 /* Pods-MathTutor BGS.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = RP7C3H2395;
+				DEVELOPMENT_TEAM = W9XKUZNL6V;
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"${PODS_ROOT}/Headers/Public\"/**",
@@ -2082,16 +2075,16 @@
 					"\"$(SOURCE_ROOT)/MathTutor/Libs/Build-OpenSSL/openssl/iOS/include\"/**",
 				);
 				INFOPLIST_FILE = "$(SRCROOT)/MathTutor/Support/MathTutor_BGS-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/MathTutor/Libs/Build-OpenSSL/openssl/iOS/lib",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.bgs.MathTutor;
+				PRODUCT_BUNDLE_IDENTIFIER = com.bway.MathTutor;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "MathTutor/Source/Bridge/MathTutor-Bridging-Header.h";
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 4.2;
 				SYSTEM_HEADER_SEARCH_PATHS = "";
 			};
 			name = Debug;
@@ -2101,7 +2094,7 @@
 			baseConfigurationReference = 96EE192DF8231690F6391C82 /* Pods-MathTutor BGS.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = RP7C3H2395;
+				DEVELOPMENT_TEAM = W9XKUZNL6V;
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"${PODS_ROOT}/Headers/Public\"/**",
@@ -2114,16 +2107,16 @@
 					"\"$(SOURCE_ROOT)/MathTutor/Libs/Build-OpenSSL/openssl/iOS/include\"/**",
 				);
 				INFOPLIST_FILE = "$(SRCROOT)/MathTutor/Support/MathTutor_BGS-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/MathTutor/Libs/Build-OpenSSL/openssl/iOS/lib",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.bgs.MathTutor;
+				PRODUCT_BUNDLE_IDENTIFIER = com.bway.MathTutor;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "MathTutor/Source/Bridge/MathTutor-Bridging-Header.h";
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 4.2;
 				SYSTEM_HEADER_SEARCH_PATHS = "";
 			};
 			name = Release;
@@ -2132,21 +2125,31 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -2169,7 +2172,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -2183,21 +2186,31 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -2214,7 +2227,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
@@ -2242,7 +2255,7 @@
 					"\"$(SOURCE_ROOT)/MathTutor/Libs/Build-OpenSSL/openssl/iOS/include\"/**",
 				);
 				INFOPLIST_FILE = "$(SRCROOT)/MathTutor/Support/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
@@ -2251,7 +2264,8 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.mathtutordvd.mathtutor;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "MathTutor/Source/Bridge/MathTutor-Bridging-Header.h";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.2;
 				SYSTEM_HEADER_SEARCH_PATHS = "";
 				USER_HEADER_SEARCH_PATHS = "";
 			};
@@ -2276,7 +2290,7 @@
 					"\"$(SOURCE_ROOT)/MathTutor/Libs/Build-OpenSSL/openssl/iOS/include\"/**",
 				);
 				INFOPLIST_FILE = "$(SRCROOT)/MathTutor/Support/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
@@ -2285,7 +2299,8 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.mathtutordvd.mathtutor;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "MathTutor/Source/Bridge/MathTutor-Bridging-Header.h";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.2;
 				SYSTEM_HEADER_SEARCH_PATHS = "";
 				USER_HEADER_SEARCH_PATHS = "";
 			};
@@ -2297,12 +2312,44 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
-				DEVELOPMENT_TEAM = RP7C3H2395;
+				DEVELOPMENT_TEAM = 2Z63L3A4H5;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/Alamofire/Alamofire.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/BGSMobilePackage/BGSMobilePackage.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/CarbonKit/CarbonKit.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/ChameleonFramework/ChameleonFramework.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/CustomIOSAlertView/CustomIOSAlertView.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/Kingfisher/Kingfisher.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/MBProgressHUD/MBProgressHUD.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/PromiseKit/PromiseKit.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/RATreeView/RATreeView.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/ReactiveCocoa/ReactiveCocoa.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/Realm/Realm.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/RealmSwift/RealmSwift.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/SDWebImage/SDWebImage.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/ScrollableStackView/ScrollableStackView.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/SlideMenuControllerSwift/SlideMenuControllerSwift.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/StorageKit/StorageKit.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/SwipeView/SwipeView.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/UIView-Autolayout/UIView_Autolayout.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/iCarousel/iCarousel.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/iOSSharedViewTransition/iOSSharedViewTransition.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/nanopb/nanopb.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/treemapkit/treemapkit.framework/Headers\"",
+					"\"${PODS_ROOT}/Headers/Public\"",
+					"\"${PODS_ROOT}/Headers/Public/Firebase\"",
+					"$(inherited)",
+					"${PODS_ROOT}/Firebase/Core/Sources",
+					"\"$(SOURCE_ROOT)/MathTutor/Libs/Build-OpenSSL/openssl/iOS/include\"/**",
+				);
 				INFOPLIST_FILE = MathTutorTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.bgs.MathTutorTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.2;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MathTutor.app/MathTutor";
 			};
 			name = Debug;
@@ -2313,12 +2360,44 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
-				DEVELOPMENT_TEAM = RP7C3H2395;
+				DEVELOPMENT_TEAM = 2Z63L3A4H5;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/Alamofire/Alamofire.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/BGSMobilePackage/BGSMobilePackage.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/CarbonKit/CarbonKit.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/ChameleonFramework/ChameleonFramework.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/CustomIOSAlertView/CustomIOSAlertView.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/Kingfisher/Kingfisher.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/MBProgressHUD/MBProgressHUD.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/PromiseKit/PromiseKit.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/RATreeView/RATreeView.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/ReactiveCocoa/ReactiveCocoa.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/Realm/Realm.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/RealmSwift/RealmSwift.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/SDWebImage/SDWebImage.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/ScrollableStackView/ScrollableStackView.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/SlideMenuControllerSwift/SlideMenuControllerSwift.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/StorageKit/StorageKit.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/SwipeView/SwipeView.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/UIView-Autolayout/UIView_Autolayout.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/iCarousel/iCarousel.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/iOSSharedViewTransition/iOSSharedViewTransition.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/nanopb/nanopb.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/treemapkit/treemapkit.framework/Headers\"",
+					"\"${PODS_ROOT}/Headers/Public\"",
+					"\"${PODS_ROOT}/Headers/Public/Firebase\"",
+					"$(inherited)",
+					"${PODS_ROOT}/Firebase/Core/Sources",
+					"\"$(SOURCE_ROOT)/MathTutor/Libs/Build-OpenSSL/openssl/iOS/include\"/**",
+				);
 				INFOPLIST_FILE = MathTutorTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.bgs.MathTutorTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.2;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MathTutor.app/MathTutor";
 			};
 			name = Release;
@@ -2328,12 +2407,44 @@
 			baseConfigurationReference = 379D557CD220502CB87B040F /* Pods-MathTutorUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				DEVELOPMENT_TEAM = RP7C3H2395;
+				DEVELOPMENT_TEAM = 2Z63L3A4H5;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/Alamofire/Alamofire.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/BGSMobilePackage/BGSMobilePackage.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/CarbonKit/CarbonKit.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/ChameleonFramework/ChameleonFramework.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/CustomIOSAlertView/CustomIOSAlertView.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/Kingfisher/Kingfisher.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/MBProgressHUD/MBProgressHUD.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/PromiseKit/PromiseKit.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/RATreeView/RATreeView.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/ReactiveCocoa/ReactiveCocoa.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/Realm/Realm.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/RealmSwift/RealmSwift.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/SDWebImage/SDWebImage.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/ScrollableStackView/ScrollableStackView.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/SlideMenuControllerSwift/SlideMenuControllerSwift.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/StorageKit/StorageKit.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/SwipeView/SwipeView.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/UIView-Autolayout/UIView_Autolayout.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/iCarousel/iCarousel.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/iOSSharedViewTransition/iOSSharedViewTransition.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/nanopb/nanopb.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/treemapkit/treemapkit.framework/Headers\"",
+					"\"${PODS_ROOT}/Headers/Public\"",
+					"\"${PODS_ROOT}/Headers/Public/Firebase\"",
+					"$(inherited)",
+					"${PODS_ROOT}/Firebase/Core/Sources",
+					"\"$(SOURCE_ROOT)/MathTutor/Libs/Build-OpenSSL/openssl/iOS/include\"/**",
+				);
 				INFOPLIST_FILE = MathTutorUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.bgs.MathTutorUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.2;
 				TEST_TARGET_NAME = MathTutor;
 			};
 			name = Debug;
@@ -2343,12 +2454,44 @@
 			baseConfigurationReference = 08EA07112C46DC40B08341A7 /* Pods-MathTutorUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				DEVELOPMENT_TEAM = RP7C3H2395;
+				DEVELOPMENT_TEAM = 2Z63L3A4H5;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/Alamofire/Alamofire.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/BGSMobilePackage/BGSMobilePackage.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/CarbonKit/CarbonKit.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/ChameleonFramework/ChameleonFramework.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/CustomIOSAlertView/CustomIOSAlertView.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/Kingfisher/Kingfisher.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/MBProgressHUD/MBProgressHUD.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/PromiseKit/PromiseKit.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/RATreeView/RATreeView.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/ReactiveCocoa/ReactiveCocoa.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/Realm/Realm.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/RealmSwift/RealmSwift.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/SDWebImage/SDWebImage.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/ScrollableStackView/ScrollableStackView.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/SlideMenuControllerSwift/SlideMenuControllerSwift.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/StorageKit/StorageKit.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/SwipeView/SwipeView.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/UIView-Autolayout/UIView_Autolayout.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/iCarousel/iCarousel.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/iOSSharedViewTransition/iOSSharedViewTransition.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/nanopb/nanopb.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/treemapkit/treemapkit.framework/Headers\"",
+					"\"${PODS_ROOT}/Headers/Public\"",
+					"\"${PODS_ROOT}/Headers/Public/Firebase\"",
+					"$(inherited)",
+					"${PODS_ROOT}/Firebase/Core/Sources",
+					"\"$(SOURCE_ROOT)/MathTutor/Libs/Build-OpenSSL/openssl/iOS/include\"/**",
+				);
 				INFOPLIST_FILE = MathTutorUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.bgs.MathTutorUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.2;
 				TEST_TARGET_NAME = MathTutor;
 			};
 			name = Release;
@@ -2356,7 +2499,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		7018D8671F44613600B0F2B2 /* Build configuration list for PBXNativeTarget "MathTutor BGS" */ = {
+		7018D8671F44613600B0F2B2 /* Build configuration list for PBXNativeTarget "MathTutor BWAY" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				7018D8681F44613600B0F2B2 /* Debug */,

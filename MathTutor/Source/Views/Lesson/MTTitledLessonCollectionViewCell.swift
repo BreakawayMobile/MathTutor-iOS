@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import BGSMobilePackage
+import BMMobilePackage
 
 class MTTitledLessonCollectionViewCell: UICollectionViewCell {
     
@@ -153,7 +153,7 @@ class MTTitledLessonCollectionViewCell: UICollectionViewCell {
             
             let textRange = NSMakeRange(2, playlistString.characters.count - 2)
             let attributedText = NSMutableAttributedString(string: playlistString)
-            attributedText.addAttribute(NSUnderlineStyleAttributeName, value: NSUnderlineStyle.styleSingle.rawValue, range: textRange)
+            attributedText.addAttribute(NSAttributedString.Key.underlineStyle, value: NSUnderlineStyle.single.rawValue, range: textRange)
             
             // Add other attributes if needed
             self.courseLabel.attributedText = attributedText
@@ -172,16 +172,16 @@ class MTTitledLessonCollectionViewCell: UICollectionViewCell {
         let labelString = NSMutableAttributedString(string: nameString)
         let boldFont = UIFont(name: Style.Font.Gotham.bold.rawValue,
                               size: self.lessonFontSize)
-        let boldAttribute = [NSFontAttributeName: boldFont as Any]
-        labelString.addAttributes(boldAttribute, range: boldRange)
+        let boldAttribute = [convertFromNSAttributedStringKey(NSAttributedString.Key.font): boldFont as Any]
+        labelString.addAttributes(convertToNSAttributedStringKeyDictionary(boldAttribute), range: boldRange)
         
         let endRangeStart = range.length + 1
         let endRangeLength = nameString.length - endRangeStart
         let endRange = NSMakeRange(endRangeStart, endRangeLength)
         let regularFont = UIFont(name: Style.Font.Gotham.book.rawValue,
                                  size: self.lessonFontSize)
-        let regularAttribute = [NSFontAttributeName: regularFont as Any]
-        labelString.addAttributes(regularAttribute, range: endRange)
+        let regularAttribute = [convertFromNSAttributedStringKey(NSAttributedString.Key.font): regularFont as Any]
+        labelString.addAttributes(convertToNSAttributedStringKeyDictionary(regularAttribute), range: endRange)
         
         lessonLabel.attributedText = labelString
         
@@ -313,7 +313,7 @@ class MTTitledLessonCollectionViewCell: UICollectionViewCell {
         }
     }
     
-    func tapFunction(_ sender: UITapGestureRecognizer) {
+    @objc func tapFunction(_ sender: UITapGestureRecognizer) {
         print("tap working")
         Controllers.push(with: String(self.lesson.playlist.playlistID.int64Value),
                          courseTitle: lesson.playlist.name)
@@ -324,4 +324,14 @@ class MTTitledLessonCollectionViewCell: UICollectionViewCell {
     deinit {
         self.removeGestureRecognizer(labelTapGesture)
     }
+}
+
+// Helper function inserted by Swift 4.2 migrator.
+fileprivate func convertFromNSAttributedStringKey(_ input: NSAttributedString.Key) -> String {
+	return input.rawValue
+}
+
+// Helper function inserted by Swift 4.2 migrator.
+fileprivate func convertToNSAttributedStringKeyDictionary(_ input: [String: Any]) -> [NSAttributedString.Key: Any] {
+	return Dictionary(uniqueKeysWithValues: input.map { key, value in (NSAttributedString.Key(rawValue: key), value)})
 }

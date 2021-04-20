@@ -1,12 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
-    <device id="retina4_7" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
-        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
-        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17125"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -40,7 +37,7 @@
                             <constraint firstItem="KUn-aQ-ce6" firstAttribute="width" secondItem="Ze5-6b-2t3" secondAttribute="width" multiplier="0.6" id="QB1-Nw-vM9"/>
                             <constraint firstItem="V7T-uO-Os3" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="top" id="k0m-0r-H8j"/>
                             <constraint firstItem="KUn-aQ-ce6" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="myj-cP-Khn"/>
-                            <constraint firstItem="xb3-aO-Qok" firstAttribute="top" secondItem="V7T-uO-Os3" secondAttribute="bottom" id="yWk-lS-7bc"/>
+                            <constraint firstAttribute="bottom" secondItem="V7T-uO-Os3" secondAttribute="bottom" id="yWk-lS-7bc"/>
                         </constraints>
                     </view>
                 </viewController>

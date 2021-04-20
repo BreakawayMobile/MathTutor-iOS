@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import BGSMobilePackage
+import BMMobilePackage
 
 class MTCoursesView: UIView,
                      UICollectionViewDataSource,
@@ -32,7 +32,7 @@ class MTCoursesView: UIView,
                                 forCellWithReuseIdentifier: MTCourseCollectionViewCell.reuseIdentifier)
                 
         collectionView.register(UINib(nibName: MTCourseCollectionHeaderView.nibName, bundle: nil),
-                                forSupplementaryViewOfKind: UICollectionElementKindSectionHeader,
+                                forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader,
                                 withReuseIdentifier: MTCourseCollectionHeaderView.reuseIdentifier)
     }
     
@@ -91,9 +91,9 @@ class MTCoursesView: UIView,
                         viewForSupplementaryElementOfKind kind: String,
                         at indexPath: IndexPath) -> UICollectionReusableView {
         
-        if kind == UICollectionElementKindSectionHeader {
+        if kind == UICollectionView.elementKindSectionHeader {
             let reuseId = MTCourseCollectionHeaderView.reuseIdentifier
-            guard let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionElementKindSectionHeader, withReuseIdentifier: reuseId, for: indexPath) as? MTCourseCollectionHeaderView else {
+            guard let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: reuseId, for: indexPath) as? MTCourseCollectionHeaderView else {
                 fatalError("Expected a MTCourseCollectionHeaderView object.")
             }
             

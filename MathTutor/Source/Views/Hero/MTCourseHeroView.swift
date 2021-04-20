@@ -9,7 +9,7 @@
 // swiftlint:disable [ file_header sorted_imports ]
 
 import iCarousel
-import BGSMobilePackage
+import BMMobilePackage
 import UIKit
 
 class MTCourseHeroView: UIView {

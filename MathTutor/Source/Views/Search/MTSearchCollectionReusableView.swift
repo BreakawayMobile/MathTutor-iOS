@@ -6,7 +6,7 @@
 //  Copyright © 2017 bgs. All rights reserved.
 //
 
-import BGSMobilePackage
+import BMMobilePackage
 import UIKit
 
 class MTSearchCollectionReusableView: UICollectionReusableView {
@@ -38,7 +38,7 @@ class MTSearchCollectionReusableView: UICollectionReusableView {
         }
     }
     
-    func tapFunction(_ sender: UITapGestureRecognizer) {
+    @objc func tapFunction(_ sender: UITapGestureRecognizer) {
         print("tap working")
         Controllers.push(with: String(self.playlist.playlistID.int64Value),
                          courseTitle: playlist.name)

@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import BGSMobilePackage
+import BMMobilePackage
 
 class MTVideoViewController: UIViewController {
 
@@ -17,6 +17,10 @@ class MTVideoViewController: UIViewController {
     
     var lesson: BCGSVideo!
     var viewIsLoaded: Bool = false
+    
+    override var prefersStatusBarHidden: Bool {
+        return false
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,12 +43,10 @@ class MTVideoViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        UIApplication.shared.isStatusBarHidden = false
     }
 
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        UIApplication.shared.isStatusBarHidden = true
     }
     
     func configure(with lesson: BCGSVideo) {
@@ -52,8 +54,8 @@ class MTVideoViewController: UIViewController {
     }
     
     func showResumeView(_ playProgress: TimeInterval) {
-        self.resumeView.alpha = 1
-        self.videoPlayerView.alpha = 0
+        self.resumeView.isHidden = false   //.alpha = 1
+        self.videoPlayerView.isHidden = true //.alpha = 0
 //        self.endscreenView.alpha = 0
         
         if let resumeVC = viewControllerOfClass(MTResumeViewController.self) as? MTResumeViewController {
@@ -73,8 +75,8 @@ class MTVideoViewController: UIViewController {
     }
     
     func showVideoPlayerView(_ playProgress: TimeInterval) {
-        self.resumeView.alpha = 0
-        self.videoPlayerView.alpha = 1
+        self.resumeView.isHidden = true //.alpha = 0
+        self.videoPlayerView.isHidden = false   //.alpha = 1
 //        self.endscreenView.alpha = 0
         
         if let playerVC = viewControllerOfClass(MTVideoPlayerViewController.self) as? MTVideoPlayerViewController {
@@ -99,7 +101,7 @@ class MTVideoViewController: UIViewController {
 //    }
     
     func viewControllerOfClass(_ aClass: AnyClass) -> UIViewController! {
-        for vc in self.childViewControllers {
+        for vc in self.children {
             if vc.isKind(of: aClass) {
                 return vc
             }
@@ -116,12 +118,13 @@ class MTVideoViewController: UIViewController {
     // MARK: - Orientation
     
     override var shouldAutorotate: Bool {
-        return true
+        return UIDevice.current.userInterfaceIdiom == .phone ? false : true
     }
     
     override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
         if UIDevice.current.userInterfaceIdiom == .phone {
-            return viewIsLoaded ? [UIInterfaceOrientationMask.landscape] : [UIInterfaceOrientationMask.all]
+//            return viewIsLoaded ? [UIInterfaceOrientationMask.landscape] : [UIInterfaceOrientationMask.all]
+            return [UIInterfaceOrientationMask.landscape]
         }
         
         return [UIInterfaceOrientationMask.all]

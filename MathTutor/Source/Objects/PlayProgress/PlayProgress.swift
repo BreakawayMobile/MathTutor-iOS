@@ -16,9 +16,9 @@ import StorageKit
 
 open class PlayProgress: RealmSwift.Object {
 
-    open dynamic var videoId = ""
-    open dynamic var currentPosition: Double = 0
-    open dynamic var lastUpdate = Date()
+    @objc open dynamic var videoId = ""
+    @objc open dynamic var currentPosition: Double = 0
+    @objc open dynamic var lastUpdate = Date()
     
     open override static func primaryKey() -> String? {
         return "videoId"
@@ -40,7 +40,7 @@ open class PlayProgress: RealmSwift.Object {
             return
         }
         
-        storage.performBackgroundTask { (backgroundContext, _) in
+        storage.performBackgroundTask { backgroundContext in
             guard let backgroundContext = backgroundContext else { return }
             
             PlayProgress.fetch(progressItem: backgroundContext,
@@ -53,15 +53,19 @@ open class PlayProgress: RealmSwift.Object {
                       predicate: NSPredicate,
                       completion: ((PlayProgress?) -> Void)!) {
         
-        context.fetch(predicate: predicate,
-                      sortDescriptors: nil,
-                      completion: { (entities: [PlayProgress]?) in
-            if let item = entities?.first {
-                completion?(item)
-            } else {
-                completion?(nil)
-            }
-        })
+        do {
+            try context.fetch(predicate: predicate,
+                          sortDescriptors: nil,
+                          completion: { (entities: [PlayProgress]?) in
+                if let item = entities?.first {
+                    completion?(item)
+                } else {
+                    completion?(nil)
+                }
+            })
+        } catch {
+            
+        }
     }
     
     public static func playProgress(for videoId: String,
@@ -80,7 +84,7 @@ open class PlayProgress: RealmSwift.Object {
             return
         }
         
-        storage.performBackgroundTask { (backgroundContext, _) in
+        storage.performBackgroundTask { backgroundContext in
             guard let backgroundContext = backgroundContext else { return }
             
             PlayProgress.fetch(progressPosition: backgroundContext,
@@ -93,16 +97,20 @@ open class PlayProgress: RealmSwift.Object {
                       predicate: NSPredicate,
                       completion: ((Double) -> Void)!) {
         
-        context.fetch(predicate: predicate,
-                      sortDescriptors: nil,
-                      completion: { (entities: [PlayProgress]?) in
-                        
-            if let item = entities?.first {
-                completion?(item.currentPosition)
-            } else {
-                completion?(0)
-            }
-        })
+        do {
+            try context.fetch(predicate: predicate,
+                          sortDescriptors: nil,
+                          completion: { (entities: [PlayProgress]?) in
+                            
+                if let item = entities?.first {
+                    completion?(item.currentPosition)
+                } else {
+                    completion?(0)
+                }
+            })
+        } catch {
+            
+        }
     }
 
     public static func update(progress value: Double,
@@ -120,7 +128,7 @@ open class PlayProgress: RealmSwift.Object {
             return
         }
         
-        storage.performBackgroundTask { (backgroundContext, _) in
+        storage.performBackgroundTask { backgroundContext in
             guard let backgroundContext = backgroundContext else { return }
             
             PlayProgress.update(progressObject: backgroundContext,
@@ -157,7 +165,7 @@ open class PlayProgress: RealmSwift.Object {
                         progressObject.currentPosition = value
                         progressObject.lastUpdate = Date()
                         
-                        try context.add(progressObject)
+                        try context.addOrUpdate(progressObject)
                         print("Progress Object Added")
                         
                         MTUser.update(progressObject,
@@ -181,7 +189,7 @@ open class PlayProgress: RealmSwift.Object {
             return
         }
         
-        storage.performBackgroundTask { (backgroundContext, _) in
+        storage.performBackgroundTask { backgroundContext in
             guard let backgroundContext = backgroundContext else { return }
             
             PlayProgress.fetch(progressObjects: backgroundContext,
@@ -194,18 +202,22 @@ open class PlayProgress: RealmSwift.Object {
                       storage: Storage,
                       completion: (([PlayProgress]) -> Void)!) {
         
-        let sortByUpdate = SortDescriptor(key: #keyPath(PlayProgress.lastUpdate),
-                                          ascending: false)
-        
-        context.fetch(predicate: nil,
-                      sortDescriptors: [sortByUpdate],
-                      completion: { (entities: [PlayProgress]?) in
-                        
-            if let item = entities {
-                completion?(item)
-            } else {
-                completion?([])
-            }
-        })
+        do {
+            let sortByUpdate = SortDescriptor(key: #keyPath(PlayProgress.lastUpdate),
+                                              ascending: false)
+            
+            try context.fetch(predicate: nil,
+                          sortDescriptors: [sortByUpdate],
+                          completion: { (entities: [PlayProgress]?) in
+                            
+                if let item = entities {
+                    completion?(item)
+                } else {
+                    completion?([])
+                }
+            })
+        } catch {
+            
+        }
     }
 }

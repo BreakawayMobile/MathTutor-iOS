@@ -6,7 +6,7 @@
 //  Copyright © 2015 BCGS. All rights reserved.
 //
 
-import BGSMobilePackage
+import BMMobilePackage
 import UIKit
 
 open class MTWaitingViewController: UIViewController {

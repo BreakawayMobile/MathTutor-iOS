@@ -6,7 +6,7 @@
 //  Copyright © 2017 bgs. All rights reserved.
 //
 
-import BGSMobilePackage
+import BMMobilePackage
 import Crashlytics
 import Fabric
 import Firebase
@@ -45,7 +45,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, BCGSMobileSessionConsumer
     fileprivate var showSubscritionExpiredAlert: Bool = false
     fileprivate var showSubscritionRestoredAlert: Bool = false
    
-    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         Fabric.with([Crashlytics.self])
         self.startTime = Date()
@@ -125,7 +125,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, BCGSMobileSessionConsumer
     
     func application(_ application: UIApplication,
                      continue userActivity: NSUserActivity,
-                     restorationHandler: @escaping ([Any]?) -> Void) -> Bool {
+                     restorationHandler: @escaping ([UIUserActivityRestoring]?) -> Void) -> Bool {
         if userActivity.activityType == NSUserActivityTypeBrowsingWeb {
 //            ACTConversionReporter.reportUniversalLink(with: userActivity)
             return true

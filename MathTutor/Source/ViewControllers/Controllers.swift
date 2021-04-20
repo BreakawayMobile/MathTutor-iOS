@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import BGSMobilePackage
+import BMMobilePackage
 
 struct Controllers {
 
@@ -92,6 +92,7 @@ struct Controllers {
             videoVC.configure(with: lesson)
         }
         
+        vc.modalPresentationStyle = .fullScreen
         present(viewController: vc)
     }
 

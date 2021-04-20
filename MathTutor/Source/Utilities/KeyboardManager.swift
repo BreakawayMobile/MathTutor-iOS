@@ -36,8 +36,8 @@ class KeyboardManager: NSObject {
     // MARK: - Keyboard Management
 
     func beginObservingKeyboard() {
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: Notification.Name.UIKeyboardWillShow, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: Notification.Name.UIKeyboardWillHide, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
     }
 
     // swiftlint:disable notification_center_detachment
@@ -46,8 +46,8 @@ class KeyboardManager: NSObject {
     }
     // swiftlint:enable notification_center_detachment
 
-    func keyboardWillShow(notification: Notification) {
-        guard let keyboardRect = (notification.userInfo?[UIKeyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue else { return }
+    @objc func keyboardWillShow(notification: Notification) {
+        guard let keyboardRect = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue else { return }
         guard let keyWindow = UIApplication.shared.keyWindow else { return }
 
         let scrollViewOriginInWindow = scrollView.convert(scrollView.frame.origin, to: keyWindow)
@@ -66,7 +66,7 @@ class KeyboardManager: NSObject {
         }
     }
 
-    func keyboardWillHide(notification: Notification) {
+    @objc func keyboardWillHide(notification: Notification) {
         scrollView.contentInset = defaultContentInsets
         scrollView.scrollIndicatorInsets = defaultContentInsets
         scrollView.contentOffset = defaultContentOffset

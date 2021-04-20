@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import BGSMobilePackage
+import BMMobilePackage
 
 class MTLessonCollectionViewCell: UICollectionViewCell {
     
@@ -151,16 +151,16 @@ class MTLessonCollectionViewCell: UICollectionViewCell {
         let labelString = NSMutableAttributedString(string: nameString)
         let boldFont = UIFont(name: Style.Font.Gotham.bold.rawValue,
                               size: self.titleFontSize)
-        let boldAttribute = [NSFontAttributeName: boldFont as Any]
-        labelString.addAttributes(boldAttribute, range: boldRange)
+        let boldAttribute = [convertFromNSAttributedStringKey(NSAttributedString.Key.font): boldFont as Any]
+        labelString.addAttributes(convertToNSAttributedStringKeyDictionary(boldAttribute), range: boldRange)
         
         let endRangeStart = range.length + 1
         let endRangeLength = nameString.length - endRangeStart
         let endRange = NSMakeRange(endRangeStart, endRangeLength)
         let regularFont = UIFont(name: Style.Font.Gotham.book.rawValue,
                                  size: self.titleFontSize)
-        let regularAttribute = [NSFontAttributeName: regularFont as Any]
-        labelString.addAttributes(regularAttribute, range: endRange)
+        let regularAttribute = [convertFromNSAttributedStringKey(NSAttributedString.Key.font): regularFont as Any]
+        labelString.addAttributes(convertToNSAttributedStringKeyDictionary(regularAttribute), range: endRange)
         
         lessonLabel.attributedText = labelString
         
@@ -291,4 +291,14 @@ class MTLessonCollectionViewCell: UICollectionViewCell {
             }
         }
     }
+}
+
+// Helper function inserted by Swift 4.2 migrator.
+fileprivate func convertFromNSAttributedStringKey(_ input: NSAttributedString.Key) -> String {
+	return input.rawValue
+}
+
+// Helper function inserted by Swift 4.2 migrator.
+fileprivate func convertToNSAttributedStringKeyDictionary(_ input: [String: Any]) -> [NSAttributedString.Key: Any] {
+	return Dictionary(uniqueKeysWithValues: input.map { key, value in (NSAttributedString.Key(rawValue: key), value)})
 }

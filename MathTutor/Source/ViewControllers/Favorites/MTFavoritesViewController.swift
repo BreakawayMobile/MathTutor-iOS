@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import BGSMobilePackage
+import BMMobilePackage
 
 class MTFavoritesViewController: UIViewController,
                                  UICollectionViewDataSource,
@@ -44,7 +44,7 @@ class MTFavoritesViewController: UIViewController,
                                 forCellWithReuseIdentifier: MTUntitledLessonCollectionViewCell.reuseIdentifier)
         
         collectionView.register(UINib(nibName: MTSearchCollectionReusableView.nibName, bundle: nil),
-                                forSupplementaryViewOfKind: UICollectionElementKindSectionHeader,
+                                forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader,
                                 withReuseIdentifier: MTSearchCollectionReusableView.reuseIdentifier)
 
         collectionView.reloadData()
@@ -89,7 +89,7 @@ class MTFavoritesViewController: UIViewController,
     }
     // swiftlint:enable notification_center_detachment
     
-    func favoritesChanged(notification: Notification) {
+    @objc func favoritesChanged(notification: Notification) {
         MTUserManager.shared.favorites { (videos) in
             self.recents = videos
             
@@ -160,9 +160,9 @@ class MTFavoritesViewController: UIViewController,
                         viewForSupplementaryElementOfKind kind: String,
                         at indexPath: IndexPath) -> UICollectionReusableView {
         
-        if kind == UICollectionElementKindSectionHeader {
+        if kind == UICollectionView.elementKindSectionHeader {
             let reuseId = MTSearchCollectionReusableView.reuseIdentifier
-            guard let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionElementKindSectionHeader, withReuseIdentifier: reuseId, for: indexPath) as? MTSearchCollectionReusableView else {
+            guard let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: reuseId, for: indexPath) as? MTSearchCollectionReusableView else {
                 fatalError("Expected a MTSearchCollectionReusableView object.")
             }
             
@@ -174,7 +174,7 @@ class MTFavoritesViewController: UIViewController,
                 
                 let textRange = NSMakeRange(2, playlistString.characters.count - 2)
                 let attributedText = NSMutableAttributedString(string: playlistString)
-                attributedText.addAttribute(NSUnderlineStyleAttributeName, value: NSUnderlineStyle.styleSingle.rawValue, range: textRange)
+                attributedText.addAttribute(NSAttributedString.Key.underlineStyle, value: NSUnderlineStyle.single.rawValue, range: textRange)
                 
                 // Add other attributes if needed
                 headerView.courseLabel.attributedText = attributedText

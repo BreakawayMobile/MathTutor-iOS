@@ -125,13 +125,24 @@ struct Style {
         proxy.barTintColor = Style.Color.umcBlue
         proxy.tintColor = .white
         proxy.isTranslucent = false
-        proxy.titleTextAttributes = [NSFontAttributeName: Font.navigationBarTitleFont,
-                                     NSForegroundColorAttributeName: Style.Color.almostWhite]
+        proxy.titleTextAttributes = convertToOptionalNSAttributedStringKeyDictionary([NSAttributedString.Key.font.rawValue: Font.navigationBarTitleFont,
+                                     NSAttributedString.Key.foregroundColor.rawValue: Style.Color.almostWhite])
     }
 
     fileprivate static func configureAppearance(proxy: UIBarButtonItem) {
-        let attrs = [NSFontAttributeName: Font.barButtonItemTitleFont as Any,
-                     NSForegroundColorAttributeName: UIColor.white]
-        proxy.setTitleTextAttributes(attrs, for: UIControlState())
+        let attrs = [convertFromNSAttributedStringKey(NSAttributedString.Key.font): Font.barButtonItemTitleFont as Any,
+                     convertFromNSAttributedStringKey(NSAttributedString.Key.foregroundColor): UIColor.white]
+        proxy.setTitleTextAttributes(convertToOptionalNSAttributedStringKeyDictionary(attrs), for: UIControl.State())
     }
+}
+
+// Helper function inserted by Swift 4.2 migrator.
+fileprivate func convertToOptionalNSAttributedStringKeyDictionary(_ input: [String: Any]?) -> [NSAttributedString.Key: Any]? {
+	guard let input = input else { return nil }
+	return Dictionary(uniqueKeysWithValues: input.map { key, value in (NSAttributedString.Key(rawValue: key), value)})
+}
+
+// Helper function inserted by Swift 4.2 migrator.
+fileprivate func convertFromNSAttributedStringKey(_ input: NSAttributedString.Key) -> String {
+	return input.rawValue
 }

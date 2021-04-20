@@ -78,7 +78,7 @@ class MainMenuSectionHeader: UITableViewHeaderFooterView, MainMenuSectionHeaderP
         disclosureIcon.centerVerticallyInSuperview()
     }
     
-    func headerCellTapped(_ gestureRecognizer: UITapGestureRecognizer) {
+    @objc func headerCellTapped(_ gestureRecognizer: UITapGestureRecognizer) {
         guard let cell = gestureRecognizer.view as? MainMenuSectionHeader else {
             return
         }

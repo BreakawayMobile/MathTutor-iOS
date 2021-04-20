@@ -16,8 +16,8 @@ protocol MTUserDelegate: class {
 }
 
 class MTUser: RealmSwift.Object {
-    open dynamic var name = ""
-    open dynamic var subscribed = false
+    @objc open dynamic var name = ""
+    @objc open dynamic var subscribed = false
     open var favorites = List<Favorite>()
     open var playProgress = List<PlayProgress>()
     
@@ -26,24 +26,28 @@ class MTUser: RealmSwift.Object {
     }
 
     public static func findUser(_ username: String, storage: Storage, completion: ((MTUser?) -> Void)!) {
-        storage.performBackgroundTask { (backgroundContext, _) in
+        storage.performBackgroundTask { backgroundContext in
             guard let backgroundContext = backgroundContext else { return }
             let predicate = NSPredicate(format: "name == '\(username)'")
             
-            backgroundContext.fetch(predicate: predicate,
-                                    sortDescriptors: nil,
-                                    completion: { (entities: [MTUser]?) in
-                if let item = entities?.first {
-                    completion?(item)
-                } else {
-                    completion?(nil)
-                }
-            })
+            do {
+                try backgroundContext.fetch(predicate: predicate,
+                                        sortDescriptors: nil,
+                                        completion: { (entities: [MTUser]?) in
+                    if let item = entities?.first {
+                        completion?(item)
+                    } else {
+                        completion?(nil)
+                    }
+                })
+            } catch {
+                
+            }
         }
     }
     
     public static func initialize(_ username: String, storage: Storage, completion: ((MTUser?) -> Void)!) {
-        storage.performBackgroundTask { (backgroundContext, _) in
+        storage.performBackgroundTask { backgroundContext in
             guard let backgroundContext = backgroundContext else { return }
             
             MTUser.findUser(username, storage: storage) { (user) in
@@ -55,7 +59,7 @@ class MTUser: RealmSwift.Object {
                     do {
                         if let userObject: MTUser = try backgroundContext.create() {
                             userObject.name = username
-                            try backgroundContext.add(userObject)
+                            try backgroundContext.addOrUpdate(userObject)
                             
                             print("User Object Added")
                             completion?(userObject)
@@ -76,7 +80,7 @@ class MTUser: RealmSwift.Object {
             return
         }
         
-        storage.performBackgroundTask { (backgroundContext, _) in
+        storage.performBackgroundTask { backgroundContext in
             guard let backgroundContext = backgroundContext else { return }
             
             MTUser.fetch(user: backgroundContext,
@@ -87,15 +91,19 @@ class MTUser: RealmSwift.Object {
     static func fetch(user context: StorageContext,
                       completion: ((MTUser?) -> Void)!) {
         
-        context.fetch(predicate: nil,
-                      sortDescriptors: nil,
-                      completion: { (entities: [MTUser]?) in
-            if let item = entities?.first {
-                completion?(item)
-            } else {
-                completion?(nil)
-            }
-        })
+        do {
+            try context.fetch(predicate: nil,
+                          sortDescriptors: nil,
+                          completion: { (entities: [MTUser]?) in
+                if let item = entities?.first {
+                    completion?(item)
+                } else {
+                    completion?(nil)
+                }
+            })
+        } catch {
+            
+        }
     }
 
     public static func update(_ progress: PlayProgress,
@@ -185,7 +193,7 @@ class MTUser: RealmSwift.Object {
             return
         }
         
-        storage.performBackgroundTask { (backgroundContext, _) in
+        storage.performBackgroundTask { backgroundContext in
             guard let backgroundContext = backgroundContext else { return }
             
             MTUser.fetch(user: backgroundContext, completion: { (user) in
@@ -234,7 +242,7 @@ class MTUser: RealmSwift.Object {
             return
         }
         
-        storage.performBackgroundTask { (backgroundContext, _) in
+        storage.performBackgroundTask { backgroundContext in
             guard let backgroundContext = backgroundContext else { return }
             
             MTUser.fetch(user: backgroundContext, completion: { (user) in

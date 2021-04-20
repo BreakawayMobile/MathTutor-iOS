@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import BGSMobilePackage
+import BMMobilePackage
 
 class MTCourseViewController: UIViewController,
                               UICollectionViewDataSource,
@@ -49,7 +49,7 @@ class MTCourseViewController: UIViewController,
                                 forCellWithReuseIdentifier: MTUntitledLessonCollectionViewCell.reuseIdentifier)
         
         collectionView.register(UINib(nibName: MTCourseCenteredCollectionHeaderView.nibName, bundle: nil),
-                                forSupplementaryViewOfKind: UICollectionElementKindSectionHeader,
+                                forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader,
                                 withReuseIdentifier: MTCourseCenteredCollectionHeaderView.reuseIdentifier)
 
         collectionView.reloadData()
@@ -136,9 +136,9 @@ class MTCourseViewController: UIViewController,
                         viewForSupplementaryElementOfKind kind: String,
                         at indexPath: IndexPath) -> UICollectionReusableView {
         
-        if kind == UICollectionElementKindSectionHeader {
+        if kind == UICollectionView.elementKindSectionHeader {
             let reuseId = MTCourseCenteredCollectionHeaderView.reuseIdentifier
-            guard let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionElementKindSectionHeader, withReuseIdentifier: reuseId, for: indexPath) as? MTCourseCenteredCollectionHeaderView else {
+            guard let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: reuseId, for: indexPath) as? MTCourseCenteredCollectionHeaderView else {
                 fatalError("Expected a MTCourseCenteredCollectionHeaderView object.")
             }
             
@@ -171,7 +171,7 @@ class MTCourseViewController: UIViewController,
         let font = UIFont(name: Style.Font.Gotham.book.rawValue, size: 17.0) ?? UIFont.systemFont(ofSize: 16.0)
         let labelRect = episodeText.boundingRect(with: CGSize(width: collectionView.bounds.width - 20.0, height: 9_999),
                                                  options: options,
-                                                 attributes: [NSFontAttributeName: font],
+                                                 attributes: convertToOptionalNSAttributedStringKeyDictionary([convertFromNSAttributedStringKey(NSAttributedString.Key.font): font]),
                                                  context: nil)
 
         let size: CGSize = labelRect.size
@@ -220,7 +220,7 @@ class MTCourseViewController: UIViewController,
     }
     // swiftlint:enable notification_center_detachment
     
-    func productPurchased(_ notification: Notification) {
+    @objc func productPurchased(_ notification: Notification) {
         if let productIdentifier = notification.object as? String {
             if productIdentifier == MTProducts.MonthlySubscription {
                 self.collectionView.reloadData()
@@ -228,7 +228,7 @@ class MTCourseViewController: UIViewController,
         }
     }
     
-    func dataRefresh(_ notification: Notification) {
+    @objc func dataRefresh(_ notification: Notification) {
         self.course = self.dataManager.findPlaylistById((courseID as NSString))
         collectionView.reloadData()
     }
@@ -245,4 +245,15 @@ class MTCourseViewController: UIViewController,
         self.disableNotifications()
     }
 
+}
+
+// Helper function inserted by Swift 4.2 migrator.
+fileprivate func convertToOptionalNSAttributedStringKeyDictionary(_ input: [String: Any]?) -> [NSAttributedString.Key: Any]? {
+	guard let input = input else { return nil }
+	return Dictionary(uniqueKeysWithValues: input.map { key, value in (NSAttributedString.Key(rawValue: key), value)})
+}
+
+// Helper function inserted by Swift 4.2 migrator.
+fileprivate func convertFromNSAttributedStringKey(_ input: NSAttributedString.Key) -> String {
+	return input.rawValue
 }

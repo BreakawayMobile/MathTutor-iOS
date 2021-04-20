@@ -26,7 +26,8 @@ extension String {
         let start = index(startIndex, offsetBy: r.lowerBound)
         let end = index(start, offsetBy: r.upperBound - r.lowerBound)
 
-        return self[Range(start ..< end)]
+        let range = start ..< end
+        return String(self[range])
     }
 
     func isValidEmail() -> Bool {
@@ -35,7 +36,7 @@ extension String {
     }
 
     func textHeight(forWidth width: CGFloat, font: UIFont) -> CGFloat {
-        return NSString(string: self).boundingRect(with: CGSize(width: width, height: CGFloat.greatestFiniteMagnitude), options: [.usesLineFragmentOrigin, .usesFontLeading], attributes: [NSFontAttributeName: font], context: nil).height
+        return NSString(string: self).boundingRect(with: CGSize(width: width, height: CGFloat.greatestFiniteMagnitude), options: [.usesLineFragmentOrigin, .usesFontLeading], attributes: convertToOptionalNSAttributedStringKeyDictionary([convertFromNSAttributedStringKey(NSAttributedString.Key.font): font]), context: nil).height
     }
     
     var localized: String {
@@ -89,7 +90,7 @@ extension String {
             if addEllipsis {
                 return "…\(self[self.index(after: start)..<endIndex])"
             }
-            return self[start..<endIndex]
+            return String(self[start..<endIndex])
         case .Middle:
             let tailLength = maxLength / 2
             let headLength = maxLength - tailLength
@@ -121,7 +122,18 @@ extension String {
             if addEllipsis {
                 return "\(self[startIndex..<self.index(before: end)])…"
             }
-            return self[startIndex..<end]
+            return String(self[startIndex..<end])
         }
     }
+}
+
+// Helper function inserted by Swift 4.2 migrator.
+fileprivate func convertToOptionalNSAttributedStringKeyDictionary(_ input: [String: Any]?) -> [NSAttributedString.Key: Any]? {
+	guard let input = input else { return nil }
+	return Dictionary(uniqueKeysWithValues: input.map { key, value in (NSAttributedString.Key(rawValue: key), value)})
+}
+
+// Helper function inserted by Swift 4.2 migrator.
+fileprivate func convertFromNSAttributedStringKey(_ input: NSAttributedString.Key) -> String {
+	return input.rawValue
 }

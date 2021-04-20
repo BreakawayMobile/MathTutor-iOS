@@ -8,7 +8,7 @@
 
 import UIKit
 import RATreeView
-import BGSMobilePackage
+import BMMobilePackage
 
 public class MenuBase {
     var name: String!

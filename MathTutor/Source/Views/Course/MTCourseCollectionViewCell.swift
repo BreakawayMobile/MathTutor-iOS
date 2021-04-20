@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import BGSMobilePackage
+import BMMobilePackage
 
 class MTCourseCollectionViewCell: UICollectionViewCell,
                                   UICollectionViewDataSource,
@@ -57,12 +57,12 @@ class MTCourseCollectionViewCell: UICollectionViewCell,
                                        forCellWithReuseIdentifier: MTLessonCollectionViewCell.reuseIdentifier)
         
         addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|[v0]|",
-                                                      options: NSLayoutFormatOptions(),
+                                                      options: NSLayoutConstraint.FormatOptions(),
                                                       metrics: nil,
                                                       views: ["v0": lessonsCollectionView]))
         
         addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|[v0]|",
-                                                      options: NSLayoutFormatOptions(),
+                                                      options: NSLayoutConstraint.FormatOptions(),
                                                       metrics: nil,
                                                       views: ["v0": lessonsCollectionView]))
     }
