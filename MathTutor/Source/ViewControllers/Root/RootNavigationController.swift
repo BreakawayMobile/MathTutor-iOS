@@ -63,18 +63,9 @@ class RootNavigationController: UINavigationController {
                                          target: self,
                                          action: #selector(menuButtonTapped))
         let searchButton = UIBarButtonItem(image: #imageLiteral(resourceName: "Search"), style: .plain, target: self, action: #selector(searchButtonTapped))
-//        let loginButton = loginBarButtonItem()
-//        let chromecastButton = UIBarButtonItem(image: #imageLiteral(resourceName: "chromecast"), style: .plain, target: self, action: #selector(chromecastButtonTapped))
-//        let logoItem = logoBarButtonItem()
-
-//        let leftBarButtonItems = UIDevice.isPhone ? [menuButton] : [menuButton, logoItem]
-//        let rightBarButtonItems = [searchButton] //SessionContext.isUserLoggedIn ? [searchButton, chromecastButton] : [loginButton, searchButton]
 
         topViewController?.navigationItem.setLeftBarButton(menuButton, animated: false)
         topViewController?.navigationItem.setRightBarButton(searchButton, animated: false)
-        
-//        topViewController?.navigationItem.setLeftBarButtonItems(leftBarButtonItems, animated: animated)
-//        topViewController?.navigationItem.setRightBarButtonItems(rightBarButtonItems, animated: animated)
     }
 
     private func loginBarButtonItem() -> UIBarButtonItem {
@@ -111,27 +102,7 @@ class RootNavigationController: UINavigationController {
         return UIBarButtonItem(customView: logoImageView)
     }
 
-//    private func setNavBarTabMenu() {
-//        guard UIDevice.isPad else { return }
-//
-//        if let tabMenu = TabMenu.fromNib() as? TabMenu {
-//            tabMenu.translatesAutoresizingMaskIntoConstraints = false
-//            view.addSubview(tabMenu)
-//            view.addConstraint(NSLayoutConstraint(item: tabMenu, attribute: .bottom, relatedBy: .equal, toItem: navigationBar, attribute: .bottom, multiplier: 1, constant: 0))
-//            view.addConstraint(NSLayoutConstraint(item: tabMenu, attribute: .centerX, relatedBy: .equal, toItem: view, attribute: .centerX, multiplier: 1, constant: 0))
-//            view.addConstraint(NSLayoutConstraint(item: tabMenu, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: view.frame.width - 350))
-//            view.addConstraint(NSLayoutConstraint(item: tabMenu, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: 44))
-//
-//            navBarTabMenu = tabMenu
-//        }
-//    }
-
     // MARK: - Notification Listeners
-
-//    private func addNotificationListeners() {
-//        NotificationCenter.default.addObserver(self, selector: #selector(userLoggedIn), name: GlobalConstants.Notifications.userDidLogin, object: nil)
-//        NotificationCenter.default.addObserver(self, selector: #selector(userLoggedOut), name: GlobalConstants.Notifications.userDidLogout, object: nil)
-//    }
 
     @objc private func userLoggedIn() {
         setBarButtonItems(animated: true)

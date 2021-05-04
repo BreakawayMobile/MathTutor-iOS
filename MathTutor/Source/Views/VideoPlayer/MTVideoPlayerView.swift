@@ -9,13 +9,15 @@
 import UIKit
 import BrightcovePlayerSDK
 
-// swiftlint:disable [ variable_name line_length ]
+// swiftlint:disable variable_name
 
 class MTVideoPlayerView: UIView {
 
     static let MT_VIDEO_ACCOUNT_ID: String = "61991422001"
+    // swiftlint:disable line_length
     static let MT_VIDEO_POLICY_KEY: String = "BCpkADawqM3IHJ2eoVWggztYsIJiXJhevAgSWmH0c8xAzYdpOb9K5vgjbpO7tERtTWf69iLCskauOHlXPYy0o_h-CPBgORLV4nzdq0Bpg83ZLApEWLdRJJp45Uo"
-    
+    // swiftlint:enable line_length
+
     @IBOutlet fileprivate weak var videoViewContainer: UIView!
     
     lazy var sdkManager: BCOVPlayerSDKManager = BCOVPlayerSDKManager.shared()
@@ -47,23 +49,7 @@ class MTVideoPlayerView: UIView {
         setup()
     }
     
-    /*
-    // Only override drawRect: if you perform custom drawing.
-    // An empty implementation adversely affects performance during animation.
-    override func drawRect(rect: CGRect) {
-        // Drawing code
-    }
-    */
     func setup() {
-        
-//        // Support for Fairplay - Begin
-//        let proxy = BCOVFPSBrightcoveAuthProxy(applicationId: "", publisherId: "")
-//        
-//        proxy?.retrieveApplicationCertificate({ (applicationCertificate, error) in
-//            self.playbackController = self.sdkManager.createFairPlayPlaybackControllerWithApplicationCertificate(applicationCertificate!,
-//                                                                                                                 authorizationProxy: proxy!,
-//                                                                                                                 viewStrategy: nil)
-//        // Support for Fairplay - End
         
         self.playbackController = sdkManager.createPlaybackController()
         self.playerView = BCOVPUIPlayerView(playbackController: self.playbackController)
@@ -87,11 +73,6 @@ class MTVideoPlayerView: UIView {
                 
                 self.videoViewContainer.addConstraint(constraint)
         }
-//        // Support for Fairplay - Begin
-//        })
-//        // Support for Fairplay - End
-        
-        //self.playbackController = self.sdkManager
         
         self.sessionProvider = sdkManager.createSidecarSubtitlesSessionProvider(withUpstreamSessionProvider: nil)
     }
@@ -116,19 +97,22 @@ class MTVideoPlayerView: UIView {
         
         playbackService?.findVideo(withVideoID: videoId, parameters: nil) { (video, _, error) in
             if video != nil {
-                self.playbackController.setVideos([video] as NSFastEnumeration!)
+                self.playbackController.setVideos([video] as NSFastEnumeration?)
                 
                 if autoPlay {
                     self.playbackController.play()
                 }
             } else {
                 if let nsError = error as NSError? {
-                    if let bcoveErrorArray = nsError.userInfo["kBCOVPlaybackServiceErrorKeyAPIErrors"] as? [[String: Any]] {
+                    let errorKey = "kBCOVPlaybackServiceErrorKeyAPIErrors"
+                    if let bcoveErrorArray = nsError.userInfo[errorKey] as? [[String: Any]] {
                         var errorCode = ""
                         if let value = bcoveErrorArray[0]["error_code"] as? String {
                             errorCode = value
                         }
-                        let errorMessage = errorCode == "VIDEO_NOT_FOUND" ? "The video cannot be found." : "The video cannot be played at this time."
+                        let errorMessage = errorCode == "VIDEO_NOT_FOUND"
+                            ? "The video cannot be found."
+                            : "The video cannot be played at this time."
                         let alertView = UIAlertController(title: "", message: errorMessage, preferredStyle: .alert)
                         let defaultAction = UIAlertAction(title: "OK", style: .default, handler: { (_) in
                             
@@ -168,3 +152,4 @@ class MTVideoPlayerView: UIView {
         }
     }
 }
+// swiftlint:enable variable_name

@@ -11,7 +11,7 @@ import UIKit
 extension String {
 
     var length: Int {
-        return characters.count
+        return count
     }
 
     subscript (i: Int) -> Character {
@@ -36,7 +36,14 @@ extension String {
     }
 
     func textHeight(forWidth width: CGFloat, font: UIFont) -> CGFloat {
-        return NSString(string: self).boundingRect(with: CGSize(width: width, height: CGFloat.greatestFiniteMagnitude), options: [.usesLineFragmentOrigin, .usesFontLeading], attributes: convertToOptionalNSAttributedStringKeyDictionary([convertFromNSAttributedStringKey(NSAttributedString.Key.font): font]), context: nil).height
+        let key = String.convertFromNSAttributedStringKey(NSAttributedString.Key.font)
+        let attributes = String.convertToOptionalNSAttributedStringKeyDictionary([key: font])
+        
+        return NSString(string: self).boundingRect(with: CGSize(width: width,
+                                                                height: CGFloat.greatestFiniteMagnitude),
+                                                   options: [.usesLineFragmentOrigin, .usesFontLeading],
+                                                   attributes: attributes,
+                                                   context: nil).height
     }
     
     var localized: String {
@@ -71,6 +78,7 @@ extension String {
         case Head, Middle, Tail
     }
 
+    // swiftlint:disable cyclomatic_complexity
     /// Truncates a string to a maximum length in grapheme clusters using the
     /// specified mode. If `addEllipsis` is `true`, the resulting string
     /// including the ellipsis will be no longer than `maxLength`.
@@ -125,15 +133,23 @@ extension String {
             return String(self[startIndex..<end])
         }
     }
-}
+    
+    // Helper function inserted by Swift 4.2 migrator.
+    // swiftlint:disable line_length
+    static func convertToOptionalNSAttributedStringKeyDictionary(_ input: [String: Any]?) -> [NSAttributedString.Key: Any]? {
+        guard let input = input else { return nil }
+        return Dictionary(uniqueKeysWithValues: input.map { key, value in (NSAttributedString.Key(rawValue: key), value)})
+    }
+    
+    static func convertToNSAttributedStringKeyDictionary(_ input: [String: Any]) -> [NSAttributedString.Key: Any] {
+        return Dictionary(uniqueKeysWithValues: input.map { key, value in (NSAttributedString.Key(rawValue: key), value)})
+    }
+    // swiftlint:enable line_length
 
-// Helper function inserted by Swift 4.2 migrator.
-fileprivate func convertToOptionalNSAttributedStringKeyDictionary(_ input: [String: Any]?) -> [NSAttributedString.Key: Any]? {
-	guard let input = input else { return nil }
-	return Dictionary(uniqueKeysWithValues: input.map { key, value in (NSAttributedString.Key(rawValue: key), value)})
-}
+    // Helper function inserted by Swift 4.2 migrator.
+    static func convertFromNSAttributedStringKey(_ input: NSAttributedString.Key) -> String {
+        return input.rawValue
+    }
 
-// Helper function inserted by Swift 4.2 migrator.
-fileprivate func convertFromNSAttributedStringKey(_ input: NSAttributedString.Key) -> String {
-	return input.rawValue
 }
+// swiftlint:enable cyclomatic_complexity

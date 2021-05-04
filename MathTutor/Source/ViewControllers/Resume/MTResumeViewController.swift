@@ -6,7 +6,7 @@
 //  Copyright © 2016 bcgs. All rights reserved.
 //
 
-// swiftlint:disable [ file_header sorted_imports ]
+// swiftlint:disable file_header sorted_imports
 
 import BMMobilePackage
 import UIKit
@@ -92,26 +92,6 @@ open class MTResumeViewController: UIViewController {
     
     // MARK: - Orientation
     
-//    override open var shouldAutorotate: Bool {
-//        let orientation = UIApplication.shared.statusBarOrientation
-//        let idiom = UIDevice.current.userInterfaceIdiom
-//
-//        if idiom == .phone {
-//            if orientation == .landscapeLeft ||
-//               orientation == .landscapeRight ||
-//               orientation == .unknown {
-//                return false
-//            } else {
-//                return true
-//            }
-//        }
-//
-//        return true
-//    }
-//
-//    override open var supportedInterfaceOrientations: UIInterfaceOrientationMask {
-//        return UIDevice.current.userInterfaceIdiom == .phone ? [UIInterfaceOrientationMask.landscape] : [UIInterfaceOrientationMask.all]
-//    }
     open override var shouldAutorotate: Bool {
         return UIDevice.current.userInterfaceIdiom == .phone ? false : true
     }
@@ -123,6 +103,14 @@ open class MTResumeViewController: UIViewController {
         }
         
         return [UIInterfaceOrientationMask.all]
+    }
+    
+    open override var preferredInterfaceOrientationForPresentation: UIInterfaceOrientation {
+        if UIDevice.current.userInterfaceIdiom == .phone {
+            return UIInterfaceOrientation.landscapeLeft
+        }
+        
+        return UIInterfaceOrientation.portrait
     }
 
     // MARK: - IBAction
@@ -150,3 +138,4 @@ open class MTResumeViewController: UIViewController {
 //        self.contentImageView.image = nil
     }
 }
+// swiftlint:enable file_header sorted_imports

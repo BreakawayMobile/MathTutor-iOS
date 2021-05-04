@@ -9,10 +9,12 @@ def default_pods
   podLocal = ENV['MT_ENV_HOME']
   #pod 'BMMobilePackage/Base', :path => podLocal + '/BMMobilePackage'
   #pod 'BMMobilePackage/Auth', :path => podLocal + '/BMMobilePackage'
+  #pod 'SlideMenuControllerSwift', :path => podLocal + '/SlideMenuControllerSwift'
 
   # Pods for MathTutor
-  pod 'BMMobilePackage/Base', :git => 'https://github.com/BreakawayMobile/BMMobilePackage.git', :branch => 'development'
-  pod 'BMMobilePackage/Auth', :git => 'https://github.com/BreakawayMobile/BMMobilePackage.git', :branch => 'development'
+  pod 'BMMobilePackage/Base', :git => 'https://github.com/BreakawayMobile/BMMobilePackage.git', :branch => 'swift_4.2', :inhibit_warnings => true
+  pod 'BMMobilePackage/Auth', :git => 'https://github.com/BreakawayMobile/BMMobilePackage.git', :branch => 'swift_4.2', :inhibit_warnings => true
+  pod "SlideMenuControllerSwift", :git => 'https://github.com/BreakawayMobile/SlideMenuControllerSwift.git', :branch => 'swift_4.2', :inhibit_warnings => true
   pod 'SwiftLint', :inhibit_warnings => true
   pod 'Fabric', :inhibit_warnings => true
   pod 'Crashlytics', :inhibit_warnings => true
@@ -31,7 +33,6 @@ def default_pods
   pod "StorageKit", :inhibit_warnings => true
   pod "MBProgressHUD", :inhibit_warnings => true
   pod "CustomIOSAlertView", :inhibit_warnings => true
-  pod "SlideMenuControllerSwift", :inhibit_warnings => true
   pod "iOSSharedViewTransition", :inhibit_warnings => true
   pod "SwipeView", :inhibit_warnings => true
   pod "CarbonKit", :inhibit_warnings => true
@@ -79,6 +80,8 @@ post_install do |installer|
   installer.pods_project.targets.each do |target|
     target.build_configurations.each do |config|
       config.build_settings.delete 'IPHONEOS_DEPLOYMENT_TARGET'
+      config.build_settings.delete 'ARCHS'
     end
   end
 end
+

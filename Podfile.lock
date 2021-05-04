@@ -150,9 +150,7 @@ PODS:
     - GoogleToolboxForMac/Defines (= 2.1.3)
   - iCarousel (1.8.3)
   - iOSSharedViewTransition (1.0.2)
-  - Kingfisher (5.15.3):
-    - Kingfisher/Core (= 5.15.3)
-  - Kingfisher/Core (5.15.3)
+  - Kingfisher (6.3.0)
   - libCommonCrypto (0.1.1)
   - MBProgressHUD (1.2.0)
   - nanopb (0.3.8):
@@ -192,14 +190,14 @@ PODS:
   - SlideMenuControllerSwift (4.0.0)
   - StorageKit (0.3.1):
     - RealmSwift (= 2.10.0)
-  - SwiftLint (0.22.0)
+  - SwiftLint (0.43.1)
   - SwipeView (1.3.2)
   - treemapkit (0.0.1)
   - UIView-Autolayout (0.2.1)
 
 DEPENDENCIES:
-  - BMMobilePackage/Auth (from `https://github.com/BreakawayMobile/BMMobilePackage.git`, branch `development`)
-  - BMMobilePackage/Base (from `https://github.com/BreakawayMobile/BMMobilePackage.git`, branch `development`)
+  - BMMobilePackage/Auth (from `https://github.com/BreakawayMobile/BMMobilePackage.git`, branch `swift_4.2`)
+  - BMMobilePackage/Base (from `https://github.com/BreakawayMobile/BMMobilePackage.git`, branch `swift_4.2`)
   - Brightcove-Player-Core/dynamic (= 6.0.6)
   - CarbonKit
   - ChameleonFramework
@@ -218,7 +216,7 @@ DEPENDENCIES:
   - RealmSwift
   - ScrollableStackView
   - SDWebImage
-  - SlideMenuControllerSwift
+  - SlideMenuControllerSwift (from `https://github.com/BreakawayMobile/SlideMenuControllerSwift.git`, branch `swift_4.2`)
   - StorageKit
   - SwiftLint
   - SwipeView
@@ -253,7 +251,6 @@ SPEC REPOS:
     - RealmSwift
     - ScrollableStackView
     - SDWebImage
-    - SlideMenuControllerSwift
     - StorageKit
     - SwiftLint
     - SwipeView
@@ -262,13 +259,19 @@ SPEC REPOS:
 
 EXTERNAL SOURCES:
   BMMobilePackage:
-    :branch: development
+    :branch: swift_4.2
     :git: https://github.com/BreakawayMobile/BMMobilePackage.git
+  SlideMenuControllerSwift:
+    :branch: swift_4.2
+    :git: https://github.com/BreakawayMobile/SlideMenuControllerSwift.git
 
 CHECKOUT OPTIONS:
   BMMobilePackage:
-    :commit: ede12932301ff5310ee2e5122cfe92ea1c78fff2
+    :commit: 09e4a7412855b355b8e2dfd8460856708921a1f6
     :git: https://github.com/BreakawayMobile/BMMobilePackage.git
+  SlideMenuControllerSwift:
+    :commit: 1fa0de418fe603b2d44bdeebd6cb4a8fa6034cf5
+    :git: https://github.com/BreakawayMobile/SlideMenuControllerSwift.git
 
 SPEC CHECKSUMS:
   Alamofire: 85e8a02c69d6020a0d734f6054870d7ecb75cf18
@@ -286,7 +289,7 @@ SPEC CHECKSUMS:
   GoogleToolboxForMac: 2501e2ad72a52eb3dfe7bd9aee7dad11b858bd20
   iCarousel: d782f635afac190c49bb8ee455882284cff8b85f
   iOSSharedViewTransition: d4bdb3662b51d780b7a0646da8ff2158dbb2e43c
-  Kingfisher: 2fef2f4d9e809285aff7f6195b5290520904f3fa
+  Kingfisher: 6c3df386db71d82c0817a429d2c9421a77396529
   libCommonCrypto: 8bc2f53375ef9815ddd9dd663e110e1cced41747
   MBProgressHUD: 3ee5efcc380f6a79a7cc9b363dd669c5e1ae7406
   nanopb: 5601e6bca2dbf1ed831b519092ec110f66982ca3
@@ -297,13 +300,13 @@ SPEC CHECKSUMS:
   RealmSwift: 34073ad3a31232bbaf7c0db898c037940284cba2
   ScrollableStackView: c97d7b8cb4432616a7233601ba92455889f94cd4
   SDWebImage: a990c053fff71e388a10f3357edb0be17929c9c5
-  SlideMenuControllerSwift: 021d6318201c53d4d4d3710517d43d6c556c7dd0
+  SlideMenuControllerSwift: f9ec1ad1a95d211324d25b15dcdbc94881596716
   StorageKit: 2d7dd5be0e58ee353b352f08c18c13692bdb12a1
-  SwiftLint: 1134786caedd2caab0560d2f36b76414a5a56808
+  SwiftLint: 99f82d07b837b942dd563c668de129a03fc3fb52
   SwipeView: bd67cfaf7760c036438446b3ccb28a3b84fce009
   treemapkit: 818b88bc794374c3687d532529e9b3ddc242c319
   UIView-Autolayout: 042510c499403f58620998278ddd60fa7b6cd4a7
 
-PODFILE CHECKSUM: 7e38b901ab592d00f79073661da590afc1f90224
+PODFILE CHECKSUM: 5ba316e9353b686d9ccbeafc43a75084b2cf2a52
 
 COCOAPODS: 1.10.1

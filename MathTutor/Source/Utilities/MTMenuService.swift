@@ -11,7 +11,7 @@ import Foundation
 
 @objc open class MTMenuService: NSObject {
     
-    open static let shared = MTMenuService()
+    public static let shared = MTMenuService()
     
     fileprivate var isEnabled: Bool = false
     fileprivate var menuItems: [MTMenuItem] = []
@@ -148,13 +148,14 @@ import Foundation
     fileprivate func getLocalJSON(_ fileName: String) -> (Error?, [String: Any]) {
         let nsFileName = fileName as NSString
         
-        guard let filePath = Bundle.main.path(forResource: nsFileName.deletingPathExtension, ofType: nsFileName.pathExtension),
+        guard let filePath = Bundle.main.path(forResource: nsFileName.deletingPathExtension,
+                                              ofType: nsFileName.pathExtension),
             let data = try? Data(contentsOf: URL(fileURLWithPath: filePath)) else {
                 fatalError("Could not get valid data from local JSON")
         }
         
-        var jsonError: Error? = nil
-        var decodedJson: Any? = nil
+        var jsonError: Error?
+        var decodedJson: Any?
         do {
             decodedJson = try JSONSerialization.jsonObject(with: data,
                                                            options: JSONSerialization.ReadingOptions.allowFragments)
@@ -194,7 +195,8 @@ import Foundation
             
             if let httpResponse = response as? HTTPURLResponse, self.isHttpError(httpResponse) {
                 var userInfo: [String: String]?
-                userInfo = [NSLocalizedDescriptionKey: HTTPURLResponse.localizedString(forStatusCode: httpResponse.statusCode)]
+                let statusMessage = HTTPURLResponse.localizedString(forStatusCode: httpResponse.statusCode)
+                userInfo = [NSLocalizedDescriptionKey: statusMessage]
                 let error = NSError(domain: "UMCURLSession", code: httpResponse.statusCode, userInfo: userInfo)
                 do {
                     let json = try JSONSerialization.jsonObject(with: data, options: []) as AnyObject

@@ -6,11 +6,9 @@ disabled_rules: # rule identifiers to exclude from running
   - type_name
   - function_body_length
   - nesting
-  - variable_name
-  - conditional_binding_cascade
+  - identifier_name
   - operator_whitespace
   - control_statement
-  - line_length
   - return_arrow_whitespace
   - closing_brace
   - statement_position
@@ -18,13 +16,13 @@ disabled_rules: # rule identifiers to exclude from running
   - todo
   - legacy_constructor
   - missing_docs
-  - valid_docs
   - file_length
   - leading_whitespace
   - function_parameter_count
   - trailing_whitespace
+  - implicit_getter
 
-enabled_rules: # some rules are only opt-in
+opt_in_rules: # some rules are only opt-in
   - force_unwrapping
   - force_cast
   - force_try
@@ -33,22 +31,25 @@ enabled_rules: # some rules are only opt-in
   - legacy_constant
   - trailing_semicolon
   - colon
-
+  - number_separator
+  - line_length
+  # - file_header
+ 
 included: # paths to include during linting. `--path` is ignored if present.
   - MathTutor
   - Pods/BCGSMobilePackage
 
 excluded:
 
-file_header:
-  required_pattern: |
-                    \/\/
-                    \/\/  .*?\.swift
-                    \/\/  SwiftLint
-                    \/\/
-                    \/\/  Created by .*? on \d{1,2}\/\d{1,2}\/\d{2}\.
-                    \/\/  Copyright © \d{4} Realm\. All rights reserved\.
-                    \/\/
+# file_header:
+#   required_pattern: |
+#                     \/\/
+#                     \/\/  .*?\.swift
+#                     \/\/  SwiftLint
+#                     \/\/
+#                     \/\/  Created by .*? on \d{1,2}\/\d{1,2}\/\d{2}\.
+#                     \/\/  Copyright © \d{4} Realm\. All rights reserved\.
+#                     \/\/
 identifier_name:
   excluded:
     - id

@@ -151,9 +151,12 @@ class MTFeaturedHeroView: UIView,
         return courses.count
     }
     
-    public func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+    public func collectionView(_ collectionView: UICollectionView,
+                               cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let reuseId = MTFeaturedHeroCollectionViewCell.reuseIdentifier
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseId, for: indexPath) as? MTFeaturedHeroCollectionViewCell else {
+        let cvCell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseId, for: indexPath)
+        
+        guard let cell = cvCell as? MTFeaturedHeroCollectionViewCell else {
             fatalError("Expected an MTFeaturedHeroCollectionViewCell object")
         }
         
@@ -173,7 +176,9 @@ class MTFeaturedHeroView: UIView,
         return cell
     }
     
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+    func collectionView(_ collectionView: UICollectionView,
+                        layout collectionViewLayout: UICollectionViewLayout,
+                        sizeForItemAt indexPath: IndexPath) -> CGSize {
         
         // This is Just for example , for the scenario Step-I -> 1
         let yourWidthOfLabel = collectionView.frame.size.width * 0.8

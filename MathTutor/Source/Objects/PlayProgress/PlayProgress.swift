@@ -20,7 +20,7 @@ open class PlayProgress: RealmSwift.Object {
     @objc open dynamic var currentPosition: Double = 0
     @objc open dynamic var lastUpdate = Date()
     
-    open override static func primaryKey() -> String? {
+    public override static func primaryKey() -> String? {
         return "videoId"
     }
 

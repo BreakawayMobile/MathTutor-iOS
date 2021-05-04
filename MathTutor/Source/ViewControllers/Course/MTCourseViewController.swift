@@ -118,7 +118,10 @@ class MTCourseViewController: UIViewController,
                         cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         let reuseId = MTUntitledLessonCollectionViewCell.reuseIdentifier
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseId, for: indexPath) as? MTUntitledLessonCollectionViewCell else {
+        let cvCell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseId,
+                                                        for: indexPath)
+        
+        guard let cell = cvCell as? MTUntitledLessonCollectionViewCell else {
             fatalError("Expected an MTUntitledLessonCollectionViewCell object.")
         }
         
@@ -136,18 +139,19 @@ class MTCourseViewController: UIViewController,
                         viewForSupplementaryElementOfKind kind: String,
                         at indexPath: IndexPath) -> UICollectionReusableView {
         
-        if kind == UICollectionView.elementKindSectionHeader {
-            let reuseId = MTCourseCenteredCollectionHeaderView.reuseIdentifier
-            guard let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: reuseId, for: indexPath) as? MTCourseCenteredCollectionHeaderView else {
-                fatalError("Expected a MTCourseCenteredCollectionHeaderView object.")
-            }
-            
-            headerView.courseLabel.text = self.course?.shortDescription ?? ""
-            
-            return headerView
-        }
+        let reuseId = MTCourseCenteredCollectionHeaderView.reuseIdentifier
+        let cvCell = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader,
+                                                                     withReuseIdentifier: reuseId,
+                                                                     for: indexPath)
         
-        return UICollectionReusableView()
+        guard kind == UICollectionView.elementKindSectionHeader,
+              let headerView = cvCell as? MTCourseCenteredCollectionHeaderView else {
+            return UICollectionReusableView()
+        }
+            
+        headerView.courseLabel.text = self.course?.shortDescription ?? ""
+        
+        return headerView
     }
     
     // MARK: - UICollectionViewDelegateFlowLayout
@@ -167,11 +171,13 @@ class MTCourseViewController: UIViewController,
         let descText = self.course?.shortDescription ?? ""
         let episodeText = (descText as NSString).replacingOccurrences(of: " ", with: "W")
         let options: NSStringDrawingOptions = [ .usesLineFragmentOrigin ]
-        
+        let fontKey = String.convertFromNSAttributedStringKey(NSAttributedString.Key.font)
         let font = UIFont(name: Style.Font.Gotham.book.rawValue, size: 17.0) ?? UIFont.systemFont(ofSize: 16.0)
-        let labelRect = episodeText.boundingRect(with: CGSize(width: collectionView.bounds.width - 20.0, height: 9_999),
+        let attributes = String.convertToOptionalNSAttributedStringKeyDictionary([fontKey: font])
+        let labelRect = episodeText.boundingRect(with: CGSize(width: collectionView.bounds.width - 20.0,
+                                                              height: 9999.0),
                                                  options: options,
-                                                 attributes: convertToOptionalNSAttributedStringKeyDictionary([convertFromNSAttributedStringKey(NSAttributedString.Key.font): font]),
+                                                 attributes: attributes,
                                                  context: nil)
 
         let size: CGSize = labelRect.size
@@ -181,9 +187,10 @@ class MTCourseViewController: UIViewController,
     // MARK: Notifications
     
     func enableNotifications() {
+        let iapName = NSNotification.Name(rawValue: IAPHelperProductPurchasedNotification)
         NotificationCenter.default.addObserver(self,
                                                selector: #selector(MTCourseViewController.productPurchased(_:)),
-                                               name: NSNotification.Name(rawValue: IAPHelperProductPurchasedNotification),
+                                               name: iapName,
                                                object: nil)
         
         NotificationCenter.default.addObserver(self,
@@ -245,15 +252,4 @@ class MTCourseViewController: UIViewController,
         self.disableNotifications()
     }
 
-}
-
-// Helper function inserted by Swift 4.2 migrator.
-fileprivate func convertToOptionalNSAttributedStringKeyDictionary(_ input: [String: Any]?) -> [NSAttributedString.Key: Any]? {
-	guard let input = input else { return nil }
-	return Dictionary(uniqueKeysWithValues: input.map { key, value in (NSAttributedString.Key(rawValue: key), value)})
-}
-
-// Helper function inserted by Swift 4.2 migrator.
-fileprivate func convertFromNSAttributedStringKey(_ input: NSAttributedString.Key) -> String {
-	return input.rawValue
 }

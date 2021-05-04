@@ -20,7 +20,7 @@ class CuratedList: NSObject {
         
         for video in videos {
             if let playlist = dataManager.playlist(for: video) {
-                if let index = items.index(where: { $0.name == playlist.name }) {
+                if let index = items.firstIndex(where: { $0.name == playlist.name }) {
                     items[index].videos.append(video)
                 } else {
                     if let copyPlaylist = playlist.copy() as? BCGSPlayList {

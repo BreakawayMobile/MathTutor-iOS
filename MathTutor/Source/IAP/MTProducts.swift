@@ -16,7 +16,7 @@ public enum MTProducts {
     /// Change this to whatever you set on iTunes connect
     fileprivate static let Prefix = Bundle.main.bundleIdentifier! + "."
   
-    /// MARK: - Supported Product Identifiers
+    // MARK: - Supported Product Identifiers
     public static let MonthlySubscription = Prefix + "monthlySubscription"
   
     // All of the products assembled into a set of product identifiers.

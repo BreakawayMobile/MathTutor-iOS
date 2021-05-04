@@ -6,7 +6,7 @@
 //  Copyright © 2016 bcgs. All rights reserved.
 //
 
-// swiftlint:disable [ file_header sorted_imports ]
+// swiftlint:disable sorted_imports
 
 import iCarousel
 import BMMobilePackage
@@ -74,3 +74,4 @@ class MTCourseHeroView: UIView {
         
     }
 }
+// swiftlint:enable sorted_imports

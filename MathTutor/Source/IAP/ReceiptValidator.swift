@@ -24,18 +24,19 @@ SOFTWARE.
 */
 
 /*
-Preventing software piracy is very, very difficult. The code presented in this file is not meant to protect you against
-anauthorized usage of your app or its features. This code is meant to be used for learning purposes only. Using this code
-in your app is done at your own risk. 
+Preventing software piracy is very, very difficult. The code presented in this file
+is not meant to protect you against unauthorized usage of your app or its features.
+This code is meant to be used for learning purposes only. Using this code in your app
+is done at your own risk.
 
-You must take additional efforts to obfuscate the code presented here to thwart an attacker's attempt at circumventing 
-the receipt validation logic presented herein.
+You must take additional efforts to obfuscate the code presented here to thwart an
+attacker's attempt at circumventing the receipt validation logic presented herein.
 */
 
 import Foundation
 import StoreKit
 
-// swiftlint:disable [ cyclomatic_complexity force_unwrapping ]
+// swiftlint:disable cyclomatic_complexity force_unwrapping vertical_parameter_alignment line_length
 
 // MARK: Output
 enum ReceiptValidationResult {
@@ -115,7 +116,8 @@ struct ReceiptValidator {
 		
 		var deviceIdentifier = UIDevice.current.identifierForVendor?.uuid
 		
-		let rawDeviceIdentifierPointer = withUnsafePointer(to: &deviceIdentifier, { (unsafeDeviceIdentifierPointer: UnsafePointer<uuid_t?>) -> UnsafeRawPointer in
+		let rawDeviceIdentifierPointer = withUnsafePointer(to: &deviceIdentifier,
+                                                           { (unsafeDeviceIdentifierPointer: UnsafePointer<uuid_t?>) -> UnsafeRawPointer in
 			return UnsafeRawPointer(unsafeDeviceIdentifierPointer)
 		})
 		
@@ -219,7 +221,8 @@ struct ReceiptSignatureValidator {
 		return appleRootCertificateX509!
 	}
 
-	fileprivate func verifyAuthenticity(_ x509Certificate: UnsafeMutablePointer<X509>, PKCS7Container: UnsafeMutablePointer<PKCS7>) throws {
+	fileprivate func verifyAuthenticity(_ x509Certificate: UnsafeMutablePointer<X509>,
+                                        PKCS7Container: UnsafeMutablePointer<PKCS7>) throws {
 		let x509CertificateStore = X509_STORE_new()
 		X509_STORE_add_cert(x509CertificateStore, x509Certificate)
 		
@@ -268,7 +271,11 @@ struct ReceiptParser {
 		while currentASN1PayloadLocation! < endOfPayload {
 			
 			// Get next ASN1 Sequence
-			ASN1_get_object(&currentASN1PayloadLocation, &length, &type, &xclass, currentASN1PayloadLocation!.distance(to: endOfPayload))
+			ASN1_get_object(&currentASN1PayloadLocation,
+                            &length,
+                            &type,
+                            &xclass,
+                            currentASN1PayloadLocation!.distance(to: endOfPayload))
 			
 			// ASN1 Object type must be an ASN1 Sequence
 			guard type == V_ASN1_SEQUENCE else {
@@ -276,17 +283,24 @@ struct ReceiptParser {
 			}
 			
 			// Attribute type of ASN1 Sequence must be an Integer
-			guard let attributeType = DecodeASN1Integer(startOfInt: &currentASN1PayloadLocation, length: currentASN1PayloadLocation!.distance(to: endOfPayload)) else {
+			guard let attributeLength = currentASN1PayloadLocation?.distance(to: endOfPayload),
+                  let attributeType = DecodeASN1Integer(startOfInt: &currentASN1PayloadLocation,
+                                                        length: attributeLength) else {
 				throw ReceiptValidationError.malformedReceipt
 			}
 			
 			// Attribute version of ASN1 Sequence must be an Integer
-			guard DecodeASN1Integer(startOfInt: &currentASN1PayloadLocation, length: currentASN1PayloadLocation!.distance(to: endOfPayload)) != nil else {
+			guard DecodeASN1Integer(startOfInt: &currentASN1PayloadLocation,
+                                    length: currentASN1PayloadLocation!.distance(to: endOfPayload)) != nil else {
 				throw ReceiptValidationError.malformedReceipt
 			}
 			
 			// Get ASN1 Sequence value
-			ASN1_get_object(&currentASN1PayloadLocation, &length, &type, &xclass, currentASN1PayloadLocation!.distance(to: endOfPayload))
+			ASN1_get_object(&currentASN1PayloadLocation,
+                            &length,
+                            &type,
+                            &xclass,
+                            currentASN1PayloadLocation!.distance(to: endOfPayload))
 			
 			// ASN1 Sequence value must be an ASN1 Octet String
 			guard type == V_ASN1_OCTET_STRING else {
@@ -310,7 +324,8 @@ struct ReceiptParser {
 				sha1Hash = NSData(bytes: startOfSha1Hash, length: length)
 			case 17:
 				var startOfInAppPurchaseReceipt = currentASN1PayloadLocation
-				let iapReceipt = try parseInAppPurchaseReceipt(currentInAppPurchaseASN1PayloadLocation: &startOfInAppPurchaseReceipt, payloadLength: length)
+				let iapReceipt = try parseInAppPurchaseReceipt(currentInAppPurchaseASN1PayloadLocation: &startOfInAppPurchaseReceipt,
+                                                               payloadLength: length)
 				inAppPurchaseReceipts.append(iapReceipt)
 			case 12:
 				var startOfReceiptCreationDate = currentASN1PayloadLocation
@@ -339,7 +354,8 @@ struct ReceiptParser {
 		                     expirationDate: expirationDate)
 	}
 	
-	func parseInAppPurchaseReceipt(currentInAppPurchaseASN1PayloadLocation: inout UnsafePointer<UInt8>?, payloadLength: Int) throws -> ParsedInAppPurchaseReceipt {
+	func parseInAppPurchaseReceipt(currentInAppPurchaseASN1PayloadLocation: inout UnsafePointer<UInt8>?,
+                                   payloadLength: Int) throws -> ParsedInAppPurchaseReceipt {
 		var quantity: Int?
 		var productIdentifier: String?
 		var transactionIdentifier: String?
@@ -367,7 +383,11 @@ struct ReceiptParser {
 		while currentInAppPurchaseASN1PayloadLocation! < endOfPayload {
 			
 			// Get next ASN1 Sequence
-			ASN1_get_object(&currentInAppPurchaseASN1PayloadLocation, &length, &type, &xclass, currentInAppPurchaseASN1PayloadLocation!.distance(to: endOfPayload))
+			ASN1_get_object(&currentInAppPurchaseASN1PayloadLocation,
+                            &length,
+                            &type,
+                            &xclass,
+                            currentInAppPurchaseASN1PayloadLocation!.distance(to: endOfPayload))
 			
 			// ASN1 Object type must be an ASN1 Sequence
 			guard type == V_ASN1_SEQUENCE else {
@@ -375,17 +395,25 @@ struct ReceiptParser {
 			}
 			
 			// Attribute type of ASN1 Sequence must be an Integer
-			guard let attributeType = DecodeASN1Integer(startOfInt: &currentInAppPurchaseASN1PayloadLocation, length: currentInAppPurchaseASN1PayloadLocation!.distance(to: endOfPayload)) else {
+			guard let attributeLength = currentInAppPurchaseASN1PayloadLocation?.distance(to: endOfPayload),
+                    let attributeType = DecodeASN1Integer(startOfInt: &currentInAppPurchaseASN1PayloadLocation,
+                                                        length: attributeLength) else {
 				throw ReceiptValidationError.malformedInAppPurchaseReceipt
 			}
 			
 			// Attribute version of ASN1 Sequence must be an Integer
-			guard DecodeASN1Integer(startOfInt: &currentInAppPurchaseASN1PayloadLocation, length: currentInAppPurchaseASN1PayloadLocation!.distance(to: endOfPayload)) != nil else {
+			guard let versionLength = currentInAppPurchaseASN1PayloadLocation?.distance(to: endOfPayload),
+                  DecodeASN1Integer(startOfInt: &currentInAppPurchaseASN1PayloadLocation,
+                                    length: versionLength) != nil else {
 				throw ReceiptValidationError.malformedInAppPurchaseReceipt
 			}
 			
 			// Get ASN1 Sequence value
-			ASN1_get_object(&currentInAppPurchaseASN1PayloadLocation, &length, &type, &xclass, currentInAppPurchaseASN1PayloadLocation!.distance(to: endOfPayload))
+			ASN1_get_object(&currentInAppPurchaseASN1PayloadLocation,
+                            &length,
+                            &type,
+                            &xclass,
+                            currentInAppPurchaseASN1PayloadLocation!.distance(to: endOfPayload))
 			
 			// ASN1 Sequence value must be an ASN1 Octet String
 			guard type == V_ASN1_OCTET_STRING else {
@@ -402,25 +430,32 @@ struct ReceiptParser {
 				productIdentifier = DecodeASN1String(startOfString: &startOfProductIdentifier, length: length)
 			case 1703:
 				var startOfTransactionIdentifier = currentInAppPurchaseASN1PayloadLocation
-				transactionIdentifier = DecodeASN1String(startOfString: &startOfTransactionIdentifier, length: length)
+				transactionIdentifier = DecodeASN1String(startOfString: &startOfTransactionIdentifier,
+                                                         length: length)
 			case 1705:
 				var startOfOriginalTransactionIdentifier = currentInAppPurchaseASN1PayloadLocation
-				originalTransactionIdentifier = DecodeASN1String(startOfString: &startOfOriginalTransactionIdentifier, length: length)
+				originalTransactionIdentifier = DecodeASN1String(startOfString: &startOfOriginalTransactionIdentifier,
+                                                                 length: length)
 			case 1704:
 				var startOfPurchaseDate = currentInAppPurchaseASN1PayloadLocation
-				purchaseDate = DecodeASN1Date(startOfDate: &startOfPurchaseDate, length: length)
+				purchaseDate = DecodeASN1Date(startOfDate: &startOfPurchaseDate,
+                                              length: length)
 			case 1706:
 				var startOfOriginalPurchaseDate = currentInAppPurchaseASN1PayloadLocation
-				originalPurchaseDate = DecodeASN1Date(startOfDate: &startOfOriginalPurchaseDate, length: length)
+				originalPurchaseDate = DecodeASN1Date(startOfDate: &startOfOriginalPurchaseDate,
+                                                      length: length)
 			case 1708:
 				var startOfSubscriptionExpirationDate = currentInAppPurchaseASN1PayloadLocation
-				subscriptionExpirationDate = DecodeASN1Date(startOfDate: &startOfSubscriptionExpirationDate, length: length)
+				subscriptionExpirationDate = DecodeASN1Date(startOfDate: &startOfSubscriptionExpirationDate,
+                                                            length: length)
 			case 1712:
 				var startOfCancellationDate = currentInAppPurchaseASN1PayloadLocation
-				cancellationDate = DecodeASN1Date(startOfDate: &startOfCancellationDate, length: length)
+				cancellationDate = DecodeASN1Date(startOfDate: &startOfCancellationDate,
+                                                  length: length)
 			case 1711:
 				var startOfWebOrderLineItemId = currentInAppPurchaseASN1PayloadLocation
-				webOrderLineItemId = DecodeASN1Integer(startOfInt: &startOfWebOrderLineItemId, length: length)
+				webOrderLineItemId = DecodeASN1Integer(startOfInt: &startOfWebOrderLineItemId,
+                                                       length: length)
 			default:
 				break
 			}
@@ -468,12 +503,18 @@ struct ReceiptParser {
 		
 		if type == V_ASN1_UTF8STRING {
 			let mutableStringPointer = UnsafeMutableRawPointer(mutating: stringPointer!)
-			return String(bytesNoCopy: mutableStringPointer, length: stringLength, encoding: String.Encoding.utf8, freeWhenDone: false)
+			return String(bytesNoCopy: mutableStringPointer,
+                          length: stringLength,
+                          encoding: String.Encoding.utf8,
+                          freeWhenDone: false)
 		}
 		
 		if type == V_ASN1_IA5STRING {
 			let mutableStringPointer = UnsafeMutableRawPointer(mutating: stringPointer!)
-			return String(bytesNoCopy: mutableStringPointer, length: stringLength, encoding: String.Encoding.ascii, freeWhenDone: false)
+			return String(bytesNoCopy: mutableStringPointer,
+                          length: stringLength,
+                          encoding: String.Encoding.ascii,
+                          freeWhenDone: false)
 		}
 		
 		return nil
@@ -486,11 +527,11 @@ struct ReceiptParser {
 		dateFormatter.dateFormat = "yyyy'-'MM'-'dd'T'HH':'mm':'ss'Z'"
 		dateFormatter.timeZone = TimeZone(secondsFromGMT: 0)
 		
-		if let dateString = DecodeASN1String(startOfString: &datePointer, length:length) {
+		if let dateString = DecodeASN1String(startOfString: &datePointer, length: length) {
 			return dateFormatter.date(from: dateString)
 		}
 		
 		return nil
 	}
 }
-// swiftlint:enable [ cyclomatic_complexity force_unwrapping ]
+// swiftlint:enable cyclomatic_complexity force_unwrapping vertical_parameter_alignment

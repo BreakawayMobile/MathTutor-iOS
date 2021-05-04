@@ -35,9 +35,15 @@ class MainMenuTableViewCell: UITableViewCell {
         self.titleLabel.text = title
         self.icon.image = icon
         
-        titleLabel.font = Style.Font.with(family: Style.Font.Family.gothamRounded, style: Style.Font.Style.book, size: isTopLevel ? MainMenuSectionHeader.menuHeaderFontSize : MainMenuTableViewCell.menuFontSize)
+        titleLabel.font = Style.Font.with(family: Style.Font.Family.gothamRounded,
+                                          style: Style.Font.Style.book,
+                                          size: isTopLevel
+                                            ? MainMenuSectionHeader.menuHeaderFontSize
+                                            : MainMenuTableViewCell.menuFontSize)
         
-        labelLeadingConstraint.constant = (icon == nil) ? MainMenuTableViewCell.titleLeadingMarginNoIcon : MainMenuTableViewCell.titleLeadingMargin
+        labelLeadingConstraint.constant = (icon == nil)
+            ? MainMenuTableViewCell.titleLeadingMarginNoIcon
+            : MainMenuTableViewCell.titleLeadingMargin
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -56,15 +62,12 @@ class MainMenuTableViewCell: UITableViewCell {
         switch itemLevel {
         case 0:
             self.backgroundColor = Style.Color.menu1Blue
-            break
             
         case 1:
             self.backgroundColor = Style.Color.menu2Blue
-            break
             
         case 2:
             self.backgroundColor = Style.Color.menu3Blue
-            break
             
         default:
             self.backgroundColor = Style.Color.menu1Blue

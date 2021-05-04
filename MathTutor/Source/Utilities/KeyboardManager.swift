@@ -36,8 +36,14 @@ class KeyboardManager: NSObject {
     // MARK: - Keyboard Management
 
     func beginObservingKeyboard() {
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(keyboardWillShow),
+                                               name: UIResponder.keyboardWillShowNotification,
+                                               object: nil)
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(keyboardWillHide),
+                                               name: UIResponder.keyboardWillHideNotification,
+                                               object: nil)
     }
 
     // swiftlint:disable notification_center_detachment
@@ -47,14 +53,19 @@ class KeyboardManager: NSObject {
     // swiftlint:enable notification_center_detachment
 
     @objc func keyboardWillShow(notification: Notification) {
-        guard let keyboardRect = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue else { return }
+        let keyboardInfo = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey]
+        guard let keyboardRect = (keyboardInfo as? NSValue)?.cgRectValue else { return }
         guard let keyWindow = UIApplication.shared.keyWindow else { return }
 
         let scrollViewOriginInWindow = scrollView.convert(scrollView.frame.origin, to: keyWindow)
-        let keyboardOverlapHeight = scrollViewOriginInWindow.y + scrollView.frame.height - (keyWindow.frame.height - keyboardRect.height)
+        let visibleViewHeight = (keyWindow.frame.height - keyboardRect.height)
+        let keyboardOverlapHeight = scrollViewOriginInWindow.y + scrollView.frame.height - visibleViewHeight
 
         scrollView.isScrollEnabled = true
-        let contentInsets = UIEdgeInsets(top: scrollView.contentInset.top, left: 0, bottom: keyboardOverlapHeight, right: 0)
+        let contentInsets = UIEdgeInsets(top: scrollView.contentInset.top,
+                                         left: 0,
+                                         bottom: keyboardOverlapHeight,
+                                         right: 0)
         scrollView.contentInset = contentInsets
         scrollView.scrollIndicatorInsets = contentInsets
 

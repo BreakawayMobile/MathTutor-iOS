@@ -24,7 +24,7 @@ class ReviewManager: NSObject {
     
     // MARK: - Public Properties
 
-    open static let shared = ReviewManager()
+    public static let shared = ReviewManager()
 
     // MARK: - Private Properties
     

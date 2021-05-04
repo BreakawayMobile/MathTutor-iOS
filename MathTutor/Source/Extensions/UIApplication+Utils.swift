@@ -10,6 +10,7 @@ import UIKit
 
 extension UIApplication {
 
+    // swiftlint:disable line_length
     class func topViewController(controller: UIViewController? = UIApplication.shared.keyWindow?.rootViewController) -> UIViewController? {
         if let navigationController = controller as? UINavigationController {
             return topViewController(controller: navigationController.visibleViewController)
@@ -25,7 +26,8 @@ extension UIApplication {
 
         return controller
     }
-    
+    // swiftlint:enable line_length
+
     class func releaseVersionNumber() -> String {
         if let infoDictionary = Bundle.main.infoDictionary,
             let version = infoDictionary["CFBundleShortVersionString"] as? String {

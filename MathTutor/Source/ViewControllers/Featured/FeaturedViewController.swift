@@ -64,7 +64,8 @@ class FeaturedViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate,
+              let stringsFile = self.configController.stringsFilename else {
             fatalError("Exected an AppDelegate object")
         }
         
@@ -72,10 +73,10 @@ class FeaturedViewController: UIViewController {
             appDelegate.clearSubscriptionExpireAlert()
             
             let alertController = UIAlertController(title: "",
-                                                    message: "SUBSCRIPTION_EXPIRED_MSG".localized(self.configController.stringsFilename),
+                                                    message: "SUBSCRIPTION_EXPIRED_MSG".localized(stringsFile),
                                                     preferredStyle: .alert)
             
-            let defaultAction = UIAlertAction(title: "OK".localized(self.configController.stringsFilename),
+            let defaultAction = UIAlertAction(title: "OK".localized(stringsFile),
                                               style: .default,
                                               handler: nil)
             alertController.addAction(defaultAction)
@@ -87,7 +88,7 @@ class FeaturedViewController: UIViewController {
             appDelegate.clearSubscriptionRestoreAlert()
             
             let alertController = UIAlertController(title: "",
-                                                    message: "SUBSCRIPTION_RESTORED_MSG".localized(self.configController.stringsFilename),
+                                                    message: "SUBSCRIPTION_RESTORED_MSG".localized(stringsFile),
                                                     preferredStyle: .alert)
             
             let defaultAction = UIAlertAction(title: "OK".localized(self.configController.stringsFilename),
@@ -115,9 +116,10 @@ class FeaturedViewController: UIViewController {
     // MARK: Notifications
     
     func enableNotifications() {
+        let name = NSNotification.Name(rawValue: IAPHelperProductPurchasedNotification)
         NotificationCenter.default.addObserver(self,
                                                selector: #selector(MTCourseViewController.productPurchased(_:)),
-                                               name: NSNotification.Name(rawValue: IAPHelperProductPurchasedNotification),
+                                               name: name,
                                                object: nil)
         
     }

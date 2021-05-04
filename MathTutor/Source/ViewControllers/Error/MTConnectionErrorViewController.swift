@@ -63,7 +63,9 @@ class MTConnectionErrorViewController: UIViewController {
     }
     
     override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
-        return UIDevice.current.userInterfaceIdiom == .phone ? [UIInterfaceOrientationMask.portrait] : [UIInterfaceOrientationMask.all]
+        return UIDevice.current.userInterfaceIdiom == .phone
+            ? [UIInterfaceOrientationMask.portrait]
+            : [UIInterfaceOrientationMask.all]
     }
     
     /*

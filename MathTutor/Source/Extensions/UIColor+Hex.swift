@@ -52,10 +52,16 @@ extension UIColor {
 
     var hexString: String {
         let (r, g, b, _) = rgbaComponents
-        return String(format: "#%02X%02X%02X", colorByte(fromComponent: r), colorByte(fromComponent: g), colorByte(fromComponent: b))
+        return String(format: "#%02X%02X%02X",
+                      colorByte(fromComponent: r),
+                      colorByte(fromComponent: g),
+                      colorByte(fromComponent: b))
     }
 
     static func colorFromHex(red: UInt8, green: UInt8, blue: UInt8, alpha: UInt8) -> UIColor {
-        return UIColor(red: colorComponent(fromByte: red), green: colorComponent(fromByte: green), blue: colorComponent(fromByte: blue), alpha: colorComponent(fromByte: alpha))
+        return UIColor(red: colorComponent(fromByte: red),
+                       green: colorComponent(fromByte: green),
+                       blue: colorComponent(fromByte: blue),
+                       alpha: colorComponent(fromByte: alpha))
     }
 }

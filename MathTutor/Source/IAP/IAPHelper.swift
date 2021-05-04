@@ -15,7 +15,7 @@ public let IAPHelperProductPurchasedNotification = "IAPHelperProductPurchasedNot
 /// purchase products, and restore purchases.  Uses NSUserDefaults to cache if a product has been purchased.
 open class IAPHelper: NSObject {
   
-    /// MARK: - Private Properties
+    // MARK: - Private Properties
     
     // Used to keep track of the possible products and which ones have been purchased.
     fileprivate var productIdentifiers: Set<ProductIdentifier>
@@ -31,7 +31,7 @@ open class IAPHelper: NSObject {
     fileprivate var hasTrial: Bool?
     fileprivate let productRequestQueue = DispatchQueue(label: "com.nathtutordvd.mathtutor.products", attributes: [])
     
-    /// MARK: - User facing API
+    // MARK: - User facing API
   
     /// Initialize the helper.  Pass in the set of ProductIdentifiers supported by the app.
     public init(productIdentifiers: Set<ProductIdentifier>) {
@@ -163,7 +163,7 @@ extension IAPHelper: SKPaymentTransactionObserver {
                 if let handler = self.purchaseTransactionCompletionHandler {
                     handler(nil, transaction)
                 }
-                break
+
             case .failed:
                 if let handler = self.purchaseTransactionCompletionHandler {
                     handler(nil, transaction)
@@ -171,14 +171,15 @@ extension IAPHelper: SKPaymentTransactionObserver {
                 if let handler = self.restoreTransactionCompletionHandler {
                     handler(nil, transaction)
                 }
-                break
-            case .restored:                
+
+            case .restored:
                 if let handler = self.restoreTransactionCompletionHandler {
                     handler(nil, transaction)
                 }
-                break
+
             case .deferred:
                 break
+                
             case .purchasing:
                 break
             }
@@ -202,13 +203,13 @@ extension IAPHelper: SKPaymentTransactionObserver {
             switch transaction.transactionState {
             case .purchased:
                 completeTransaction(transaction)
-                break
+
             case .failed:
                 failedTransaction(transaction)
-                break
+
             case .restored:
                 restoreTransaction(transaction)
-                break
+
             case .deferred:
                 break
             case .purchasing:
@@ -217,6 +218,7 @@ extension IAPHelper: SKPaymentTransactionObserver {
         }
     }
     
+    // swiftlint:disable cyclomatic_complexity
     fileprivate func getLastTransaction(_ transactions: [SKPaymentTransaction]) -> SKPaymentTransaction? {
         if transactions.count == 1 {
             return transactions[0]
@@ -251,7 +253,8 @@ extension IAPHelper: SKPaymentTransactionObserver {
                 
                 print("original transaction state = \(originalTransaction.transactionState.rawValue)")
                 
-                if originalTransaction.transactionState == .restored || originalTransaction.transactionState == .purchased {
+                if originalTransaction.transactionState == .restored ||
+                    originalTransaction.transactionState == .purchased {
                     if let value = originalTransaction.transactionDate {
                         print("original transaction date = \(formatter.string(from: value))")
                     }
@@ -267,9 +270,10 @@ extension IAPHelper: SKPaymentTransactionObserver {
         
         return retVal
     }
-    
+    // swiftlint:enable cyclomatic_complexity
+
     fileprivate func getPurchaseTransaction(_ transactions: [SKPaymentTransaction]) -> SKPaymentTransaction? {
-        var retVal: SKPaymentTransaction? = nil
+        var retVal: SKPaymentTransaction?
         
         for transaction in transactions {
             
@@ -310,7 +314,8 @@ extension IAPHelper: SKPaymentTransactionObserver {
         purchasedProductIdentifiers.insert(productIdentifier)
         UserDefaults.standard.set(true, forKey: productIdentifier)
         UserDefaults.standard.synchronize()
-        NotificationCenter.default.post(name: Notification.Name(rawValue: IAPHelperProductPurchasedNotification), object: productIdentifier)
+        NotificationCenter.default.post(name: Notification.Name(rawValue: IAPHelperProductPurchasedNotification),
+                                        object: productIdentifier)
     }
     
     fileprivate func failedTransaction(_ transaction: SKPaymentTransaction) {

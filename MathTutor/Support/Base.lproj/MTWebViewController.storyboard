@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
-    <device id="retina4_7" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -20,21 +19,25 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FPT-eu-EX6">
-                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
-                                <color key="backgroundColor" red="0.28958413004875183" green="0.31462949514389038" blue="0.32950475811958313" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            </webView>
+                            <wkWebView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="A7F-c3-iBe">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <wkWebViewConfiguration key="configuration">
+                                    <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
+                                    <wkPreferences key="preferences"/>
+                                </wkWebViewConfiguration>
+                            </wkWebView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="FPT-eu-EX6" firstAttribute="leading" secondItem="QeJ-Hq-WzK" secondAttribute="leading" id="FQG-Pz-QIL"/>
-                            <constraint firstItem="0lj-9p-c9r" firstAttribute="top" secondItem="FPT-eu-EX6" secondAttribute="bottom" id="HXS-WI-WIH"/>
-                            <constraint firstItem="FPT-eu-EX6" firstAttribute="top" secondItem="BgO-7E-6SB" secondAttribute="bottom" id="cMa-1g-riC"/>
-                            <constraint firstAttribute="trailing" secondItem="FPT-eu-EX6" secondAttribute="trailing" id="fqD-lr-6hq"/>
+                            <constraint firstItem="0lj-9p-c9r" firstAttribute="top" secondItem="A7F-c3-iBe" secondAttribute="bottom" id="6HW-hc-sDe"/>
+                            <constraint firstAttribute="trailing" secondItem="A7F-c3-iBe" secondAttribute="trailing" id="ASh-6L-VSc"/>
+                            <constraint firstItem="A7F-c3-iBe" firstAttribute="leading" secondItem="QeJ-Hq-WzK" secondAttribute="leading" id="qiD-xm-iwX"/>
+                            <constraint firstItem="A7F-c3-iBe" firstAttribute="top" secondItem="BgO-7E-6SB" secondAttribute="bottom" id="rSg-cw-SIo"/>
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="webView" destination="FPT-eu-EX6" id="ZGc-xj-vuM"/>
+                        <outlet property="webView" destination="A7F-c3-iBe" id="EHe-hd-Ut3"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Jqo-SC-h5s" userLabel="First Responder" sceneMemberID="firstResponder"/>

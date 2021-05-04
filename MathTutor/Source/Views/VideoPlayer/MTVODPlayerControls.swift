@@ -6,7 +6,7 @@
 //  Copyright © 2016 bcgs. All rights reserved.
 //
 
-// swiftlint:disable [ file_header sorted_imports type_body_length file_length ]
+// swiftlint:disable file_header sorted_imports type_body_length file_length
 
 import BrightcovePlayerSDK
 import MediaPlayer
@@ -22,9 +22,7 @@ class MTVODPlayerControls: BCCiOSControls,
                             BCOVPlaybackSessionConsumer,
                             UIPopoverControllerDelegate,
                             BCGSPopupTableViewDelegate,
-                            BCOVPlaybackControllerDelegate,
-                            UIActionSheetDelegate,
-                            UIPopoverPresentationControllerDelegate {
+                            BCOVPlaybackControllerDelegate {
 
     let kDefaultFadeTime: Int32 = 5
     let kDefaultSeekTime: Int32 = 10
@@ -52,7 +50,6 @@ class MTVODPlayerControls: BCCiOSControls,
     
     fileprivate var currentPlayer: AVPlayer!
     fileprivate var tapRecognizer: UITapGestureRecognizer!
-    fileprivate var subtitleActionSheet: UIActionSheet!
     fileprivate var subtitleTable: BCGSPopoverTableViewController!
     fileprivate var adCuePoints: [AnyObject]!
     fileprivate var tapGesture: UITapGestureRecognizer!
@@ -119,7 +116,8 @@ class MTVODPlayerControls: BCCiOSControls,
         
         do {
             if #available(iOS 10.0, *) {
-                try AVAudioSession.sharedInstance().setCategory(AVAudioSession.Category.playback, mode: AVAudioSession.Mode.default)
+                try AVAudioSession.sharedInstance().setCategory(AVAudioSession.Category.playback,
+                                                                mode: AVAudioSession.Mode.default)
             }
         } catch _ { }
         
@@ -137,43 +135,19 @@ class MTVODPlayerControls: BCCiOSControls,
         previousTrailingConstraint.constant = hasPrevious == true ? previousTrailingWidth : 0
         nextWidthConstraint.constant = hasNext == true ? defaultNextWidth : 0
         nextTrailingConstraint.constant = hasNext == true ? nextTrailingWidth : 0
-        
-//        if UMCAuthenticationStore.sharedInstance.hasCurrentUser() {
-//            if let currentUser = UMCUser.currentUserObject() {
-//                if currentUser.closedCaptions {
-//                    let pre = Locale.preferredLanguages[0]
-//                    captionLanguage = pre
-//                }
-//            }
-//        }
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
         self.episodeNameLabel.text = lesson.name
-        
-//        if content.franchise?.isFilm() == false {
-//            if let franchiseName = content.franchiseName() {
-//                self.seriesNameLabel.text = franchiseName
-//            }
-//        } else {
-            self.seriesNameLabel.text = ""
-//        }
+        self.seriesNameLabel.text = ""
      }
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
     }
-    
-    /*
-    // Only override drawRect: if you perform custom drawing.
-    // An empty implementation adversely affects performance during animation.
-    override func drawRect(rect: CGRect) {
-    // Drawing code
-    }
-    */
-    
+        
     // MARK: - BCGSMobilePlaybackConsumer
     
     func didReceivePlaybackEvent(_ playbackEvent: String!, with object: Any!) {
@@ -182,7 +156,9 @@ class MTVODPlayerControls: BCCiOSControls,
                 if let error = errorDictionary["error"] as? NSError {
                     if let apiError = error.userInfo["kBCOVPlaybackServiceErrorKeyAPIErrors"] as? [[String: Any]] {
                         if let errorCode = apiError[0]["error_code"] as? String {
-                            let errorMessage = errorCode == "VIDEO_NOT_FOUND" ? "The video cannot be found." : "The video cannot be played at this time."
+                            let errorMessage = errorCode == "VIDEO_NOT_FOUND"
+                                ? "The video cannot be found."
+                                : "The video cannot be played at this time."
                             self.hideActivityIndicator()
                             self.showErrorSlate(errorMessage)
                         }
@@ -232,7 +208,7 @@ class MTVODPlayerControls: BCCiOSControls,
     func playbackSession(_ session: BCOVPlaybackSession, didChangeDuration duration: TimeInterval) {
         if Float(duration) != self.segmentDuration {
             super.updateDuration(Float(duration))
-            super.currentSliderSegmentOriginTime(0, segmentLength:Float(duration))
+            super.currentSliderSegmentOriginTime(0, segmentLength: Float(duration))
             
 //            Content.updateDuration(content, duration: duration)
         }
@@ -298,7 +274,8 @@ class MTVODPlayerControls: BCCiOSControls,
                             storage: storage)
     }
 
-    func playbackSession(_ session: BCOVPlaybackSession, didReceive lifecycleEvent: BCOVPlaybackSessionLifecycleEvent!) {
+    func playbackSession(_ session: BCOVPlaybackSession,
+                         didReceive lifecycleEvent: BCOVPlaybackSessionLifecycleEvent!) {
 
         if lifecycleEvent.eventType == kBCOVPlaybackSessionLifecycleEventPlay {
             nextClickProcessing = false
@@ -365,7 +342,9 @@ class MTVODPlayerControls: BCCiOSControls,
     }
 
     func enableSubtitlesForCountryCode(_ countryCode: String, emitEvent: Bool) {
-        if let selectionGroup = self.currentPlayer?.currentItem?.asset.mediaSelectionGroup(forMediaCharacteristic: AVMediaCharacteristic.legible) {
+        let group = AVMediaCharacteristic.legible
+        let asset = self.currentPlayer?.currentItem?.asset
+        if let selectionGroup = asset?.mediaSelectionGroup(forMediaCharacteristic: group) {
             var selectedTrack: AVMediaSelectionOption! = nil
     
             // Try to find the selected subtitle locale in the available tracks. If one
@@ -388,7 +367,9 @@ class MTVODPlayerControls: BCCiOSControls,
             
                 // Add the non-translated version of the language name to the event details
                 if selectedTrack != nil {
-                    let metadata = AVMetadataItem.metadataItems(from: selectedTrack.commonMetadata, withKey: "title", keySpace: convertToOptionalAVMetadataKeySpace("comn"))
+                    let metadata = AVMetadataItem.metadataItems(from: selectedTrack.commonMetadata,
+                                                                withKey: "title",
+                                                                keySpace: convertToOptionalAVMetadataKeySpace("comn"))
                     eventDetails["language"] = metadata[0].stringValue as AnyObject?
                 }
             }
@@ -417,12 +398,15 @@ class MTVODPlayerControls: BCCiOSControls,
     }
     
     override func fadeOut() {        
-        super.fadeOut()
-        
-        UIView.animate(withDuration: 0.2, animations: { () -> Void in
-            self.gradientEdgeImageView.alpha = 0.0
-            self.episodeView.alpha = 0.0
-        }) 
+        if (self.subtitleTable == nil && !self.slider.isDragging) {
+            super.fadeOut()
+            
+            UIView.animate(withDuration: 0.2, animations: { () -> Void in
+                self.gradientEdgeImageView.alpha = 0.0
+                self.episodeView.alpha = 0.0
+                self.closePopup()
+            })
+        }
     }
     
     // MARK: - UITapGestureRecognizer delegate
@@ -461,7 +445,8 @@ class MTVODPlayerControls: BCCiOSControls,
                     return
                 }
                 
-                guard let selectionGroup = asset.mediaSelectionGroup(forMediaCharacteristic: AVMediaCharacteristic.legible) else {
+                let group = AVMediaCharacteristic.legible
+                guard let selectionGroup = asset.mediaSelectionGroup(forMediaCharacteristic: group) else {
                     print("Failed to get media selection group")
                     return
                 }
@@ -471,37 +456,32 @@ class MTVODPlayerControls: BCCiOSControls,
                 subtitlesOptions.append(contentsOf: self.loadTextTracks(currentSubtitles: subtitlesOptions))
                 
                 var selectedIndex = 0
-                if let selectedOption = self.currentPlayer?.currentItem?.selectedMediaOption(in: selectionGroup) {
+                let item = self.currentPlayer?.currentItem
+                let contentSize = CGSize(width: 280, height: subtitlesOptions.count * 50)
+                if let selectedOption = item?.currentMediaSelection.selectedMediaOption(in: selectionGroup) {
                     selectedIndex = self.currentIndex(of: selectedOption, subtitles: subtitlesOptions)
                 }
                 
-                if UIDevice.current.userInterfaceIdiom == .pad {
-                    self.subtitleTable = BCGSPopoverTableViewController(options: subtitlesOptions, selectedIndex: Int32(selectedIndex))
-                    self.subtitleTable.delegate = self
-                    self.subtitleTable.modalPresentationStyle = .popover
+                self.subtitleTable = BCGSPopoverTableViewController(options: subtitlesOptions,
+                                                                    selectedIndex: Int32(selectedIndex))
+                self.subtitleTable.delegate = self
+                self.subtitleTable.modalPresentationStyle = .popover
+                self.subtitleTable.preferredContentSize = contentSize
+
+                DispatchQueue.main.async(execute: { () -> Void in
                     if let popover = self.subtitleTable.popoverPresentationController {
+                        popover.delegate = self.subtitleTable
                         popover.sourceView = self.captionButton
+                        popover.sourceRect = CGRect(x: 0,
+                                                    y: 0,
+                                                    width: 280,
+                                                    height: subtitlesOptions.count * 50)
                     }
                     
-                    DispatchQueue.main.async(execute: { () -> Void in
-                        self.present(self.subtitleTable, animated: true, completion: nil)
-                    })
-                } else {
-                    self.subtitleActionSheet = UIActionSheet(title: nil,
-                                                             delegate: self,
-                                                             cancelButtonTitle: "Cancel",
-                                                             destructiveButtonTitle: nil)
-
-                    for subtitle in subtitlesOptions {
-                        self.subtitleActionSheet.addButton(withTitle: subtitle["value"])
-                    }
-
-                    DispatchQueue.main.async(execute: { () -> Void in
-                        if let window = UIApplication.shared.keyWindow {
-                            self.subtitleActionSheet.show(in: window)
-                        }
-                    })
-                }
+                    self.parentVC?.present(self.subtitleTable,
+                                           animated: true,
+                                           completion: nil)
+                })
             })
         }
     }
@@ -561,22 +541,7 @@ class MTVODPlayerControls: BCCiOSControls,
         
         return selectedIndex
     }
-    
-    // MARK: - UIACtionSheetDelegate
-    
-    func actionSheet(_ actionSheet: UIActionSheet, didDismissWithButtonIndex buttonIndex: Int) {
-        if actionSheet == self.subtitleActionSheet {
-            if buttonIndex != self.subtitleActionSheet.cancelButtonIndex {
-                if let buttonTitle = actionSheet.buttonTitle(at: buttonIndex) {
-                    self.enableSubtitlesForCountryCode(buttonTitle, emitEvent:true)
-                }
-            }
-            
-            self.subtitleActionSheet.delegate = nil
-            self.subtitleActionSheet = nil
-        }
-    }
-    
+        
     @IBAction func skipBackTapped(_ sender: UIButton) {
         self.resetIdleTimer()
 
@@ -655,6 +620,7 @@ class MTVODPlayerControls: BCCiOSControls,
     func closePopup() {
         if self.subtitleTable != nil {
             self.subtitleTable.dismiss(animated: true, completion: nil)
+            self.subtitleTable.delegate = nil
             self.subtitleTable = nil
         }
     }
@@ -685,12 +651,13 @@ class MTVODPlayerControls: BCCiOSControls,
 }
 
 // Helper function inserted by Swift 4.2 migrator.
-fileprivate func convertFromAVAudioSessionCategory(_ input: AVAudioSession.Category) -> String {
+private func convertFromAVAudioSessionCategory(_ input: AVAudioSession.Category) -> String {
 	return input.rawValue
 }
 
 // Helper function inserted by Swift 4.2 migrator.
-fileprivate func convertToOptionalAVMetadataKeySpace(_ input: String?) -> AVMetadataKeySpace? {
+private func convertToOptionalAVMetadataKeySpace(_ input: String?) -> AVMetadataKeySpace? {
 	guard let input = input else { return nil }
 	return AVMetadataKeySpace(rawValue: input)
 }
+// swiftlint:enable file_header sorted_imports type_body_length file_length

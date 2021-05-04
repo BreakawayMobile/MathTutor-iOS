@@ -45,7 +45,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, BCGSMobileSessionConsumer
     fileprivate var showSubscritionExpiredAlert: Bool = false
     fileprivate var showSubscritionRestoredAlert: Bool = false
    
-    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+    func application(_ application: UIApplication,
+                     didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         Fabric.with([Crashlytics.self])
         self.startTime = Date()
@@ -73,7 +74,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, BCGSMobileSessionConsumer
                 self.initialPlaylists = landingPlaylists + heroPlaylists
             }
             
-            var url: URL? = nil
+            var url: URL?
             
             if let remoteUrl = json["remote_url"] as? String {
                 if let value = URL(string: remoteUrl) {
@@ -91,18 +92,24 @@ class AppDelegate: UIResponder, UIApplicationDelegate, BCGSMobileSessionConsumer
     }
 
     func applicationWillResignActive(_ application: UIApplication) {
-        // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
-        // Use this method to pause ongoing tasks, disable timers, and invalidate graphics rendering callbacks. Games should use this method to pause the game.
+        // Sent when the application is about to move from active to inactive state. This can occur for certain
+        // types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits
+        // the application and it begins the transition to the background state.
+        // Use this method to pause ongoing tasks, disable timers, and invalidate graphics rendering callbacks. Games
+        // should use this method to pause the game.
     }
 
     func applicationDidEnterBackground(_ application: UIApplication) {
-        // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
-        // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
+        // Use this method to release shared resources, save user data, invalidate timers, and store enough application
+        // state information to restore your application to its current state in case it is terminated later.
+        // If your application supports background execution, this method is called instead of applicationWillTerminate:
+        // when the user quits.
         self.dateEnteredBackground = Date()
     }
 
     func applicationWillEnterForeground(_ application: UIApplication) {
-        // Called as part of the transition from the background to the active state; here you can undo many of the changes made on entering the background.
+        // Called as part of the transition from the background to the active state; here you can undo many of the
+        // changes made on entering the background.
         
         if dateEnteredBackground != nil {
             let dateEnteredForgreound = Date()
@@ -116,11 +123,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate, BCGSMobileSessionConsumer
     }
 
     func applicationDidBecomeActive(_ application: UIApplication) {
-        // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
+        // Restart any tasks that were paused (or not yet started) while the application was inactive. If the
+        // application was previously in the background, optionally refresh the user interface.
     }
 
     func applicationWillTerminate(_ application: UIApplication) {
-        // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+        // Called when the application is about to terminate. Save data if appropriate.
+        // See also applicationDidEnterBackground:.
     }
     
     func application(_ application: UIApplication,
@@ -134,17 +143,33 @@ class AppDelegate: UIResponder, UIApplicationDelegate, BCGSMobileSessionConsumer
         return false
     }
     
+    func application(_ application: UIApplication,
+                     supportedInterfaceOrientationsFor window: UIWindow?) -> UIInterfaceOrientationMask {
+        if UIDevice.current.userInterfaceIdiom == .phone &&
+            UIApplication.topViewController() is MTVideoViewController {
+            return .landscape
+        }
+            
+        return .all
+    }
+    
+    func application(_ app: UIApplication,
+                     open url: URL,
+                     options: [UIApplication.OpenURLOptionsKey: Any] = [:]) -> Bool {
+        return true
+    }
+    
     // MARK: - Initialization
     
     func initializeMobileLibrary() {
         let bcgsMobileLib = BGSMobilePackage.sharedInstance
-        guard let sessionConfig = configController.sessionConfig as? [String : Any] else { return }
+        guard let sessionConfig = configController.sessionConfig as? [String: Any] else { return }
         var newSessionConfig = sessionConfig
         newSessionConfig[kCVCStartupPlaylists] = initialPlaylists
         newSessionConfig[kCVCBackgroundPlaylists] = backgroundPlaylists
         bcgsMobileLib.setSessionConfig(newSessionConfig)
         
-        guard let playlistConfig = configController.playlistConfig as? [String : Any] else { return }
+        guard let playlistConfig = configController.playlistConfig as? [String: Any] else { return }
         bcgsMobileLib.setPlaylistConfig(playlistConfig)
         bcgsMobileLib.setDefaultCMS()
         
@@ -163,68 +188,41 @@ class AppDelegate: UIResponder, UIApplicationDelegate, BCGSMobileSessionConsumer
         //        guard let authConfig = configController.authConfig as? [String : Any] else { return }
         //        bcgsMobileLib.setAuthenticationConfig(authConfig)
         
-        if let analyticsConfig = configController.analyticsConfig as? [String : Any] {
+        if let analyticsConfig = configController.analyticsConfig as? [String: Any] {
             bcgsMobileLib.setAnalyticsConfig(analyticsConfig)
         }
     }
     
-    func cmsInitialize() {
-        
+    func cmsInitialize() {        
         DispatchQueue.main.async {
             if self.window?.rootViewController == nil {
                 self.setRootViewController(to: BCGSAppConfig.sharedInstance.loadWaitingPage(), for: self.window)
             }
         }
         
-//        self.cmsController.cmsInitialization { (success: Bool, collections: [Any]?, _) -> Void in
-//            if success {
-//                DispatchQueue.main.async {
-//                    if let inCollections = collections as? [BCGSCMSCollectionObject] {
-//                        self.dataManager.allCollections = inCollections
-//                    }
+        // Load the menu and main view controllers
+        let sideMenuViewController = Controllers.mainMenuViewController()
+        self.rootNavController = Controllers.rootNavigationController()
+        self.setRootViewController(to: self.rootNavController, for: self.window)
         
-                    // Load the menu and main view controllers
-                    let sideMenuViewController = Controllers.mainMenuViewController()
-                    self.rootNavController = Controllers.rootNavigationController()
-                    self.setRootViewController(to: self.rootNavController, for: self.window)
-                    
-                    // Configure the menu width and behavior
-                    SlideMenuOptions.leftViewWidth = AppDelegate.menuWidth
-                    SlideMenuOptions.contentViewScale = 1.0
-                    
-                    let slideMenuController = BCGSMenuContainerViewController(mainViewController: self.rootNavController, leftMenuViewController: sideMenuViewController)
-                    self.setRootViewController(to: slideMenuController, for: self.window)
-                    
-                    // Init complete, launch video player if needed
-//                    if self.urlToPlay != nil {
-//                        if !self.present(URL: self.urlToPlay) {
-//                            if #available(iOS 10.0, *) {
-//                                UIApplication.shared.open(self.urlToPlay, options: [:], completionHandler: nil)
-//                            } else {
-//                                // Fallback on earlier versions
-//                            }
-//                        }
-//                        
-//                        self.urlToPlay = nil
-//                    }
-//                }
-//            }
-//            else {
-//                DispatchQueue.main.async {
-//                    self.setRootViewController(to: BCGSAppConfig.sharedInstance.loadErrorPage(), for: self.window)
-//                }
-//            }
-//        }
+        // Configure the menu width and behavior
+        SlideMenuOptions.leftViewWidth = AppDelegate.menuWidth
+        SlideMenuOptions.contentViewScale = 1.0
+        
+        let slideMenuController = BCGSMenuContainerViewController(mainViewController: self.rootNavController,
+                                                                  leftMenuViewController: sideMenuViewController)
+        self.setRootViewController(to: slideMenuController, for: self.window)
     }
     
     // MARK: BCGSMobileSessionConsumer
     
-    func didReceiveSessionEvent(_ sessionEvent: String?, with anyObject:Any?) {
+    func didReceiveSessionEvent(_ sessionEvent: String?, with anyObject: Any?) {
         if let event = sessionEvent {
             switch event {
             case kBCGSEventSyncStart:
                 DispatchQueue.main.async(execute: {
-                    let rootMirror = Mirror(reflecting: self.window?.rootViewController ?? BCGSAppConfig.sharedInstance.loadErrorPage())
+                    let root = self.window?.rootViewController ?? BCGSAppConfig.sharedInstance.loadErrorPage()
+                    let rootMirror = Mirror(reflecting: root)
                     let errorMirror = Mirror(reflecting: Controllers.errorViewController())
                     
                     if self.window?.rootViewController == nil || (rootMirror.subjectType == errorMirror.subjectType) {
@@ -252,7 +250,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, BCGSMobileSessionConsumer
                     }
                 }
                 else {
-                    //AssertUtilities.logAndAssert(false, "allPlaylists not found")
+                    // AssertUtilities.logAndAssert(false, "allPlaylists not found")
                     NSLog( "allPlaylists not found")
                 }
                 return
@@ -260,7 +258,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, BCGSMobileSessionConsumer
                 return
             case kBCGSEventSyncFail:
                 DispatchQueue.main.async(execute: {
-                    let rootMirror = Mirror(reflecting: self.window?.rootViewController ?? BCGSAppConfig.sharedInstance.loadWaitingPage())
+                    let root = self.window?.rootViewController ?? BCGSAppConfig.sharedInstance.loadWaitingPage()
+                    let rootMirror = Mirror(reflecting: root)
                     let waitingMirror = Mirror(reflecting: BCGSAppConfig.sharedInstance.loadWaitingPage())
                     
                     if (rootMirror.subjectType == waitingMirror.subjectType) {
@@ -284,7 +283,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, BCGSMobileSessionConsumer
             SlideMenuOptions.leftViewWidth = AppDelegate.menuWidth
             SlideMenuOptions.contentViewScale = 1.0
             
-            let slideMenuController = BCGSMenuContainerViewController(mainViewController: self.rootNavController, leftMenuViewController: sideMenuViewController)
+            let slideMenuController = BCGSMenuContainerViewController(mainViewController: self.rootNavController,
+                                                                      leftMenuViewController: sideMenuViewController)
             self.setRootViewController(to: slideMenuController, for: self.window)
         }
     }

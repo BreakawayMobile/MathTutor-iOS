@@ -21,7 +21,7 @@ class MTUser: RealmSwift.Object {
     open var favorites = List<Favorite>()
     open var playProgress = List<PlayProgress>()
     
-    override open static func primaryKey() -> String? {
+    override public static func primaryKey() -> String? {
         return "name"
     }
 

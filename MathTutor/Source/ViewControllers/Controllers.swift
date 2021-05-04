@@ -141,20 +141,28 @@ struct Controllers {
     // MARK: - Generic Instantiation
 
     // This works for view controllers with a storyboard ID that is the same as its type name
-    private static func instantiateViewController<T: UIViewController>(fromStoryboard storyboard: Storyboard, bundle: Bundle? = nil) -> T {
-        return instantiateViewController(withIdentifier: String(describing: T.self), fromStoryboard: storyboard, bundle: bundle)
+    private static func instantiateViewController<T: UIViewController>(fromStoryboard storyboard: Storyboard,
+                                                                       bundle: Bundle? = nil) -> T {
+        return instantiateViewController(withIdentifier: String(describing: T.self),
+                                         fromStoryboard: storyboard,
+                                         bundle: bundle)
     }
 
-    private static func instantiateInitialViewController<T: UIViewController>(fromStoryboard storyboard: Storyboard, bundle: Bundle? = nil) -> T {
-        guard let vc = UIStoryboard(name: storyboard.rawValue, bundle: bundle).instantiateInitialViewController() as? T else {
+    private static func instantiateInitialViewController<T: UIViewController>(fromStoryboard storyboard: Storyboard,
+                                                                              bundle: Bundle? = nil) -> T {
+        guard let vc = UIStoryboard(name: storyboard.rawValue,
+                                    bundle: bundle).instantiateInitialViewController() as? T else {
             fatalError("Cannot instantiate initial view controller from storyboard \(storyboard)")
         }
 
         return vc
     }
 
-    private static func instantiateViewController<T: UIViewController>(withIdentifier identifier: String, fromStoryboard storyboard: Storyboard, bundle: Bundle? = nil) -> T {
-        guard let vc = UIStoryboard(name: storyboard.rawValue, bundle: bundle).instantiateViewController(withIdentifier: identifier) as? T else {
+    private static func instantiateViewController<T: UIViewController>(withIdentifier identifier: String,
+                                                                       fromStoryboard storyboard: Storyboard,
+                                                                       bundle: Bundle? = nil) -> T {
+        guard let vc = UIStoryboard(name: storyboard.rawValue,
+                                    bundle: bundle).instantiateViewController(withIdentifier: identifier) as? T else {
             fatalError("Cannot instantiate view controller with identifier \(identifier) from storyboard \(storyboard)")
         }
         

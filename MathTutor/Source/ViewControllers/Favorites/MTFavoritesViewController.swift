@@ -130,23 +130,26 @@ class MTFavoritesViewController: UIViewController,
     // MARK: - UICollectionViewDataSource
 
     func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return filteredItems?.items.count ?? 0   //1
+        return filteredItems?.items.count ?? 0
     }
     
     func collectionView(_ collectionView: UICollectionView,
                         numberOfItemsInSection section: Int) -> Int {
-        return filteredItems?.items[section].videos.count ?? 0  //recents.count
+        return filteredItems?.items[section].videos.count ?? 0
     }
     
     func collectionView(_ collectionView: UICollectionView,
                         cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         let reuseId = MTUntitledLessonCollectionViewCell.reuseIdentifier
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseId, for: indexPath) as? MTUntitledLessonCollectionViewCell else {
+        let cvCell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseId,
+                                                        for: indexPath)
+        
+        guard let cell = cvCell as? MTUntitledLessonCollectionViewCell else {
             fatalError("Expected an MTUntitledLessonCollectionViewCell object.")
         }
         
-        if let item = filteredItems.items[indexPath.section].videos[indexPath.row] as? BCGSVideo {  //let item = recents[indexPath.row]
+        if let item = filteredItems.items[indexPath.section].videos[indexPath.row] as? BCGSVideo {
             cell.configure(with: item,
                            indexPath: indexPath,
                            parentCollection: self.collectionView,
@@ -162,19 +165,25 @@ class MTFavoritesViewController: UIViewController,
         
         if kind == UICollectionView.elementKindSectionHeader {
             let reuseId = MTSearchCollectionReusableView.reuseIdentifier
-            guard let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: reuseId, for: indexPath) as? MTSearchCollectionReusableView else {
+            let kind = UICollectionView.elementKindSectionHeader
+            let view = collectionView.dequeueReusableSupplementaryView(ofKind: kind,
+                                                                       withReuseIdentifier: reuseId,
+                                                                       for: indexPath)
+            
+            guard let headerView = view as? MTSearchCollectionReusableView else {
                 fatalError("Expected a MTSearchCollectionReusableView object.")
             }
             
             headerView.sizeToFit()
             
             //            let item = filteredData[indexPath.section]
-            if let playlist = filteredItems?.items[indexPath.section] { //dataManager.playlist(for: item) {
+            if let playlist = filteredItems?.items[indexPath.section] {
                 let playlistString = "> " + playlist.name
                 
-                let textRange = NSMakeRange(2, playlistString.characters.count - 2)
+                let textRange = NSMakeRange(2, playlistString.count - 2)
                 let attributedText = NSMutableAttributedString(string: playlistString)
-                attributedText.addAttribute(NSAttributedString.Key.underlineStyle, value: NSUnderlineStyle.single.rawValue, range: textRange)
+                attributedText.addAttribute(NSAttributedString.Key.underlineStyle,
+                                            value: NSUnderlineStyle.single.rawValue, range: textRange)
                 
                 // Add other attributes if needed
                 headerView.courseLabel.attributedText = attributedText
@@ -207,9 +216,10 @@ class MTFavoritesViewController: UIViewController,
     // MARK: Notifications
     
     func enableNotifications() {
+        let name = NSNotification.Name(rawValue: IAPHelperProductPurchasedNotification)
         NotificationCenter.default.addObserver(self,
                                                selector: #selector(MTCourseViewController.productPurchased(_:)),
-                                               name: NSNotification.Name(rawValue: IAPHelperProductPurchasedNotification),
+                                               name: name,
                                                object: nil)
         
     }

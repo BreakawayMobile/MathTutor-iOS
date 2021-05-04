@@ -13,7 +13,9 @@ func onmain(execute: @escaping () -> Void) {
 }
 
 func delay(seconds: Double, execute: @escaping () -> Void) {
-    DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + Double(Int64(seconds * Double(NSEC_PER_SEC))) / Double(NSEC_PER_SEC), execute: execute)
+    let delay = Double(Int64(seconds * Double(NSEC_PER_SEC))) / Double(NSEC_PER_SEC)
+    DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + delay,
+                                  execute: execute)
 }
 
 func onmainsync(execute: @escaping () -> Void) {

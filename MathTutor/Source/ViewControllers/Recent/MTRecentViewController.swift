@@ -99,7 +99,10 @@ class MTRecentViewController: UIViewController,
                         cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         let reuseId = MTTitledLessonCollectionViewCell.reuseIdentifier
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseId, for: indexPath) as? MTTitledLessonCollectionViewCell else {
+        let cvCell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseId,
+                                                        for: indexPath)
+        
+        guard let cell = cvCell as? MTTitledLessonCollectionViewCell else {
             fatalError("Expected an MTTitledLessonCollectionViewCell object.")
         }
         
@@ -125,9 +128,10 @@ class MTRecentViewController: UIViewController,
     // MARK: Notifications
     
     func enableNotifications() {
+        let name = NSNotification.Name(rawValue: IAPHelperProductPurchasedNotification)
         NotificationCenter.default.addObserver(self,
                                                selector: #selector(MTCourseViewController.productPurchased(_:)),
-                                               name: NSNotification.Name(rawValue: IAPHelperProductPurchasedNotification),
+                                               name: name,
                                                object: nil)
         
     }

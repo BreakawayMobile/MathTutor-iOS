@@ -13,6 +13,9 @@ import StoreKit
 public typealias ProductIdentifier = String
 
 /// Completion handler called when products are fetched.
-public typealias RequestProductsCompletionHandler = (_ success: Bool, _ error: NSError?, _ products: [SKProduct]) -> Void
+public typealias RequestProductsCompletionHandler = (_ success: Bool,
+                                                     _ error: NSError?,
+                                                     _ products: [SKProduct]) -> Void
 
-public typealias TransactionCompletionHandler = (_ error: NSError?, _ transaction: SKPaymentTransaction?) -> Void
+public typealias TransactionCompletionHandler = (_ error: NSError?,
+                                                 _ transaction: SKPaymentTransaction?) -> Void

@@ -10,7 +10,7 @@ import UIKit
 
 class MainMenuProfileHeader: UITableViewHeaderFooterView, MainMenuSectionHeaderProtocol {
     
-    weak open var delegate: MainMenuSectionHeaderDelegate?
+    open weak var delegate: MainMenuSectionHeaderDelegate?
     var section: Int = 0
     
     @IBOutlet weak var usernameLabel: UILabel!
@@ -20,7 +20,8 @@ class MainMenuProfileHeader: UITableViewHeaderFooterView, MainMenuSectionHeaderP
 
         contentView.backgroundColor = Style.Color.umcBlue
         
-        addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(MainMenuSectionHeader.headerCellTapped(_:))))
+        addGestureRecognizer(UITapGestureRecognizer(target: self,
+                                                    action: #selector(MainMenuSectionHeader.headerCellTapped(_:))))
         
     }
     

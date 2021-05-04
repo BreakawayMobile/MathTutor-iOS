@@ -37,7 +37,9 @@ class MTCoursesView: UIView,
     }
     
     override func layoutSubviews() {
-        let newHeight: CGFloat = (MTCourseCollectionViewCell.cellHeight() + MTCourseCollectionHeaderView.cellHeight) * CGFloat(courses.count)
+        let cellHeight = MTCourseCollectionViewCell.cellHeight()
+        let headerHeight = MTCourseCollectionHeaderView.cellHeight
+        let newHeight: CGFloat = (cellHeight + headerHeight) * CGFloat(courses.count)
         self.collectionView.frame.size = CGSize(width: self.collectionView.frame.size.width,
                                                 height: newHeight)
         
@@ -78,7 +80,10 @@ class MTCoursesView: UIView,
                         cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         let reuseId = MTCourseCollectionViewCell.reuseIdentifier
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseId, for: indexPath) as? MTCourseCollectionViewCell else {
+        let cvCell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseId,
+                                                        for: indexPath)
+        
+        guard let cell = cvCell as? MTCourseCollectionViewCell else {
             fatalError("Expected an MTCourseCollectionViewCell.reuseIdentifier object.")
         }
 
@@ -93,7 +98,12 @@ class MTCoursesView: UIView,
         
         if kind == UICollectionView.elementKindSectionHeader {
             let reuseId = MTCourseCollectionHeaderView.reuseIdentifier
-            guard let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: reuseId, for: indexPath) as? MTCourseCollectionHeaderView else {
+            let kind = UICollectionView.elementKindSectionHeader
+            let view = collectionView.dequeueReusableSupplementaryView(ofKind: kind,
+                                                                       withReuseIdentifier: reuseId,
+                                                                       for: indexPath)
+            
+            guard let headerView = view as? MTCourseCollectionHeaderView else {
                 fatalError("Expected a MTCourseCollectionHeaderView object.")
             }
             

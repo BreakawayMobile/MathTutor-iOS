@@ -34,14 +34,17 @@ class MainMenuSectionHeader: UITableViewHeaderFooterView, MainMenuSectionHeaderP
         disclosureIcon.contentMode = .center
         
         // Constraint the size of arrow label for auto layout
-        disclosureIcon.widthAnchor.constraint(equalToConstant: MainMenuSectionHeader.menuDisclosureSize).isActive = true
-        disclosureIcon.heightAnchor.constraint(equalToConstant: MainMenuSectionHeader.menuDisclosureSize).isActive = true
+        let disclosureSize = MainMenuSectionHeader.menuDisclosureSize
+        disclosureIcon.widthAnchor.constraint(equalToConstant: disclosureSize).isActive = true
+        disclosureIcon.heightAnchor.constraint(equalToConstant: disclosureSize).isActive = true
         
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
         disclosureIcon.translatesAutoresizingMaskIntoConstraints = false
         
         titleLabel.textColor = UIColor.white
-        titleLabel.font = Style.Font.with(family: Style.Font.Family.gothamRounded, style: Style.Font.Style.book, size: MainMenuSectionHeader.menuHeaderFontSize)
+        titleLabel.font = Style.Font.with(family: Style.Font.Family.gothamRounded,
+                                          style: Style.Font.Style.book,
+                                          size: MainMenuSectionHeader.menuHeaderFontSize)
 
         contentView.addSubview(titleLabel)
         contentView.addSubview(disclosureIcon)
@@ -50,7 +53,8 @@ class MainMenuSectionHeader: UITableViewHeaderFooterView, MainMenuSectionHeaderP
         // Add a line at the top of each section
         contentView.addTopLine(color: Style.Color.separatorGray, height: 1.0)
         
-        addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(MainMenuSectionHeader.headerCellTapped(_:))))
+        addGestureRecognizer(UITapGestureRecognizer(target: self,
+                                                    action: #selector(MainMenuSectionHeader.headerCellTapped(_:))))
     }
     
     required init?(coder aDecoder: NSCoder) {

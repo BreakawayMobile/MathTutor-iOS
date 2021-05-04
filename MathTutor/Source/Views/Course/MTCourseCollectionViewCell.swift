@@ -82,9 +82,13 @@ class MTCourseCollectionViewCell: UICollectionViewCell,
         return course?.videos.count ?? 0
     }
     
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+    func collectionView(_ collectionView: UICollectionView,
+                        cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let reuseId = MTLessonCollectionViewCell.reuseIdentifier
-        guard let cell = lessonsCollectionView.dequeueReusableCell(withReuseIdentifier: reuseId, for: indexPath) as? MTLessonCollectionViewCell else {
+        let cvCell = lessonsCollectionView.dequeueReusableCell(withReuseIdentifier: reuseId,
+                                                               for: indexPath)
+        
+        guard let cell = cvCell as? MTLessonCollectionViewCell else {
             fatalError("Expected a MTLessonCollectionViewCell object.")
         }
         
@@ -102,7 +106,9 @@ class MTCourseCollectionViewCell: UICollectionViewCell,
     
     // MARK: - UICollectionViewDelegateFlowLayout
     
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+    func collectionView(_ collectionView: UICollectionView,
+                        layout collectionViewLayout: UICollectionViewLayout,
+                        sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: MTLessonCollectionViewCell.cellWidth(for: lessonsCollectionView),
                       height: frame.size.height)
     }

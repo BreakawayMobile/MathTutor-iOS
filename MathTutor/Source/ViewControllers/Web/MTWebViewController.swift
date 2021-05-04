@@ -7,12 +7,13 @@
 //
 
 import UIKit
+import WebKit
 
 class MTWebViewController: UIViewController {
 
     let logoImage = "logo_menu"
     
-    @IBOutlet fileprivate weak var webView: UIWebView!
+    @IBOutlet fileprivate weak var webView: WKWebView!
     
     var urlString: String!
     
@@ -33,7 +34,7 @@ class MTWebViewController: UIViewController {
         super.viewWillAppear(animated)
         
         if let url = URL(string: urlString) {
-            webView.loadRequest(URLRequest(url: url))
+            webView.load(URLRequest(url: url))
         }
     }
 

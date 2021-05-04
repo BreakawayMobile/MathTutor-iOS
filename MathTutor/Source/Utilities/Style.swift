@@ -57,7 +57,8 @@ struct Style {
             case gtWalsheim       = "GTWalsheim"
         }
 
-        // The style suffix that goes after the font family name. Note that not all fonts provide all of these style variants.
+        // The style suffix that goes after the font family name.
+        // Note that not all fonts provide all of these style variants.
         enum Style: String {
             case black     = "Black"
             case bold      = "Bold"
@@ -109,8 +110,6 @@ struct Style {
     }
 
     static func configureAppearance() {
-        UIApplication.shared.statusBarStyle = .lightContent
-        
         configureAppearance(proxy: UINavigationBar.appearance())
         configureAppearance(proxy: UIBarButtonItem.appearance())
 
@@ -122,27 +121,22 @@ struct Style {
     }
 
     fileprivate static func configureAppearance(proxy: UINavigationBar) {
+        let attributes = [NSAttributedString.Key.font.rawValue: Font.navigationBarTitleFont,
+                          NSAttributedString.Key.foregroundColor.rawValue: Style.Color.almostWhite]
+        
         proxy.barTintColor = Style.Color.umcBlue
         proxy.tintColor = .white
         proxy.isTranslucent = false
-        proxy.titleTextAttributes = convertToOptionalNSAttributedStringKeyDictionary([NSAttributedString.Key.font.rawValue: Font.navigationBarTitleFont,
-                                     NSAttributedString.Key.foregroundColor.rawValue: Style.Color.almostWhite])
+        proxy.titleTextAttributes = String.convertToOptionalNSAttributedStringKeyDictionary(attributes)
     }
 
     fileprivate static func configureAppearance(proxy: UIBarButtonItem) {
-        let attrs = [convertFromNSAttributedStringKey(NSAttributedString.Key.font): Font.barButtonItemTitleFont as Any,
-                     convertFromNSAttributedStringKey(NSAttributedString.Key.foregroundColor): UIColor.white]
-        proxy.setTitleTextAttributes(convertToOptionalNSAttributedStringKeyDictionary(attrs), for: UIControl.State())
+        let fontKey = String.convertFromNSAttributedStringKey(NSAttributedString.Key.font)
+        let fgColorKey = String.convertFromNSAttributedStringKey(NSAttributedString.Key.foregroundColor)
+        let attrs = [fontKey: Font.barButtonItemTitleFont as Any,
+                     fgColorKey: UIColor.white]
+        let attributesKey = String.convertToOptionalNSAttributedStringKeyDictionary(attrs)
+        
+        proxy.setTitleTextAttributes(attributesKey, for: UIControl.State())
     }
-}
-
-// Helper function inserted by Swift 4.2 migrator.
-fileprivate func convertToOptionalNSAttributedStringKeyDictionary(_ input: [String: Any]?) -> [NSAttributedString.Key: Any]? {
-	guard let input = input else { return nil }
-	return Dictionary(uniqueKeysWithValues: input.map { key, value in (NSAttributedString.Key(rawValue: key), value)})
-}
-
-// Helper function inserted by Swift 4.2 migrator.
-fileprivate func convertFromNSAttributedStringKey(_ input: NSAttributedString.Key) -> String {
-	return input.rawValue
 }

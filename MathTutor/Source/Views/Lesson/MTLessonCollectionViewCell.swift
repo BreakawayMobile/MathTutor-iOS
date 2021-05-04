@@ -151,16 +151,17 @@ class MTLessonCollectionViewCell: UICollectionViewCell {
         let labelString = NSMutableAttributedString(string: nameString)
         let boldFont = UIFont(name: Style.Font.Gotham.bold.rawValue,
                               size: self.titleFontSize)
-        let boldAttribute = [convertFromNSAttributedStringKey(NSAttributedString.Key.font): boldFont as Any]
-        labelString.addAttributes(convertToNSAttributedStringKeyDictionary(boldAttribute), range: boldRange)
+        let boldAttribute = [String.convertFromNSAttributedStringKey(NSAttributedString.Key.font): boldFont as Any]
+        labelString.addAttributes(String.convertToNSAttributedStringKeyDictionary(boldAttribute), range: boldRange)
         
         let endRangeStart = range.length + 1
         let endRangeLength = nameString.length - endRangeStart
         let endRange = NSMakeRange(endRangeStart, endRangeLength)
         let regularFont = UIFont(name: Style.Font.Gotham.book.rawValue,
                                  size: self.titleFontSize)
-        let regularAttribute = [convertFromNSAttributedStringKey(NSAttributedString.Key.font): regularFont as Any]
-        labelString.addAttributes(convertToNSAttributedStringKeyDictionary(regularAttribute), range: endRange)
+        let fontKey = String.convertFromNSAttributedStringKey(NSAttributedString.Key.font)
+        let regularAttribute = [fontKey: regularFont as Any]
+        labelString.addAttributes(String.convertToNSAttributedStringKeyDictionary(regularAttribute), range: endRange)
         
         lessonLabel.attributedText = labelString
         
@@ -186,13 +187,14 @@ class MTLessonCollectionViewCell: UICollectionViewCell {
 //        waitingSpinner.isHidden = false
 
         DispatchQueue.global().async {
-            //The URL to Save
             let urlString = self.lesson.relatedDocument()
             guard let yourURL = URL(string: urlString) else {
                 fatalError("Could ot get a valid url")
             }
 
-            UIApplication.shared.openURL(yourURL)
+            DispatchQueue.main.async {
+                UIApplication.shared.open(yourURL, options: [:], completionHandler: nil)
+            }
         }
     }
     
@@ -202,10 +204,12 @@ class MTLessonCollectionViewCell: UICollectionViewCell {
                 fatalError("Could not get a valid URL")
         }
         
-        let maxMsgLength = 140 - shareLink.characters.count
+        let maxMsgLength = 140 - shareLink.count
         let formatString = "SHARE_URL_LESSON".localized(ConfigController.sharedInstance.stringsFilename)
         let textToShare = String.localizedStringWithFormat(formatString,
-                                                           lesson.name).truncateToLength(maxLength: maxMsgLength, mode: .Middle, addEllipsis: true)
+                                                           lesson.name).truncateToLength(maxLength: maxMsgLength,
+                                                                                         mode: .Middle,
+                                                                                         addEllipsis: true)
         
         let controller = UIActivityViewController(activityItems: [textToShare, linkUrl], applicationActivities: nil)
         
@@ -237,18 +241,20 @@ class MTLessonCollectionViewCell: UICollectionViewCell {
                 if let context = storage.mainContext {
                     if self.favoriteButton.imageView?.image != #imageLiteral(resourceName: "favorite_selected") {
                         if videos.count >= GlobalConstants.Maximum.favoriteCount {
-                            guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
+                            guard let appDelegate = UIApplication.shared.delegate as? AppDelegate,
+                                  let stringsFile = ConfigController.sharedInstance.stringsFilename else {
                                 fatalError("Exected an AppDelegate object")
                             }
                             
-                            let formatString = "MAX_FAVORITES".localized(ConfigController.sharedInstance.stringsFilename)
-                            let localizedVersion = String.localizedStringWithFormat(formatString, GlobalConstants.Maximum.favoriteCount)
+                            let formatString = "MAX_FAVORITES".localized(stringsFile)
+                            let count = GlobalConstants.Maximum.favoriteCount
+                            let localizedVersion = String.localizedStringWithFormat(formatString, count)
                             
                             let alertController = UIAlertController(title: "",
                                                                     message: localizedVersion,
                                                                     preferredStyle: .alert)
                             
-                            let defaultAction = UIAlertAction(title: "OK".localized(self.configController.stringsFilename),
+                            let defaultAction = UIAlertAction(title: "OK".localized(stringsFile),
                                                               style: .default,
                                                               handler: nil)
                             alertController.addAction(defaultAction)
@@ -291,14 +297,4 @@ class MTLessonCollectionViewCell: UICollectionViewCell {
             }
         }
     }
-}
-
-// Helper function inserted by Swift 4.2 migrator.
-fileprivate func convertFromNSAttributedStringKey(_ input: NSAttributedString.Key) -> String {
-	return input.rawValue
-}
-
-// Helper function inserted by Swift 4.2 migrator.
-fileprivate func convertToNSAttributedStringKeyDictionary(_ input: [String: Any]) -> [NSAttributedString.Key: Any] {
-	return Dictionary(uniqueKeysWithValues: input.map { key, value in (NSAttributedString.Key(rawValue: key), value)})
 }

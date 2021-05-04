@@ -18,7 +18,7 @@ class MTUserManager: NSObject, SKRequestDelegate {
     let receiptRequest = SKReceiptRefreshRequest()
     let configController = ConfigController.sharedInstance
 
-    open static let shared = MTUserManager()
+    public static let shared = MTUserManager()
 
     var products = [SKProduct]()
     
@@ -50,11 +50,9 @@ class MTUserManager: NSObject, SKRequestDelegate {
                 }
                 
                 self.unsubscribe()
-                break
                 
             case .error:
                 MTUser.unsubscribed(storage: self.dataManager.dataStorage())
-                break
             }
         }
     }
@@ -111,11 +109,9 @@ class MTUserManager: NSObject, SKRequestDelegate {
         switch validationResult {
         case .success:
             MTUser.subscribed(storage: self.dataManager.dataStorage())
-            break
             
         case .error:
             MTUser.unsubscribed(storage: self.dataManager.dataStorage())
-            break
         }
     }
     
@@ -180,9 +176,10 @@ class MTUserManager: NSObject, SKRequestDelegate {
         return returnValue
     }
     
+    // swiftlint:disable cyclomatic_complexity
     public func purchaseSubscription() {
         guard let product = productWithIdentifier(MTProducts.MonthlySubscription) else {
-            //fatalError("Could not find subscription product.")
+            // fatalError("Could not find subscription product.")
             DispatchQueue.main.async {
                 self.displayBasicAlert("Could not find any subscriptions.")
             }
@@ -196,7 +193,6 @@ class MTUserManager: NSObject, SKRequestDelegate {
                     switch state {
                     case .purchased:
                          MTUser.subscribed(storage: self.dataManager.dataStorage())
-                         break
                     case .failed:
 //                        self.showSpinner(false)
                         
@@ -209,7 +205,6 @@ class MTUserManager: NSObject, SKRequestDelegate {
                         
                         let message = "SUBSCRIPTION_PURCHASE_FAILED".localized(self.configController.stringsFilename)
                         self.displayBasicAlert(message)
-                        break
                     case .restored:
                         break
                     case .deferred:
@@ -230,7 +225,8 @@ class MTUserManager: NSObject, SKRequestDelegate {
             }
         }
     }
-    
+    // swiftlint:enable cyclomatic_complexity
+
     func displayBasicAlert(_ message: String) {
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
             fatalError("Exected an AppDelegate object")
@@ -249,8 +245,9 @@ class MTUserManager: NSObject, SKRequestDelegate {
     }
     
     func productPurchasePrompt() {
+        let message = "SUBSCRIPTION_TEXT".localized(self.configController.stringsFilename)
         let alertController = UIAlertController(title: "",
-                                                message: "SUBSCRIPTION_TEXT".localized(self.configController.stringsFilename),
+                                                message: message,
                                                 preferredStyle: .alert)
         
         let okAction = UIAlertAction(title: "OK".localized(self.configController.stringsFilename),
@@ -270,8 +267,9 @@ class MTUserManager: NSObject, SKRequestDelegate {
     }
     
     func subscriptionInfoAlert() {
+        let message = "SUBSCRIPTION_BUY_MSG".localized(self.configController.stringsFilename)
         let alertController = UIAlertController(title: "",
-                                                message: "SUBSCRIPTION_BUY_MSG".localized(self.configController.stringsFilename),
+                                                message: message,
                                                 preferredStyle: .alert)
         
         let yesAction = UIAlertAction(title: "YES".localized(self.configController.stringsFilename),

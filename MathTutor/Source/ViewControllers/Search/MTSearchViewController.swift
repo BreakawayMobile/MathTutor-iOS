@@ -35,7 +35,7 @@ class MTSearchViewController: UIViewController,
         searchController.searchResultsUpdater = self
         searchController.delegate = self
         
-        searchController.dimsBackgroundDuringPresentation = false
+        searchController.obscuresBackgroundDuringPresentation = false
         
         searchController.searchBar.setBackgroundImage(UIImage.imageWithColor(Style.Color.umcBlue),
                                                       for: .topAttached,
@@ -69,7 +69,10 @@ class MTSearchViewController: UIViewController,
         self.waitSpinner.isHidden = true
         self.setBarButtonItems(animated: true)
 
-        searchController.searchBar.autoresizingMask = [UIView.AutoresizingMask.flexibleWidth, UIView.AutoresizingMask.flexibleHeight]
+        searchController.searchBar.autoresizingMask = [
+            UIView.AutoresizingMask.flexibleWidth,
+            UIView.AutoresizingMask.flexibleHeight
+        ]
         searchBarContainerView.addSubview(searchController.searchBar)
         searchController.searchBar.sizeToFit()
         
@@ -135,7 +138,7 @@ class MTSearchViewController: UIViewController,
         if searchController.isActive {
             self.searchText = self.searchController.searchBar.text ?? ""
             
-            if self.searchText.characters.count < 3 {
+            if self.searchText.count < 3 {
                 filteredData.removeAll()
                 filteredItems = nil
                 return
@@ -233,7 +236,7 @@ class MTSearchViewController: UIViewController,
     // MARK: UICollectionViewDataSource
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return filteredItems?.items.count ?? 0   //filteredData.count
+        return filteredItems?.items.count ?? 0
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -243,11 +246,14 @@ class MTSearchViewController: UIViewController,
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell
     {
         let reuseId = MTTitledLessonCollectionViewCell.reuseIdentifier
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseId, for: indexPath) as? MTTitledLessonCollectionViewCell else {
+        let cvCell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseId,
+                                                        for: indexPath)
+        
+        guard let cell = cvCell as? MTTitledLessonCollectionViewCell else {
             fatalError("Expected an MTTitledLessonCollectionViewCell object.")
         }
         
-        if let item = filteredItems?.items[indexPath.section].videos?[indexPath.row] as? BCGSVideo {//filteredData[indexPath.section]
+        if let item = filteredItems?.items[indexPath.section].videos?[indexPath.row] as? BCGSVideo {
             cell.configure(with: item,
                            indexPath: indexPath,
                            parentCollection: self.collectionView,
@@ -276,9 +282,10 @@ class MTSearchViewController: UIViewController,
     // MARK: Notifications
     
     func enableNotifications() {
+        let name = NSNotification.Name(rawValue: IAPHelperProductPurchasedNotification)
         NotificationCenter.default.addObserver(self,
                                                selector: #selector(MTCourseViewController.productPurchased(_:)),
-                                               name: NSNotification.Name(rawValue: IAPHelperProductPurchasedNotification),
+                                               name: name,
                                                object: nil)
         
     }

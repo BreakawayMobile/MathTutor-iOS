@@ -19,7 +19,7 @@ open class Favorite: RealmSwift.Object {
     @objc open dynamic var videoId = ""
     @objc open dynamic var title = ""
     
-    open override static func primaryKey() -> String? {
+    public override static func primaryKey() -> String? {
         return "videoId"
     }
     

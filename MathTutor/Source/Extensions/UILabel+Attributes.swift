@@ -19,7 +19,9 @@ extension UILabel {
         let attrString = NSMutableAttributedString(string: stringValue)
         let style = NSMutableParagraphStyle()
         style.minimumLineHeight = lineHeight
-        attrString.addAttribute(NSAttributedString.Key.paragraphStyle, value: style, range: NSRange(location: 0, length: stringValue.characters.count))
+        attrString.addAttribute(NSAttributedString.Key.paragraphStyle,
+                                value: style,
+                                range: NSRange(location: 0, length: stringValue.count))
         self.attributedText = attrString
         self.textAlignment = alignment
         

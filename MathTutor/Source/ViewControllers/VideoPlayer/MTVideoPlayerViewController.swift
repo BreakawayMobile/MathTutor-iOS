@@ -52,25 +52,14 @@ class MTVideoPlayerViewController: AVPlayerViewController, BCGSPlaybackDelegate 
 #else
     
         NotificationCenter.default.setObserver(self,
-                                               selector:#selector(MTVideoPlayerViewController.nextVideo(_:)),
-                                               name:"nextVideo",
-                                               object:nil)
+                                               selector: #selector(MTVideoPlayerViewController.nextVideo(_:)),
+                                               name: "nextVideo",
+                                               object: nil)
     
         NotificationCenter.default.setObserver(self,
-                                               selector:#selector(MTVideoPlayerViewController.previousVideo(_:)),
-                                               name:"previousVideo",
-                                               object:nil)
-    
-//        NotificationCenter.default.setObserver(self,
-//                                               selector: #selector(MTVideoPlayerViewController.itemDidFinishPlaying(_:)),
-//                                               name: NSNotification.Name.AVPlayerItemDidPlayToEndTime.rawValue,
-//                                               object: nil)
-    
-//        NotificationCenter.default.setObserver(self,
-//                                               selector: #selector(MTVideoPlayerViewController.itemFailedPlaying(_:)),
-//                                               name: NSNotification.Name.AVPlayerItemFailedToPlayToEndTime.rawValue,
-//                                               object: nil)
-    
+                                               selector: #selector(MTVideoPlayerViewController.previousVideo(_:)),
+                                               name: "previousVideo",
+                                               object: nil)
 #endif
     }
     
@@ -88,7 +77,7 @@ class MTVideoPlayerViewController: AVPlayerViewController, BCGSPlaybackDelegate 
             self.viewAdded = true
             
 #if BASIC_CASE
-            self.videoView.insertSubview(videoPlayerView, atIndex:0)
+            self.videoView.insertSubview(videoPlayerView, atIndex: 0)
             
             for attribute in [NSLayoutAttribute.Top,
                               NSLayoutAttribute.Bottom,
@@ -147,30 +136,7 @@ class MTVideoPlayerViewController: AVPlayerViewController, BCGSPlaybackDelegate 
     //
     //
     //
-    
-    // MARK: - Orientation
-    
-//    override var shouldAutorotate: Bool {
-//        let orientation = UIApplication.shared.statusBarOrientation
-//        let idiom = UIDevice.current.userInterfaceIdiom
-//
-//        if idiom == .phone {
-//            if orientation == .landscapeRight ||
-//               orientation == .landscapeLeft ||
-//               orientation == .unknown {
-//                return false
-//            } else {
-//                return true
-//            }
-//        }
-//
-//        return true
-//    }
-//
-//    override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
-//        return UIDevice.current.userInterfaceIdiom == .phone ? [UIInterfaceOrientationMask.landscape] : [UIInterfaceOrientationMask.all]
-//    }
-    
+            
     // MARK: - Orientation
     
     override var shouldAutorotate: Bool {
@@ -179,7 +145,6 @@ class MTVideoPlayerViewController: AVPlayerViewController, BCGSPlaybackDelegate 
     
     override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
         if UIDevice.current.userInterfaceIdiom == .phone {
-//            return viewIsLoaded ? [UIInterfaceOrientationMask.landscape] : [UIInterfaceOrientationMask.all]
             return [UIInterfaceOrientationMask.landscape]
         }
         
@@ -189,13 +154,7 @@ class MTVideoPlayerViewController: AVPlayerViewController, BCGSPlaybackDelegate 
     // MARK: - Player Notifications
     
     func itemDidFinishPlaying(_ notification: Notification) {
-        // Will be called when AVPlayer finishes playing playerItem
-//        if content.nextEpisode() != nil {
-//            self.playPosition = TimeInterval(0)
-////            self.playVideo(content.nextEpisode())
-//        } else {
-            self.endPlayback()
-//        }
+        self.endPlayback()
     }
     
     func itemFailedPlaying(_ notification: Notification) {
@@ -206,7 +165,6 @@ class MTVideoPlayerViewController: AVPlayerViewController, BCGSPlaybackDelegate 
 #if !BASIC_CASE
     @objc func nextVideo(_ notification: Notification) {
         self.playPosition = TimeInterval(0)
-//        self.playVideo(self.content.nextEpisode())
     }
     
     @objc func previousVideo(_ notification: Notification) {
@@ -215,18 +173,11 @@ class MTVideoPlayerViewController: AVPlayerViewController, BCGSPlaybackDelegate 
     }
 
     func playVideo(_ nextVideo: BCGSVideo!) {
-//        if let videoId = nextVideo?.videoID {
-            DispatchQueue.main.async {
-                self.playbackController.releasePlaybackResources()
-                self.lesson = nextVideo
-                self.loadVideoViewWithPosition(self.playPosition)
-                
-//                if let content = UMCDataUtils.sharedInstance.getRealmObject().object(ofType: Content.self, forPrimaryKey: contentId as AnyObject) {
-//                    self.content = content
-//                    self.loadVideoViewWithPosition(self.playPosition)
-//                }
-            }
-//        }
+        DispatchQueue.main.async {
+            self.playbackController.releasePlaybackResources()
+            self.lesson = nextVideo
+            self.loadVideoViewWithPosition(self.playPosition)
+        }
     }
     
     func loadVideoViewWithPosition(_ position: TimeInterval) {
@@ -236,8 +187,8 @@ class MTVideoPlayerViewController: AVPlayerViewController, BCGSPlaybackDelegate 
         playerControls.lesson = self.lesson
         playerControls.playbackDelegate = self
         playerControls.parentVC = self
-        playerControls.hasPrevious = false  //content.previousEpisode() != nil
-        playerControls.hasNext = false  //content.nextEpisode() != nil
+        playerControls.hasPrevious = false
+        playerControls.hasNext = false
 
         let videoString = String(self.lesson.videoID.int64Value)
         self.playbackController.playVideo(with: self,
@@ -263,14 +214,6 @@ class MTVideoPlayerViewController: AVPlayerViewController, BCGSPlaybackDelegate 
         
        if !playbackEnded {
             playbackEnded = true
-        
-//            NotificationCenter.default.removeObserver(self,
-//                                                      name: NSNotification.Name.AVPlayerItemDidPlayToEndTime,
-//                                                      object: nil)
-//        
-//            NotificationCenter.default.removeObserver(self,
-//                                                      name: NSNotification.Name.AVPlayerItemFailedToPlayToEndTime,
-//                                                      object: nil)
         
             if playerControls != nil {
                 playerControls.releasePlaybackResources()

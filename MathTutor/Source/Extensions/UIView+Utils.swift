@@ -72,20 +72,15 @@ extension UIView {
     }
 
     @IBInspectable var borderWidth: CGFloat {
-        set {
-            layer.borderWidth = newValue
-        }
-
         get {
             return layer.borderWidth
+        }
+        set {
+            layer.borderWidth = newValue
         }
     }
 
     @IBInspectable var borderColor: UIColor? {
-        set {
-            layer.borderColor = newValue?.cgColor
-        }
-
         get {
             if let c = layer.borderColor {
                 return UIColor(cgColor: c)
@@ -93,6 +88,9 @@ extension UIView {
             else {
                 return nil
             }
+        }
+        set {
+            layer.borderColor = newValue?.cgColor
         }
     }
 
@@ -118,10 +116,34 @@ extension UIView {
         addSubview(topLine)
 
         addConstraints([
-            NSLayoutConstraint(item: topLine, attribute: .left, relatedBy: .equal, toItem: self, attribute: .left, multiplier: 1, constant: 0),
-            NSLayoutConstraint(item: topLine, attribute: .right, relatedBy: .equal, toItem: self, attribute: .right, multiplier: 1, constant: 0),
-            NSLayoutConstraint(item: topLine, attribute: .top, relatedBy: .equal, toItem: self, attribute: .top, multiplier: 1, constant: 0),
-            NSLayoutConstraint(item: topLine, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: height)
+            NSLayoutConstraint(item: topLine,
+                               attribute: .left,
+                               relatedBy: .equal,
+                               toItem: self,
+                               attribute: .left,
+                               multiplier: 1,
+                               constant: 0),
+            NSLayoutConstraint(item: topLine,
+                               attribute: .right,
+                               relatedBy: .equal,
+                               toItem: self,
+                               attribute: .right,
+                               multiplier: 1,
+                               constant: 0),
+            NSLayoutConstraint(item: topLine,
+                               attribute: .top,
+                               relatedBy: .equal,
+                               toItem: self,
+                               attribute: .top,
+                               multiplier: 1,
+                               constant: 0),
+            NSLayoutConstraint(item: topLine,
+                               attribute: .height,
+                               relatedBy: .equal,
+                               toItem: nil,
+                               attribute: .notAnAttribute,
+                               multiplier: 1,
+                               constant: height)
             ])
     }
 
@@ -133,10 +155,34 @@ extension UIView {
         addSubview(bottomLine)
 
         addConstraints([
-            NSLayoutConstraint(item: bottomLine, attribute: .left, relatedBy: .equal, toItem: self, attribute: .left, multiplier: 1, constant: 0),
-            NSLayoutConstraint(item: bottomLine, attribute: .right, relatedBy: .equal, toItem: self, attribute: .right, multiplier: 1, constant: 0),
-            NSLayoutConstraint(item: bottomLine, attribute: .bottom, relatedBy: .equal, toItem: self, attribute: .bottom, multiplier: 1, constant: 0),
-            NSLayoutConstraint(item: bottomLine, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: height)
+            NSLayoutConstraint(item: bottomLine,
+                               attribute: .left,
+                               relatedBy: .equal,
+                               toItem: self,
+                               attribute: .left,
+                               multiplier: 1,
+                               constant: 0),
+            NSLayoutConstraint(item: bottomLine,
+                               attribute: .right,
+                               relatedBy: .equal,
+                               toItem: self,
+                               attribute: .right,
+                               multiplier: 1,
+                               constant: 0),
+            NSLayoutConstraint(item: bottomLine,
+                               attribute: .bottom,
+                               relatedBy: .equal,
+                               toItem: self,
+                               attribute: .bottom,
+                               multiplier: 1,
+                               constant: 0),
+            NSLayoutConstraint(item: bottomLine,
+                               attribute: .height,
+                               relatedBy: .equal,
+                               toItem: nil,
+                               attribute: .notAnAttribute,
+                               multiplier: 1,
+                               constant: height)
             ])
     }
 
@@ -150,14 +196,20 @@ extension UIView {
     func addRightBorderWithColor(color: UIColor, thickness: CGFloat) {
         let border = CALayer()
         border.backgroundColor = color.cgColor
-        border.frame = CGRect(x: self.frame.size.width - thickness, y: 0, width: thickness, height: self.frame.size.height)
+        border.frame = CGRect(x: self.frame.size.width - thickness,
+                              y: 0,
+                              width: thickness,
+                              height: self.frame.size.height)
         self.layer.addSublayer(border)
     }
     
     func addBottomBorderWithColor(color: UIColor, thickness: CGFloat) {
         let border = CALayer()
         border.backgroundColor = color.cgColor
-        border.frame = CGRect(x: 0, y: self.frame.size.height - thickness, width: self.frame.size.width, height: thickness)
+        border.frame = CGRect(x: 0,
+                              y: self.frame.size.height - thickness,
+                              width: self.frame.size.width,
+                              height: thickness)
         self.layer.addSublayer(border)
     }
     
@@ -222,12 +274,24 @@ extension UIView {
     }
     
     func centerHorizontallyInSuperview(){
-        let c: NSLayoutConstraint = NSLayoutConstraint(item: self, attribute: .centerX, relatedBy: .equal, toItem: self.superview, attribute: .centerX, multiplier: 1, constant: 0)
+        let c: NSLayoutConstraint = NSLayoutConstraint(item: self,
+                                                       attribute: .centerX,
+                                                       relatedBy: .equal,
+                                                       toItem: self.superview,
+                                                       attribute: .centerX,
+                                                       multiplier: 1,
+                                                       constant: 0)
         self.superview?.addConstraint(c)
     }
     
     func centerVerticallyInSuperview(){
-        let c: NSLayoutConstraint = NSLayoutConstraint(item: self, attribute: .centerY, relatedBy: .equal, toItem: self.superview, attribute: .centerY, multiplier: 1, constant: 0)
+        let c: NSLayoutConstraint = NSLayoutConstraint(item: self,
+                                                       attribute: .centerY,
+                                                       relatedBy: .equal,
+                                                       toItem: self.superview,
+                                                       attribute: .centerY,
+                                                       multiplier: 1,
+                                                       constant: 0)
         self.superview?.addConstraint(c)
     }
 

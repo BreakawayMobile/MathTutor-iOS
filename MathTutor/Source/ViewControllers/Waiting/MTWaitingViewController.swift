@@ -15,6 +15,10 @@ open class MTWaitingViewController: UIViewController {
     
     lazy var configController = ConfigController.sharedInstance
     
+    open override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
+    }
+
     override open func viewDidLoad() {
         super.viewDidLoad()
         

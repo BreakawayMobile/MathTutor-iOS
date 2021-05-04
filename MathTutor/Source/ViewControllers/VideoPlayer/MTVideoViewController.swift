@@ -39,6 +39,10 @@ class MTVideoViewController: UIViewController {
                 self.showVideoPlayerView(TimeInterval(0))
             }
         })
+        
+        if UIDevice.current.userInterfaceIdiom == .phone {
+            UIDevice.current.setValue(UIInterfaceOrientation.landscapeRight.rawValue, forKey: "orientation")
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -54,8 +58,8 @@ class MTVideoViewController: UIViewController {
     }
     
     func showResumeView(_ playProgress: TimeInterval) {
-        self.resumeView.isHidden = false   //.alpha = 1
-        self.videoPlayerView.isHidden = true //.alpha = 0
+        self.resumeView.isHidden = false
+        self.videoPlayerView.isHidden = true
 //        self.endscreenView.alpha = 0
         
         if let resumeVC = viewControllerOfClass(MTResumeViewController.self) as? MTResumeViewController {
@@ -75,8 +79,8 @@ class MTVideoViewController: UIViewController {
     }
     
     func showVideoPlayerView(_ playProgress: TimeInterval) {
-        self.resumeView.isHidden = true //.alpha = 0
-        self.videoPlayerView.isHidden = false   //.alpha = 1
+        self.resumeView.isHidden = true
+        self.videoPlayerView.isHidden = false
 //        self.endscreenView.alpha = 0
         
         if let playerVC = viewControllerOfClass(MTVideoPlayerViewController.self) as? MTVideoPlayerViewController {
@@ -118,7 +122,7 @@ class MTVideoViewController: UIViewController {
     // MARK: - Orientation
     
     override var shouldAutorotate: Bool {
-        return UIDevice.current.userInterfaceIdiom == .phone ? false : true
+        return true // UIDevice.current.userInterfaceIdiom == .phone ? false : true
     }
     
     override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
@@ -141,10 +145,12 @@ class MTVideoViewController: UIViewController {
     */
 
     func dismissVideoViews() {
-//        if UIDevice.current.userInterfaceIdiom == .phone {
-//            UIDevice.current.setValue(UIInterfaceOrientation.unknown.rawValue, forKey: "orientation")
-//            UIDevice.current.setValue(UIInterfaceOrientation.portrait.rawValue, forKey: "orientation")
-//        }
+        if UIDevice.current.userInterfaceIdiom == .phone {
+            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.1) {
+                UIDevice.current.setValue(UIInterfaceOrientation.unknown.rawValue, forKey: "orientation")
+                UIDevice.current.setValue(UIInterfaceOrientation.portrait.rawValue, forKey: "orientation")
+            }
+        }
         
         viewIsLoaded = false
         self.dismiss(animated: true, completion: nil)

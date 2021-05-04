@@ -132,6 +132,7 @@ class MainMenuViewController: UIViewController,
         return index as AnyObject
     }
     
+    // swiftlint:disable cyclomatic_complexity
     func treeView(_ treeView: RATreeView, didSelectRowForItem item: Any) {
         treeView.deselectRow(forItem: item, animated: true)
         
@@ -193,7 +194,8 @@ class MainMenuViewController: UIViewController,
                          isOpen: !treeView.isCellExpanded(cell))
         }
     }
-    
+    // swiftlint:enable cyclomatic_complexity
+
     func treeView(_ treeView: RATreeView, canEditRowForItem item: Any) -> Bool {
         return false
     }
