@@ -37,6 +37,18 @@ class FeaturedViewController: UIViewController {
             label.font = font
         }
         
+        if #available(iOS 13.0, *) {
+            let appearance = UINavigationBarAppearance()
+            appearance.configureWithOpaqueBackground()
+            appearance.backgroundColor = Style.Color.menu1Blue
+            if let navBar = self.navigationController?.navigationBar {
+                navBar.standardAppearance = appearance
+                navBar.scrollEdgeAppearance = navBar.standardAppearance
+            }
+        } else {
+            self.navigationController?.navigationBar.backgroundColor = Style.Color.menu1Blue
+        }
+
         self.navigationController?.navigationBar.topItem?.titleView = label
         
         if let view = UIView.fromNib(nibName: MTFeaturedHeroView.nibName) as? MTFeaturedHeroView {

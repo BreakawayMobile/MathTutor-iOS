@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
@@ -25,7 +25,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg_gradient" translatesAutoresizingMaskIntoConstraints="NO" id="J5t-dP-EO7">
-                                <rect key="frame" x="0.0" y="-20" width="375" height="687"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             </imageView>
                             <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="B37-px-qUJ">
                                 <rect key="frame" x="169" y="315" width="37" height="37"/>
@@ -83,7 +83,7 @@
                             <constraint firstItem="B37-px-qUJ" firstAttribute="centerX" secondItem="dQ9-uU-HQh" secondAttribute="centerX" id="aC0-Tq-gDm"/>
                             <constraint firstAttribute="trailing" secondItem="dfk-3X-bQh" secondAttribute="trailing" id="klT-Xp-LvL"/>
                             <constraint firstAttribute="trailing" secondItem="J5t-dP-EO7" secondAttribute="trailing" id="nCb-CO-4NF"/>
-                            <constraint firstItem="J5t-dP-EO7" firstAttribute="top" secondItem="buS-i6-uga" secondAttribute="bottom" constant="-20" id="o66-Pa-FVh"/>
+                            <constraint firstItem="J5t-dP-EO7" firstAttribute="top" secondItem="dQ9-uU-HQh" secondAttribute="top" id="o66-Pa-FVh"/>
                             <constraint firstItem="TMs-HH-hOU" firstAttribute="leading" secondItem="dQ9-uU-HQh" secondAttribute="leading" id="oC3-jw-4kq"/>
                             <constraint firstItem="dfk-3X-bQh" firstAttribute="leading" secondItem="dQ9-uU-HQh" secondAttribute="leading" id="pj2-M5-nVm"/>
                             <constraint firstAttribute="trailing" secondItem="TMs-HH-hOU" secondAttribute="trailing" id="s6F-Q7-uxW"/>

@@ -46,6 +46,9 @@ class MTSearchViewController: UIViewController,
         searchController.searchBar.tintColor = UIColor.lightGray
         searchController.searchBar.searchBarStyle = .prominent
         searchController.searchBar.delegate = self
+        if #available(iOS 13.0, *) {
+            searchController.searchBar.searchTextField.textColor = UIColor.white
+        }
         
         return searchController
     }()
@@ -103,8 +106,8 @@ class MTSearchViewController: UIViewController,
         self.searchController.searchBar.text = self.searchText
         
         UIView.animate(withDuration: 0.25, animations: {
-            self.collectionView?.contentInset = UIEdgeInsets(top: 20, left: 0, bottom: 0, right: 0)
-            self.collectionView?.contentOffset = CGPoint(x: 0, y: -20)
+            self.collectionView?.contentInset = UIEdgeInsets(top: 44, left: 0, bottom: 0, right: 0)
+            self.collectionView?.contentOffset = CGPoint(x: 0, y: -44)
         })
     }
     
@@ -129,6 +132,15 @@ class MTSearchViewController: UIViewController,
     
     @IBAction func homeButtonTapped(_ sender: UIBarButtonItem) {
         self.navigationController?.popToRootViewController(animated: true)
+    }
+    
+    // MARK: - UISearchBarDelegate
+
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        filteredData.removeAll()
+        filteredItems = nil
+        self.handleEmptyResults()
+        self.collectionView.reloadData()
     }
     
     // MARK: UISearchResultsUpdating
