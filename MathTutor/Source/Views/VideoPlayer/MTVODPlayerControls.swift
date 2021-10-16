@@ -42,6 +42,7 @@ class MTVODPlayerControls: BCCiOSControls,
     @IBOutlet fileprivate weak var airPlayButton: MPVolumeView!
     @IBOutlet fileprivate weak var titleView: UIView!
     @IBOutlet fileprivate weak var backArrowImageView: UIImageView!
+    @IBOutlet weak var playbackRateButton: UIButton!
     
     @IBOutlet fileprivate weak var nextWidthConstraint: NSLayoutConstraint!
     @IBOutlet fileprivate weak var nextTrailingConstraint: NSLayoutConstraint!
@@ -51,6 +52,7 @@ class MTVODPlayerControls: BCCiOSControls,
     fileprivate var currentPlayer: AVPlayer!
     fileprivate var tapRecognizer: UITapGestureRecognizer!
     fileprivate var subtitleTable: BCGSPopoverTableViewController!
+    fileprivate var rateTable: BCGSPopoverTableViewController!
     fileprivate var adCuePoints: [AnyObject]!
     fileprivate var tapGesture: UITapGestureRecognizer!
     fileprivate var currentVideo: BCOVVideo!
@@ -332,6 +334,13 @@ class MTVODPlayerControls: BCCiOSControls,
             if let cc = option["value"] as? String {
                 self.enableSubtitlesForCountryCode(cc, emitEvent: true)
             }
+        } else if table == rateTable {
+            if let rate = option["value"] as? String,
+               let fRate = Float(rate),
+               let title = option["label"] as? String {
+                self.playbackRateButton.setTitle(title, for: .normal)
+                self.currentPlayer.rate = fRate
+            }
         }
         
         self.closePopup()
@@ -398,7 +407,7 @@ class MTVODPlayerControls: BCCiOSControls,
     }
     
     override func fadeOut() {        
-        if (self.subtitleTable == nil && !self.slider.isDragging) {
+        if (self.subtitleTable == nil && self.rateTable == nil && !self.slider.isDragging) {
             super.fadeOut()
             
             UIView.animate(withDuration: 0.2, animations: { () -> Void in
@@ -484,6 +493,41 @@ class MTVODPlayerControls: BCCiOSControls,
                 })
             })
         }
+    }
+    
+    @IBAction func playbackRateButtonPressed(_ sender: UIButton) {
+        let playbackOptions: [[String: String]] = [
+            ["label": "0.5x", "value": "0.5"],
+            ["label": "0.8x", "value": "0.8"],
+            ["label": "0.9x", "value": "0.9"],
+            ["label": "1.0x", "value": "1.0"],
+            ["label": "1.2x", "value": "1.2"],
+            ["label": "1.5x", "value": "1.5"],
+            ["label": "1.8x", "value": "1.8"],
+            ["label": "2.0x", "value": "2.0"]
+        ]
+        
+        let contentSize = CGSize(width: 280, height: playbackOptions.count * 50)
+        self.rateTable = BCGSPopoverTableViewController(options: playbackOptions,
+                                                        selectedIndex: Int32(0))
+        self.rateTable.delegate = self
+        self.rateTable.modalPresentationStyle = .popover
+        self.rateTable.preferredContentSize = contentSize
+
+        DispatchQueue.main.async(execute: { () -> Void in
+            if let popover = self.rateTable.popoverPresentationController {
+                popover.delegate = self.rateTable
+                popover.sourceView = self.playbackRateButton
+                popover.sourceRect = CGRect(x: 0,
+                                            y: 0,
+                                            width: 280,
+                                            height: playbackOptions.count * 50)
+            }
+            
+            self.parentVC?.present(self.rateTable,
+                                   animated: true,
+                                   completion: nil)
+        })
     }
     
     func load(subtitles: [AVMediaSelectionOption]) -> [[String: String]] {
@@ -622,6 +666,12 @@ class MTVODPlayerControls: BCCiOSControls,
             self.subtitleTable.dismiss(animated: true, completion: nil)
             self.subtitleTable.delegate = nil
             self.subtitleTable = nil
+        }
+        
+        if self.rateTable != nil {
+            self.rateTable.dismiss(animated: true, completion: nil)
+            self.rateTable.delegate = nil
+            self.rateTable = nil
         }
     }
 

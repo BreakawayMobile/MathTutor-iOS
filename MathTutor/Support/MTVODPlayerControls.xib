@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
-    <device id="retina4_7" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
@@ -38,6 +37,7 @@
                 <outlet property="nextVideoButton" destination="DsS-7f-tac" id="n7m-pm-9nO"/>
                 <outlet property="nextWidthConstraint" destination="vzv-wy-3Vg" id="PYn-SA-ncl"/>
                 <outlet property="playPauseButton" destination="04k-5m-Q8g" id="i8m-Gx-1m9"/>
+                <outlet property="playbackRateButton" destination="aYU-n7-yXC" id="S8y-tm-cQy"/>
                 <outlet property="previousTrailingConstraint" destination="6yo-mK-JvC" id="7XC-ES-b8i"/>
                 <outlet property="previousVideoButton" destination="G0v-tK-bEP" id="4pQ-mb-SPQ"/>
                 <outlet property="previousWidthConstraint" destination="zpd-h2-KEA" id="NbL-Cf-i5A"/>
@@ -63,7 +63,7 @@
                     <rect key="frame" x="0.0" y="0.0" width="697" height="451"/>
                     <subviews>
                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sFd-Y9-OTW">
-                            <rect key="frame" x="328" y="215.5" width="42" height="20"/>
+                            <rect key="frame" x="327.5" y="215.5" width="42" height="20"/>
                             <fontDescription key="fontDescription" name="Akagi-Medium" family="Akagi" pointSize="17"/>
                             <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <nil key="highlightedColor"/>
@@ -180,6 +180,29 @@
                                         <constraint firstAttribute="height" constant="44" id="l1B-At-0Sg"/>
                                     </constraints>
                                 </view>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aYU-n7-yXC">
+                                    <rect key="frame" x="120" y="55" width="60" height="40"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="40" id="Aoy-yB-EsF"/>
+                                        <constraint firstAttribute="width" constant="60" id="wBN-7x-Agk"/>
+                                    </constraints>
+                                    <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <state key="normal" title="Button"/>
+                                    <buttonConfiguration key="configuration" style="plain" title="1.0x">
+                                        <fontDescription key="titleFontDescription" style="UICTFontTextStyleTitle2"/>
+                                    </buttonConfiguration>
+                                    <userDefinedRuntimeAttributes>
+                                        <userDefinedRuntimeAttribute type="color" keyPath="shadowColor">
+                                            <color key="value" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </userDefinedRuntimeAttribute>
+                                        <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                            <color key="value" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </userDefinedRuntimeAttribute>
+                                    </userDefinedRuntimeAttributes>
+                                    <connections>
+                                        <action selector="playbackRateButtonPressed:" destination="-1" eventType="touchUpInside" id="iOW-nu-AY3"/>
+                                    </connections>
+                                </button>
                             </subviews>
                             <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                             <constraints>
@@ -191,6 +214,7 @@
                                 <constraint firstItem="04k-5m-Q8g" firstAttribute="leading" secondItem="9K1-hF-WVP" secondAttribute="leading" constant="20" id="DHv-pc-bEw"/>
                                 <constraint firstAttribute="trailing" secondItem="mKk-hk-miI" secondAttribute="trailing" constant="20" id="F5e-97-dNP"/>
                                 <constraint firstItem="5Db-Y3-OCB" firstAttribute="leading" secondItem="04k-5m-Q8g" secondAttribute="trailing" constant="10" id="F7B-j0-yEL"/>
+                                <constraint firstItem="aYU-n7-yXC" firstAttribute="leading" secondItem="5Db-Y3-OCB" secondAttribute="trailing" constant="10" id="FTy-UN-fYG"/>
                                 <constraint firstItem="04k-5m-Q8g" firstAttribute="centerY" secondItem="9K1-hF-WVP" secondAttribute="centerY" id="MNF-Im-asl"/>
                                 <constraint firstItem="04k-5m-Q8g" firstAttribute="leading" secondItem="9K1-hF-WVP" secondAttribute="leading" constant="10" id="NHC-AE-rTl"/>
                                 <constraint firstItem="o0e-9P-ZB2" firstAttribute="centerY" secondItem="5Db-Y3-OCB" secondAttribute="centerY" id="O3x-1t-8I1"/>
@@ -212,6 +236,7 @@
                                 <constraint firstItem="mKk-hk-miI" firstAttribute="baseline" secondItem="04k-5m-Q8g" secondAttribute="baseline" id="qoj-Fd-3Cc"/>
                                 <constraint firstItem="Tx3-ec-Fm0" firstAttribute="centerY" secondItem="bRK-xU-amL" secondAttribute="centerY" id="vxt-ag-Nfe"/>
                                 <constraint firstItem="mKk-hk-miI" firstAttribute="centerY" secondItem="04k-5m-Q8g" secondAttribute="centerY" id="wj7-cv-S9L"/>
+                                <constraint firstItem="aYU-n7-yXC" firstAttribute="centerY" secondItem="5Db-Y3-OCB" secondAttribute="centerY" id="zA0-W6-om2"/>
                                 <constraint firstItem="Web-Rw-vnU" firstAttribute="centerY" secondItem="bRK-xU-amL" secondAttribute="centerY" id="zOQ-fN-aGf"/>
                             </constraints>
                             <variation key="default">
@@ -386,10 +411,10 @@
         <image name="controlsBackgroundGradient" width="768" height="432"/>
         <image name="next_btn" width="18" height="23"/>
         <image name="pause_btn.png" width="14" height="16"/>
-        <image name="play_btn.png" width="19" height="23"/>
+        <image name="play_btn.png" width="19.5" height="23"/>
         <image name="prev_btn" width="18" height="23"/>
         <image name="skipBack" width="26" height="25"/>
-        <image name="subtitles_btn" width="89" height="10"/>
+        <image name="subtitles_btn" width="89.5" height="10"/>
         <image name="volSymbol" width="17" height="14"/>
     </resources>
 </document>
