@@ -17,13 +17,14 @@ class MTCourseViewController: UIViewController,
     let dataManager = BCGSDataManager.sharedInstance
     
     @IBOutlet weak var collectionView: UICollectionView!
-    @IBOutlet weak var waitSpinner: UIActivityIndicatorView!
     @IBOutlet weak var loadingCoursesLabel: UILabel!
-
+    @IBOutlet weak var waitProgress: UIProgressView!
+    
     fileprivate var course: BCGSPlayList!
     fileprivate var courseID: String!
     fileprivate var courseTitle: String!
-    
+    private var timer: Timer?
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -64,6 +65,7 @@ class MTCourseViewController: UIViewController,
             return
         }
         
+        self.hideSpinner()
         collectionView?.reloadData()
     }
 
@@ -204,20 +206,20 @@ class MTCourseViewController: UIViewController,
     func showSpinner() {
         DispatchQueue.main.async {
             self.loadingCoursesLabel.isHidden = false
-            self.waitSpinner.isHidden = false
+            self.waitProgress.isHidden = false
             self.collectionView.isHidden = true
             
-            self.waitSpinner.startAnimating()
+            self.timer = self.waitProgress.setIndeterminate(true)
         }
     }
     
     func hideSpinner() {
         DispatchQueue.main.async {
             self.loadingCoursesLabel.isHidden = true
-            self.waitSpinner.isHidden = true
+            self.waitProgress.isHidden = true
             self.collectionView.isHidden = false
             
-            self.waitSpinner.stopAnimating()
+            _ = self.waitProgress.setIndeterminate(false, inTimer: self.timer)
         }
     }
     
