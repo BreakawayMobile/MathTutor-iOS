@@ -1,12 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="6E8-I4-Sex">
-    <device id="retina4_7" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="6E8-I4-Sex">
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
-        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
-        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -31,25 +28,37 @@
                                     <constraint firstAttribute="width" secondItem="jPV-N4-i5q" secondAttribute="height" multiplier="1133:628" id="qoW-lV-p7X"/>
                                 </constraints>
                             </imageView>
-                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="9l2-7M-wvc">
-                                <rect key="frame" x="169" y="315" width="37" height="37"/>
-                            </activityIndicatorView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Loading featured courses..." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bCL-3M-fMZ">
+                                <rect key="frame" x="83.5" y="416" width="208" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progressViewStyle="bar" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="91p-F2-y86">
+                                <rect key="frame" x="75" y="457" width="225" height="2.5"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="progressTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="trackTintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </progressView>
                         </subviews>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="E6R-F7-Wk8" secondAttribute="trailing" id="7BD-V9-SUW"/>
                             <constraint firstItem="jPV-N4-i5q" firstAttribute="centerX" secondItem="Edj-39-iOo" secondAttribute="centerX" id="AtE-cM-385"/>
-                            <constraint firstItem="9l2-7M-wvc" firstAttribute="centerX" secondItem="Edj-39-iOo" secondAttribute="centerX" id="D4t-He-nfW"/>
                             <constraint firstItem="jPV-N4-i5q" firstAttribute="width" secondItem="Edj-39-iOo" secondAttribute="width" multiplier="0.6" id="EcZ-4f-HEM"/>
+                            <constraint firstItem="91p-F2-y86" firstAttribute="centerX" secondItem="Edj-39-iOo" secondAttribute="centerX" id="F1w-vk-wNW"/>
                             <constraint firstItem="jPV-N4-i5q" firstAttribute="centerY" secondItem="Edj-39-iOo" secondAttribute="centerY" id="IQN-Jk-qEs"/>
-                            <constraint firstItem="9l2-7M-wvc" firstAttribute="centerY" secondItem="Edj-39-iOo" secondAttribute="centerY" id="TVh-jU-3NK"/>
+                            <constraint firstItem="91p-F2-y86" firstAttribute="width" secondItem="jPV-N4-i5q" secondAttribute="width" id="L3v-ZI-o2C"/>
                             <constraint firstItem="E6R-F7-Wk8" firstAttribute="top" secondItem="Edj-39-iOo" secondAttribute="top" id="gxf-eP-6dC"/>
+                            <constraint firstItem="91p-F2-y86" firstAttribute="top" secondItem="bCL-3M-fMZ" secondAttribute="bottom" constant="20" id="hZa-qN-pes"/>
+                            <constraint firstItem="bCL-3M-fMZ" firstAttribute="centerX" secondItem="Edj-39-iOo" secondAttribute="centerX" id="lcH-wY-4OH"/>
+                            <constraint firstItem="bCL-3M-fMZ" firstAttribute="top" secondItem="jPV-N4-i5q" secondAttribute="bottom" constant="20" id="pFU-oD-XIn"/>
                             <constraint firstItem="S93-Ut-IJe" firstAttribute="top" secondItem="E6R-F7-Wk8" secondAttribute="bottom" id="uya-rT-mEO"/>
                             <constraint firstItem="E6R-F7-Wk8" firstAttribute="leading" secondItem="Edj-39-iOo" secondAttribute="leading" id="xPI-G5-AKo"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="bootImage" destination="jPV-N4-i5q" id="kXi-Pd-JHI"/>
-                        <outlet property="loadingSpinner" destination="9l2-7M-wvc" id="kET-6h-oYo"/>
+                        <outlet property="waitingProgress" destination="91p-F2-y86" id="jfu-5j-M0Q"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eXc-H7-A3A" userLabel="First Responder" sceneMemberID="firstResponder"/>

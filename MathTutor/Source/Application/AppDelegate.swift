@@ -236,17 +236,28 @@ class AppDelegate: UIResponder, UIApplicationDelegate, BCGSMobileSessionConsumer
                 print("Update Time: \(self.updateTime.timeIntervalSince(self.startTime))")
                 
                 if let allPlaylists = anyObject as? [BCGSPlayList] {
-                    DispatchQueue.global().async {
-                        self.dataManager.allPlaylists = allPlaylists
-                        self.dataManager.setHeroPlaylists(self.heroPlaylists)
-                        self.dataManager.setInitialPlaylists(self.landingPlaylists)
-                        
-                        DispatchQueue.main.async(execute: {
-                            self.loadInitialViewControllers()
+                    let landingPlaylistCount = self.heroPlaylists.count + self.landingPlaylists.count
+                    print("**** PLAYLIST ****: kBCGSEventSyncUpdate: playlist count = \(allPlaylists.count)")
+                    print("**** PLAYLIST ****: kBCGSEventSyncUpdate: playlist max = \(landingPlaylistCount)")
+                    if allPlaylists.count < landingPlaylistCount {
+                        DispatchQueue.main.async {
+                            if let waitingVC = self.window?.rootViewController as? MTWaitingViewController {
+                                waitingVC.setProgress(allPlaylists.count, max: landingPlaylistCount)
+                            }
+                        }
+                    } else {
+                        DispatchQueue.global().async {
+                            self.dataManager.allPlaylists = allPlaylists
+                            self.dataManager.setHeroPlaylists(self.heroPlaylists)
+                            self.dataManager.setInitialPlaylists(self.landingPlaylists)
                             
-                            NotificationCenter.default.post(name: GlobalConstants.Notifications.backendDataRefresh,
-                                                            object: nil)
-                        })
+                            DispatchQueue.main.async(execute: {
+                                self.loadInitialViewControllers()
+                                
+                                NotificationCenter.default.post(name: GlobalConstants.Notifications.backendDataRefresh,
+                                                                object: nil)
+                            })
+                        }
                     }
                 }
                 else {
