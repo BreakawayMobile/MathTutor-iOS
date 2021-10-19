@@ -7,13 +7,13 @@ source 'https://github.com/brightcove/BrightcoveSpecs.git'
 def default_pods
   # Local pods for development
   podLocal = ENV['MT_ENV_HOME']
-  pod 'BMMobilePackage/Base', :path => podLocal + '/BMMobilePackage'
-  pod 'BMMobilePackage/Auth', :path => podLocal + '/BMMobilePackage'
+  #pod 'BMMobilePackage/Base', :path => podLocal + '/BMMobilePackage'
+  #pod 'BMMobilePackage/Auth', :path => podLocal + '/BMMobilePackage'
   #pod 'SlideMenuControllerSwift', :path => podLocal + '/SlideMenuControllerSwift'
 
   # Pods for MathTutor
-  #pod 'BMMobilePackage/Base', :git => 'https://github.com/BreakawayMobile/BMMobilePackage.git', :branch => 'swift_4.2', :inhibit_warnings => true
-  #pod 'BMMobilePackage/Auth', :git => 'https://github.com/BreakawayMobile/BMMobilePackage.git', :branch => 'swift_4.2', :inhibit_warnings => true
+  pod 'BMMobilePackage/Base', :git => 'https://github.com/BreakawayMobile/BMMobilePackage.git', :branch => 'swift_4.2', :inhibit_warnings => true
+  pod 'BMMobilePackage/Auth', :git => 'https://github.com/BreakawayMobile/BMMobilePackage.git', :branch => 'swift_4.2', :inhibit_warnings => true
   pod "SlideMenuControllerSwift", :git => 'https://github.com/BreakawayMobile/SlideMenuControllerSwift.git', :branch => 'swift_4.2', :inhibit_warnings => true
   pod 'SwiftLint', :inhibit_warnings => true
   pod 'Fabric', :inhibit_warnings => true

@@ -229,8 +229,8 @@ PODS:
   - UIView-Autolayout (0.2.1)
 
 DEPENDENCIES:
-  - BMMobilePackage/Auth (from `/Users/jradjavitch/Desktop/JRSWDev/Code/BreakawayMobile/BMMobilePackage`)
-  - BMMobilePackage/Base (from `/Users/jradjavitch/Desktop/JRSWDev/Code/BreakawayMobile/BMMobilePackage`)
+  - BMMobilePackage/Auth (from `https://github.com/BreakawayMobile/BMMobilePackage.git`, branch `swift_4.2`)
+  - BMMobilePackage/Base (from `https://github.com/BreakawayMobile/BMMobilePackage.git`, branch `swift_4.2`)
   - Brightcove-Player-Core/dynamic (= 6.0.6)
   - CarbonKit
   - ChameleonFramework
@@ -296,12 +296,16 @@ SPEC REPOS:
 
 EXTERNAL SOURCES:
   BMMobilePackage:
-    :path: "/Users/jradjavitch/Desktop/JRSWDev/Code/BreakawayMobile/BMMobilePackage"
+    :branch: swift_4.2
+    :git: https://github.com/BreakawayMobile/BMMobilePackage.git
   SlideMenuControllerSwift:
     :branch: swift_4.2
     :git: https://github.com/BreakawayMobile/SlideMenuControllerSwift.git
 
 CHECKOUT OPTIONS:
+  BMMobilePackage:
+    :commit: 580e22df16aee4cf175a205b720481da6fac0942
+    :git: https://github.com/BreakawayMobile/BMMobilePackage.git
   SlideMenuControllerSwift:
     :commit: 1fa0de418fe603b2d44bdeebd6cb4a8fa6034cf5
     :git: https://github.com/BreakawayMobile/SlideMenuControllerSwift.git
@@ -344,6 +348,6 @@ SPEC CHECKSUMS:
   treemapkit: 818b88bc794374c3687d532529e9b3ddc242c319
   UIView-Autolayout: 042510c499403f58620998278ddd60fa7b6cd4a7
 
-PODFILE CHECKSUM: 634df1dfde44874f238d2fc95d74e400c0f5069e
+PODFILE CHECKSUM: f1acbe2b2e5db5072f1838e3f49d33cf992e0e44
 
 COCOAPODS: 1.10.1
