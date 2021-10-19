@@ -27,9 +27,17 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg_gradient" translatesAutoresizingMaskIntoConstraints="NO" id="J5t-dP-EO7">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             </imageView>
-                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="B37-px-qUJ">
-                                <rect key="frame" x="169" y="315" width="37" height="37"/>
-                            </activityIndicatorView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No Search Results" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="C4I-zh-sRy">
+                                <rect key="frame" x="56.5" y="60" width="262.5" height="18.5"/>
+                                <fontDescription key="fontDescription" name="GothamHTF-Book" family="Gotham HTF" pointSize="17"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="bfl-Zx-NWc">
+                                <rect key="frame" x="56.5" y="98.5" width="262.5" height="4"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="progressTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </progressView>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="TMs-HH-hOU">
                                 <rect key="frame" x="0.0" y="44" width="375" height="623"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -46,10 +54,10 @@
                                 </connections>
                             </collectionView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dfk-3X-bQh">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <rect key="frame" x="0.0" y="44" width="375" height="623"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No Search Results" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="C4I-zh-sRy">
-                                        <rect key="frame" x="111" y="324.5" width="153.5" height="18.5"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No Search Results" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DSC-fT-yho">
+                                        <rect key="frame" x="111" y="302.5" width="153.5" height="18.5"/>
                                         <fontDescription key="fontDescription" name="GothamHTF-Book" family="Gotham HTF" pointSize="17"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
@@ -57,8 +65,8 @@
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstItem="C4I-zh-sRy" firstAttribute="centerX" secondItem="dfk-3X-bQh" secondAttribute="centerX" id="OWX-pp-9v1"/>
-                                    <constraint firstItem="C4I-zh-sRy" firstAttribute="centerY" secondItem="dfk-3X-bQh" secondAttribute="centerY" id="xv4-7M-9eh"/>
+                                    <constraint firstItem="DSC-fT-yho" firstAttribute="centerY" secondItem="dfk-3X-bQh" secondAttribute="centerY" id="Va6-Kp-sfH"/>
+                                    <constraint firstItem="DSC-fT-yho" firstAttribute="centerX" secondItem="dfk-3X-bQh" secondAttribute="centerX" id="uf1-QV-pbq"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Xtg-hF-Vhp">
@@ -72,20 +80,24 @@
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="bfl-Zx-NWc" firstAttribute="top" secondItem="C4I-zh-sRy" secondAttribute="bottom" constant="20" id="0z2-XK-f4o"/>
+                            <constraint firstItem="C4I-zh-sRy" firstAttribute="top" secondItem="buS-i6-uga" secondAttribute="bottom" constant="60" id="1LE-Fe-yuP"/>
+                            <constraint firstItem="dfk-3X-bQh" firstAttribute="top" secondItem="Xtg-hF-Vhp" secondAttribute="bottom" id="4jm-oN-DsR"/>
                             <constraint firstItem="Xtg-hF-Vhp" firstAttribute="top" secondItem="dQ9-uU-HQh" secondAttribute="top" id="4wL-B4-ieU"/>
                             <constraint firstItem="TMs-HH-hOU" firstAttribute="top" secondItem="Xtg-hF-Vhp" secondAttribute="bottom" id="5Ro-WF-MVo"/>
-                            <constraint firstItem="dfk-3X-bQh" firstAttribute="top" secondItem="dQ9-uU-HQh" secondAttribute="top" id="KQK-Vz-pRe"/>
                             <constraint firstItem="Q86-38-bgM" firstAttribute="top" secondItem="dfk-3X-bQh" secondAttribute="bottom" id="LIS-us-tir"/>
+                            <constraint firstItem="bfl-Zx-NWc" firstAttribute="centerX" secondItem="dQ9-uU-HQh" secondAttribute="centerX" id="M95-6g-iUu"/>
                             <constraint firstItem="Q86-38-bgM" firstAttribute="top" secondItem="TMs-HH-hOU" secondAttribute="bottom" id="Puq-Mb-LjR"/>
                             <constraint firstItem="Q86-38-bgM" firstAttribute="top" secondItem="J5t-dP-EO7" secondAttribute="bottom" id="V3W-8K-fDH"/>
-                            <constraint firstItem="B37-px-qUJ" firstAttribute="centerY" secondItem="dQ9-uU-HQh" secondAttribute="centerY" id="W6Y-zc-8m7"/>
                             <constraint firstAttribute="trailing" secondItem="Xtg-hF-Vhp" secondAttribute="trailing" id="a4f-dY-fTq"/>
-                            <constraint firstItem="B37-px-qUJ" firstAttribute="centerX" secondItem="dQ9-uU-HQh" secondAttribute="centerX" id="aC0-Tq-gDm"/>
+                            <constraint firstItem="C4I-zh-sRy" firstAttribute="width" secondItem="dQ9-uU-HQh" secondAttribute="width" multiplier="0.7" id="gkX-IS-ltX"/>
+                            <constraint firstItem="bfl-Zx-NWc" firstAttribute="width" secondItem="dQ9-uU-HQh" secondAttribute="width" multiplier="0.7" id="iHC-yX-QyJ"/>
                             <constraint firstAttribute="trailing" secondItem="dfk-3X-bQh" secondAttribute="trailing" id="klT-Xp-LvL"/>
                             <constraint firstAttribute="trailing" secondItem="J5t-dP-EO7" secondAttribute="trailing" id="nCb-CO-4NF"/>
                             <constraint firstItem="J5t-dP-EO7" firstAttribute="top" secondItem="dQ9-uU-HQh" secondAttribute="top" id="o66-Pa-FVh"/>
                             <constraint firstItem="TMs-HH-hOU" firstAttribute="leading" secondItem="dQ9-uU-HQh" secondAttribute="leading" id="oC3-jw-4kq"/>
                             <constraint firstItem="dfk-3X-bQh" firstAttribute="leading" secondItem="dQ9-uU-HQh" secondAttribute="leading" id="pj2-M5-nVm"/>
+                            <constraint firstItem="C4I-zh-sRy" firstAttribute="centerX" secondItem="dQ9-uU-HQh" secondAttribute="centerX" id="pnd-xr-HIY"/>
                             <constraint firstAttribute="trailing" secondItem="TMs-HH-hOU" secondAttribute="trailing" id="s6F-Q7-uxW"/>
                             <constraint firstItem="Xtg-hF-Vhp" firstAttribute="leading" secondItem="dQ9-uU-HQh" secondAttribute="leading" id="unN-DX-cYp"/>
                             <constraint firstItem="J5t-dP-EO7" firstAttribute="leading" secondItem="dQ9-uU-HQh" secondAttribute="leading" id="xX7-Oc-Wzk"/>
@@ -95,8 +107,10 @@
                         <outlet property="collectionView" destination="TMs-HH-hOU" id="t1E-v3-gVO"/>
                         <outlet property="collectionViewTopConstraint" destination="5Ro-WF-MVo" id="WHc-JE-ZHF"/>
                         <outlet property="emptyResultsView" destination="dfk-3X-bQh" id="QlH-N5-wGj"/>
+                        <outlet property="noResultsLabel" destination="DSC-fT-yho" id="9j3-mH-H4R"/>
                         <outlet property="searchBarContainerView" destination="Xtg-hF-Vhp" id="LzC-sJ-P7q"/>
-                        <outlet property="waitSpinner" destination="B37-px-qUJ" id="adM-Xb-kus"/>
+                        <outlet property="searchLabel" destination="C4I-zh-sRy" id="iXi-9g-r5r"/>
+                        <outlet property="searchProgress" destination="bfl-Zx-NWc" id="nfD-B2-fwo"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WyI-CL-oWf" userLabel="First Responder" sceneMemberID="firstResponder"/>

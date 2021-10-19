@@ -52,3 +52,6 @@
 
 "SUBSCRIPTION_TEXT" = "Information about Math Tutor subscriptions:\n\n- For $19.99 a month, you will get access to all 1,500+ lessons and courses.\n\n- Payment will be charged to your iTunes account at confirmation of purchase.\n\n- Your subscription will automatically renew unless auto-renew is turned off at least 24-hours before the end of the current subscription period.\n\n- Your account will be charged for renewal within 24-hours prior to the end of the current subscription period. Automatic renewals will cost the same price you were originally charged for the subscription.\n\n- You can manage your subscriptions and turn off auto-renewal by going to your Account Settings on the App Store after purchase.\n\n- Read our terms of service and privacy policy for more information.";
 
+"SEARCH_PROMPT" = "Please enter three characters to initiate search...";
+"SEARCH_SEARCHING" = "Searching courses...";
+"SEARCH_NOT_FOUND" = "No results found for \'%@\'";

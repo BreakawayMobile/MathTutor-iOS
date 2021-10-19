@@ -20,8 +20,10 @@ class MTSearchViewController: UIViewController,
     @IBOutlet var collectionView: UICollectionView!
     @IBOutlet var searchBarContainerView: UIView!
     @IBOutlet var emptyResultsView: UIView!
-    @IBOutlet weak var waitSpinner: UIActivityIndicatorView!
     @IBOutlet weak var collectionViewTopConstraint: NSLayoutConstraint!
+    @IBOutlet weak var searchLabel: UILabel!
+    @IBOutlet weak var searchProgress: UIProgressView!
+    @IBOutlet weak var noResultsLabel: UILabel!
     
     var filteredData: [BCGSVideo] = []
     var filteredItems: CuratedList!
@@ -29,6 +31,7 @@ class MTSearchViewController: UIViewController,
     var searchText: String = ""
     var lastOrientation: UIDeviceOrientation!
     var operationQueue = OperationQueue()
+    var timer: Timer!
     
     lazy var searchController: UISearchController = {
         let searchController = UISearchController(searchResultsController: nil)
@@ -66,10 +69,13 @@ class MTSearchViewController: UIViewController,
             label.font = font
         }
         
+        self.searchLabel.text = "SEARCH_PROMPT".localized(ConfigController.sharedInstance.stringsFilename)
+        self.emptyResultsView.isHidden = true
+
         self.navigationItem.titleView = label
         
         self.operationQueue.maxConcurrentOperationCount = 1
-        self.waitSpinner.isHidden = true
+        self.searchProgress.isHidden = true
         self.setBarButtonItems(animated: true)
 
         searchController.searchBar.autoresizingMask = [
@@ -151,8 +157,12 @@ class MTSearchViewController: UIViewController,
             self.searchText = self.searchController.searchBar.text ?? ""
             
             if self.searchText.count < 3 {
+                self.emptyResultsView.isHidden = true
+                self.searchLabel.isHidden = false
+                self.searchLabel.text = "SEARCH_PROMPT".localized(ConfigController.sharedInstance.stringsFilename)
                 filteredData.removeAll()
                 filteredItems = nil
+                collectionView.reloadData()
                 return
             }
         } else {
@@ -182,8 +192,14 @@ class MTSearchViewController: UIViewController,
     
     func handleEmptyResults()
     {
-        let showEmptyResultsView = /*searchController.isActive &&*/ filteredData.count == 0
+        let showEmptyResultsView = filteredData.count == 0
         emptyResultsView.isHidden = !showEmptyResultsView
+
+        let formatString = "SEARCH_NOT_FOUND".localized(ConfigController.sharedInstance.stringsFilename)
+        self.noResultsLabel.text = String.localizedStringWithFormat(formatString,
+                                                           self.searchText)
+        self.searchProgress.isHidden = true
+        self.searchLabel.isHidden = true
     }
     
     func filterData(completion: (() -> Void)!) {
@@ -205,7 +221,7 @@ class MTSearchViewController: UIViewController,
         let videoDescriptionMatch = self.match(key: video.shortDescription, terms: terms, in: video)
         var contains = videoNameMatch || videoDescriptionMatch
 
-        if let playlistName = video.playlist.name {
+        if let playlistName = video.playlist?.name {
             contains = contains || self.match(key: playlistName, terms: terms, in: video)
         }
         
@@ -228,20 +244,22 @@ class MTSearchViewController: UIViewController,
     
     func showSpinner() {
         DispatchQueue.main.async {
-            self.waitSpinner.isHidden = false
+            self.searchProgress.isHidden = false
+            self.searchLabel.isHidden = false
             self.emptyResultsView.isHidden = true
             self.collectionView.isHidden = true
+            self.searchLabel.text = "SEARCH_SEARCHING".localized(ConfigController.sharedInstance.stringsFilename)
             
-            self.waitSpinner.startAnimating()
+            self.timer = self.searchProgress.setIndeterminate(true)
         }
     }
     
     func hideSpinner() {
         DispatchQueue.main.async {
-            self.waitSpinner.isHidden = true
+            self.searchProgress.isHidden = true
             self.collectionView.isHidden = false
             
-            self.waitSpinner.stopAnimating()
+            _ = self.searchProgress.setIndeterminate(false, inTimer: self.timer)
         }
     }
     
