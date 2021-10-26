@@ -78,6 +78,10 @@ class MTCourseViewController: UIViewController,
         self.courseTitle = courseTitle
         self.courseID = courseID
         self.course = self.dataManager.findPlaylistById((courseID as NSString))
+        
+        BGSMobilePackage.sharedInstance.playlist(forId: courseID) { _, _, _ in 
+            
+        }
     }
     
     // MARK: - UIBarButtonItem
