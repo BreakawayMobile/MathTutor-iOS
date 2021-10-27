@@ -44,6 +44,10 @@ class RootNavigationController: UINavigationController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
 
+        for child in children {
+            child.viewWillAppear(animated)
+        }
+        
 //        navBarTabMenu?.menuTitles = ["HOME", "TV", "MOVIES", "KIDS"]
     }
 

@@ -130,7 +130,7 @@ class FeaturedViewController: UIViewController {
     func enableNotifications() {
         let name = NSNotification.Name(rawValue: IAPHelperProductPurchasedNotification)
         NotificationCenter.default.addObserver(self,
-                                               selector: #selector(MTCourseViewController.productPurchased(_:)),
+                                               selector: #selector(FeaturedViewController.productPurchased(_:)),
                                                name: name,
                                                object: nil)
         
@@ -142,7 +142,7 @@ class FeaturedViewController: UIViewController {
     }
     // swiftlint:enable notification_center_detachment
     
-    func productPurchased(_ notification: Notification) {
+    @objc func productPurchased(_ notification: Notification) {
         if let productIdentifier = notification.object as? String {
             if productIdentifier == MTProducts.MonthlySubscription {
                 self.newCourses?.viewWillAppear()

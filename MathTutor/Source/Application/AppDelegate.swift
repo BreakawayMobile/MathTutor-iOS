@@ -31,7 +31,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, BCGSMobileSessionConsumer
     var sessionController = BGSMobilePackage.sharedInstance.sessionController
     var dataManager = BCGSDataManager.sharedInstance
     var sideMenuViewController: UIViewController!
-    var rootNavController: RootNavigationController = RootNavigationController()
+    var rootNavController: RootNavigationController!
     var userManager = MTUserManager.shared
     var dateEnteredBackground: Date!
     var reviewManager = ReviewManager.shared
@@ -316,7 +316,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, BCGSMobileSessionConsumer
     // MARK: - Top View Controller
     
     func topViewController() -> UIViewController! {
-        return self.topViewControllerWithRootViewController(UIApplication.shared.keyWindow?.rootViewController)
+        let keyWindow = UIApplication.shared.windows.filter {$0.isKeyWindow}.first
+        return self.topViewControllerWithRootViewController(keyWindow?.rootViewController)
     }
     
     func topViewControllerWithRootViewController(_ rootViewController: UIViewController!) -> UIViewController! {

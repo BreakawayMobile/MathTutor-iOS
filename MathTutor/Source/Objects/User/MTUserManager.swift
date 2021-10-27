@@ -62,11 +62,13 @@ class MTUserManager: NSObject, SKRequestDelegate {
             if updated == true {
                 MTProducts.store.restoreCompletedTransactions(nil)
                 
-                guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
-                    fatalError("Exected an AppDelegate object")
+                DispatchQueue.main.async {
+                    guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
+                        fatalError("Exected an AppDelegate object")
+                    }
+                    
+                    appDelegate.subScriptionRestoredAlert()
                 }
-                
-                appDelegate.subScriptionRestoredAlert()
             }
         })
     }
@@ -76,11 +78,13 @@ class MTUserManager: NSObject, SKRequestDelegate {
             if updated == true {
                 MTProducts.store.clearProductPurchases()
                 
-                guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
-                    fatalError("Exected an AppDelegate object")
+                DispatchQueue.main.async {
+                    guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
+                        fatalError("Exected an AppDelegate object")
+                    }
+                    
+                    appDelegate.subScriptionAlert()
                 }
-                
-                appDelegate.subScriptionAlert()
             }
         })
     }
