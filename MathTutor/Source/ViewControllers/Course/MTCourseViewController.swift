@@ -80,7 +80,7 @@ class MTCourseViewController: UIViewController,
         self.course = self.dataManager.findPlaylistById((courseID as NSString))
         
         BGSMobilePackage.sharedInstance.playlist(forId: courseID) { _, _, _ in 
-            
+            self.dataRefresh(Notification(name: Notification.Name(""), object: nil, userInfo: nil))
         }
     }
     
@@ -242,8 +242,10 @@ class MTCourseViewController: UIViewController,
     }
     
     @objc func dataRefresh(_ notification: Notification) {
-        self.course = self.dataManager.findPlaylistById((courseID as NSString))
-        collectionView.reloadData()
+        if course == nil {
+            self.course = self.dataManager.findPlaylistById((courseID as NSString))
+            collectionView.reloadData()
+        }
     }
 
     // MARK: - Size Class

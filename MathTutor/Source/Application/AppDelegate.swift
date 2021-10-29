@@ -247,16 +247,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate, BCGSMobileSessionConsumer
                         }
                     } else {
                         DispatchQueue.global().async {
-                            self.dataManager.allPlaylists = allPlaylists
-                            self.dataManager.setHeroPlaylists(self.heroPlaylists)
-                            self.dataManager.setInitialPlaylists(self.landingPlaylists)
-                            
-                            DispatchQueue.main.async(execute: {
-                                self.loadInitialViewControllers()
+                            if allPlaylists.count != self.dataManager.allPlaylists.count {
+                                self.dataManager.allPlaylists = allPlaylists
+                                self.dataManager.setHeroPlaylists(self.heroPlaylists)
+                                self.dataManager.setInitialPlaylists(self.landingPlaylists)
                                 
-                                NotificationCenter.default.post(name: GlobalConstants.Notifications.backendDataRefresh,
-                                                                object: nil)
-                            })
+                                DispatchQueue.main.async(execute: {
+                                    self.loadInitialViewControllers()
+                                    
+                                    NotificationCenter.default.post(name: GlobalConstants.Notifications.backendDataRefresh,
+                                                                    object: nil)
+                                })
+                            }
                         }
                     }
                 }
