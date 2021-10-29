@@ -40,9 +40,18 @@ class MTSearchViewController: UIViewController,
         
         searchController.obscuresBackgroundDuringPresentation = false
         
-        searchController.searchBar.setBackgroundImage(UIImage.imageWithColor(Style.Color.umcBlue),
-                                                      for: .topAttached,
-                                                      barMetrics: .default)
+        let metrics: [UIBarMetrics] = [
+            .default,
+            .compact,
+            .defaultPrompt,
+            .compactPrompt
+        ]
+        
+        for metric in metrics {
+            searchController.searchBar.setBackgroundImage(UIImage.imageWithColor(Style.Color.umcBlue),
+                                                          for: .any,
+                                                          barMetrics: metric)
+        }
         
         searchController.searchBar.backgroundImage = UIImage.imageWithColor(Style.Color.umcBlue)
         searchController.searchBar.scopeBarBackgroundImage = UIImage.imageWithColor(Style.Color.umcBlue)
