@@ -41,9 +41,9 @@ open class IAPHelper: NSObject {
             let purchased = UserDefaults.standard.bool(forKey: productIdentifier)
             if purchased {
                 purchasedProductIdentifiers.insert(productIdentifier)
-                print("Previously purchased: \(productIdentifier)")
+                print("*** IAP ***: Previously purchased: \(productIdentifier)")
             } else {
-                print("Not purchased: \(productIdentifier)")
+                print("*** IAP ***: Not purchased: \(productIdentifier)")
             }
         }
         
@@ -66,7 +66,7 @@ open class IAPHelper: NSObject {
     /// Initiates purchase of a product.
     open func purchaseProduct(_ product: SKProduct, handler: TransactionCompletionHandler!) {
         self.purchaseTransactionCompletionHandler = handler
-        print("Buying \(product.productIdentifier)...")
+        print("*** IAP ***: Buying \(product.productIdentifier)...")
         let payment = SKPayment(product: product)
         SKPaymentQueue.default().add(payment)
     }
@@ -87,9 +87,11 @@ open class IAPHelper: NSObject {
     /// If the state of whether purchases have been made is lost  (e.g. the
     /// user deletes and reinstalls the app) this will recover the purchases.
     open func restoreCompletedTransactions(_ handler: TransactionCompletionHandler!) {
-        self.restoreTransactionsHandled = false
-        self.restoreTransactionCompletionHandler = handler
-        SKPaymentQueue.default().restoreCompletedTransactions()
+        productRequestQueue.async {
+            self.restoreTransactionsHandled = false
+            self.restoreTransactionCompletionHandler = handler
+            SKPaymentQueue.default().restoreCompletedTransactions()
+        }
     }
     
     open func trialAvailable() -> Bool {
@@ -109,7 +111,7 @@ open class IAPHelper: NSObject {
 
 extension IAPHelper: SKProductsRequestDelegate {
     public func productsRequest(_ request: SKProductsRequest, didReceive response: SKProductsResponse) {
-        print("Loaded list of products...")
+        print("*** IAP ***: Loaded list of products...")
         completionHandler?(true, nil, response.products)
         clearRequest()
         
@@ -119,13 +121,13 @@ extension IAPHelper: SKProductsRequestDelegate {
         
         // debug printing
         for p in response.products {
-            print("Found product: \(p.productIdentifier) \(p.localizedTitle) \(p.price.floatValue)")
+            print("*** IAP ***: Found product: \(p.productIdentifier) \(p.localizedTitle) \(p.price.floatValue)")
         }
     }
     
     public func request(_ request: SKRequest, didFailWithError error: Error) {
-        print("Failed to load list of products.")
-        print("Error: \(error)")
+        print("*** IAP ***: Failed to load list of products.")
+        print("*** IAP ***: Error: \(error)")
         completionHandler?(false, error as NSError?, [])
         clearRequest()
     }
@@ -192,7 +194,7 @@ extension IAPHelper: SKPaymentTransactionObserver {
     }
     
     public func paymentQueueRestoreCompletedTransactionsFinished(_ queue: SKPaymentQueue) {
-        print("paymentQueueRestoreCompletedTransactionsFinished")
+        print("*** IAP ***: paymentQueueRestoreCompletedTransactionsFinished")
         if self.restoreTransactionsHandled == false {
             restoreTransactionCompletionHandler?(nil, nil)
         }
@@ -235,28 +237,28 @@ extension IAPHelper: SKPaymentTransactionObserver {
         for index in range {
             
             if let value = transactions[index].transactionIdentifier {
-                print("transaction identifier = \(value)")
+                print("*** IAP ***: transaction identifier = \(value)")
             }
             
-            print("transaction state = \(transactions[index].transactionState.rawValue)")
+            print("*** IAP ***: transaction state = \(transactions[index].transactionState.rawValue)")
             
             if transactions[index].transactionState == .restored || transactions[index].transactionState == .purchased {
                 if let value = transactions[index].transactionDate {
-                    print("transaction date = \(formatter.string(from: value))")
+                    print("*** IAP ***: transaction date = \(formatter.string(from: value))")
                 }
             }
             
             if let originalTransaction = transactions[index].original {
                 if let value = originalTransaction.transactionIdentifier {
-                    print("original transaction identifier = \(value)")
+                    print("*** IAP ***: original transaction identifier = \(value)")
                 }
                 
-                print("original transaction state = \(originalTransaction.transactionState.rawValue)")
+                print("*** IAP ***: original transaction state = \(originalTransaction.transactionState.rawValue)")
                 
                 if originalTransaction.transactionState == .restored ||
                     originalTransaction.transactionState == .purchased {
                     if let value = originalTransaction.transactionDate {
-                        print("original transaction date = \(formatter.string(from: value))")
+                        print("*** IAP ***: original transaction date = \(formatter.string(from: value))")
                     }
                 }
             }
@@ -296,14 +298,14 @@ extension IAPHelper: SKPaymentTransactionObserver {
     }
     
     fileprivate func completeTransaction(_ transaction: SKPaymentTransaction) {
-        print("completeTransaction...")
+        print("*** IAP ***: completeTransaction...")
         provideContentForProductIdentifier(transaction.payment.productIdentifier)
         SKPaymentQueue.default().finishTransaction(transaction)
     }
     
     fileprivate func restoreTransaction(_ transaction: SKPaymentTransaction) {
         if let productIdentifier = transaction.original?.payment.productIdentifier {
-            print("restoreTransaction... \(productIdentifier)")
+            print("*** IAP ***: restoreTransaction... \(productIdentifier)")
             provideContentForProductIdentifier(productIdentifier)
             SKPaymentQueue.default().finishTransaction(transaction)
         }
@@ -319,12 +321,12 @@ extension IAPHelper: SKPaymentTransactionObserver {
     }
     
     fileprivate func failedTransaction(_ transaction: SKPaymentTransaction) {
-        print("failedTransaction...")
+        print("*** IAP ***: failedTransaction...")
         
         if let err = transaction.error as NSError? {
             if err.code != SKError.paymentCancelled.rawValue {
                 if let value = transaction.error {
-                    print("Transaction error: \(value.localizedDescription)")
+                    print("*** IAP ***: Transaction error: \(value.localizedDescription)")
                 }
             }
         }

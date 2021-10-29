@@ -28,6 +28,10 @@ class MTUserManager: NSObject, SKRequestDelegate {
         MTProducts.store.requestProductsWithCompletionHandler { _, _, products in
             self.products = products
         }
+        
+        MTProducts.store.restoreCompletedTransactions { [weak self] _, _ in
+            self?.validateReceipt()
+        }
 
         guard let udid = UIDevice.current.identifierForVendor?.uuidString else {
             fatalError("Could not get UDID!!!")
@@ -37,23 +41,26 @@ class MTUserManager: NSObject, SKRequestDelegate {
         let storage = dataManager.dataStorage()
         
         MTUser.initialize(userName, storage: storage) { (_) in
-            
-            let validationResult = self.receiptValidator.validateReceipt()
-            
-            switch validationResult {
-            case .success(let parsedReceipt):
-                if let iapReceipts = parsedReceipt.inAppPurchaseReceipts {
-                    if self.validSubscription(iapReceipts) {
-                        self.subscribe()
-                        break
-                    }
+//            self?.validateReceipt()
+        }
+    }
+    
+    func validateReceipt() {
+        let validationResult = self.receiptValidator.validateReceipt()
+        
+        switch validationResult {
+        case .success(let parsedReceipt):
+            if let iapReceipts = parsedReceipt.inAppPurchaseReceipts {
+                if self.validSubscription(iapReceipts) {
+                    self.subscribe()
+                    break
                 }
-                
-                self.unsubscribe()
-                
-            case .error:
-                MTUser.unsubscribed(storage: self.dataManager.dataStorage())
             }
+            
+            self.unsubscribe()
+            
+        case .error:
+            MTUser.unsubscribed(storage: self.dataManager.dataStorage())
         }
     }
     
@@ -94,11 +101,18 @@ class MTUserManager: NSObject, SKRequestDelegate {
         
         let now = Date()
         
-        for receipt in receipts {
-            if let subDate = receipt.subscriptionExpirationDate {
-                if now < subDate {
-                    validSubscription = true
-                }
+        let mostRecentReceipt = receipts.max(by: {
+            if let firstDate = $0.subscriptionExpirationDate?.timeIntervalSinceReferenceDate,
+               let secondDate = $1.subscriptionExpirationDate?.timeIntervalSinceReferenceDate {
+                return firstDate < secondDate
+            }
+            
+            return false
+        })
+        
+        if let subDate = mostRecentReceipt?.subscriptionExpirationDate {
+            if now < subDate {
+                validSubscription = true
             }
         }
         

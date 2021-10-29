@@ -75,41 +75,7 @@ class FeaturedViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        
-        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate,
-              let stringsFile = self.configController.stringsFilename else {
-            fatalError("Exected an AppDelegate object")
-        }
-        
-        if appDelegate.showSubExpiredAlert() {
-            appDelegate.clearSubscriptionExpireAlert()
-            
-            let alertController = UIAlertController(title: "",
-                                                    message: "SUBSCRIPTION_EXPIRED_MSG".localized(stringsFile),
-                                                    preferredStyle: .alert)
-            
-            let defaultAction = UIAlertAction(title: "OK".localized(stringsFile),
-                                              style: .default,
-                                              handler: nil)
-            alertController.addAction(defaultAction)
-            
-            appDelegate.display(alert: alertController)
-        }
-        
-        if appDelegate.showSubRestoredAlert() {
-            appDelegate.clearSubscriptionRestoreAlert()
-            
-            let alertController = UIAlertController(title: "",
-                                                    message: "SUBSCRIPTION_RESTORED_MSG".localized(stringsFile),
-                                                    preferredStyle: .alert)
-            
-            let defaultAction = UIAlertAction(title: "OK".localized(self.configController.stringsFilename),
-                                              style: .default,
-                                              handler: nil)
-            alertController.addAction(defaultAction)
-            
-            appDelegate.display(alert: alertController)
-        }
+        self.checkForAlerts()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -146,6 +112,7 @@ class FeaturedViewController: UIViewController {
         if let productIdentifier = notification.object as? String {
             if productIdentifier == MTProducts.MonthlySubscription {
                 self.newCourses?.viewWillAppear()
+                self.checkForAlerts()
             }
         }
     }
@@ -155,5 +122,42 @@ class FeaturedViewController: UIViewController {
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         self.heroCarousel?.sizeChanged()
         self.newCourses?.sizeChanged()
+    }
+    
+    private func checkForAlerts() {
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate,
+              let stringsFile = self.configController.stringsFilename else {
+            fatalError("Exected an AppDelegate object")
+        }
+        
+        if appDelegate.showSubExpiredAlert() {
+            appDelegate.clearSubscriptionExpireAlert()
+            
+            let alertController = UIAlertController(title: "",
+                                                    message: "SUBSCRIPTION_EXPIRED_MSG".localized(stringsFile),
+                                                    preferredStyle: .alert)
+            
+            let defaultAction = UIAlertAction(title: "OK".localized(stringsFile),
+                                              style: .default,
+                                              handler: nil)
+            alertController.addAction(defaultAction)
+            
+            appDelegate.display(alert: alertController)
+        }
+        
+        if appDelegate.showSubRestoredAlert() {
+            appDelegate.clearSubscriptionRestoreAlert()
+            
+            let alertController = UIAlertController(title: "",
+                                                    message: "SUBSCRIPTION_RESTORED_MSG".localized(stringsFile),
+                                                    preferredStyle: .alert)
+            
+            let defaultAction = UIAlertAction(title: "OK".localized(self.configController.stringsFilename),
+                                              style: .default,
+                                              handler: nil)
+            alertController.addAction(defaultAction)
+            
+            appDelegate.display(alert: alertController)
+        }
     }
 }
