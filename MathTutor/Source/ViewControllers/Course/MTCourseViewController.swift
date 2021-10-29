@@ -79,8 +79,10 @@ class MTCourseViewController: UIViewController,
         self.courseID = courseID
         self.course = self.dataManager.findPlaylistById((courseID as NSString))
         
-        BGSMobilePackage.sharedInstance.playlist(forId: courseID) { _, _, _ in 
-            self.dataRefresh(Notification(name: Notification.Name(""), object: nil, userInfo: nil))
+        BGSMobilePackage.sharedInstance.playlist(forId: courseID) { [weak self] _, _, _ in
+            DispatchQueue.main.async {
+                self?.dataRefresh(Notification(name: Notification.Name(""), object: nil, userInfo: nil))
+            }
         }
     }
     
