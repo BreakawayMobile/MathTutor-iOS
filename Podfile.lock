@@ -304,7 +304,7 @@ EXTERNAL SOURCES:
 
 CHECKOUT OPTIONS:
   BMMobilePackage:
-    :commit: 0d696d4eb98a35bea1e4df0d88d5d612226400b8
+    :commit: f525e6f8c72a41727e3c757ef1a833ee3b2cbd31
     :git: https://github.com/BreakawayMobile/BMMobilePackage.git
   SlideMenuControllerSwift:
     :commit: 1fa0de418fe603b2d44bdeebd6cb4a8fa6034cf5
