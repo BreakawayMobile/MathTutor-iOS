@@ -52,7 +52,7 @@ class MTUntitledLessonCollectionViewCell: UICollectionViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        self.translatesAutoresizingMaskIntoConstraints = false
+//        self.translatesAutoresizingMaskIntoConstraints = false
         
         waitingBlurView.isHidden = true
         waitingSpinner.isHidden = true

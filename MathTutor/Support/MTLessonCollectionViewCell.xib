@@ -1,12 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
-    <device id="retina4_7" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19455" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
-        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
-        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
@@ -62,12 +58,12 @@
                                         <color key="trackTintColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
                                     </progressView>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="play" translatesAutoresizingMaskIntoConstraints="NO" id="Iyh-i8-cmu">
-                                        <rect key="frame" x="181" y="78.5" width="106" height="106.5"/>
+                                        <rect key="frame" x="182" y="79" width="105.5" height="106"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="Iyh-i8-cmu" secondAttribute="height" multiplier="1:1" id="hbc-ER-w0A"/>
                                         </constraints>
                                     </imageView>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XZE-Lw-HLC">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XZE-Lw-HLC">
                                         <rect key="frame" x="0.0" y="0.0" width="469.5" height="264"/>
                                         <connections>
                                             <action selector="imageTapped:" destination="zcf-M0-nZX" eventType="touchUpInside" id="UwR-Fb-4JU"/>
@@ -102,13 +98,13 @@
                                         <rect key="frame" x="0.0" y="0.0" width="320.5" height="219"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="middleTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Nm-JE-hmn">
-                                                <rect key="frame" x="10" y="5" width="300.5" height="16.5"/>
+                                                <rect key="frame" x="10" y="5" width="300.5" height="17"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                 <attributedString key="attributedText">
                                                     <fragment content="Label">
                                                         <attributes>
                                                             <color key="NSColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                            <font key="NSFont" size="14" name="Gotham-Book"/>
+                                                            <font key="NSFont" metaFont="system" size="14"/>
                                                         </attributes>
                                                     </fragment>
                                                 </attributedString>
@@ -200,7 +196,7 @@
                                 <visualEffectView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="loF-di-m5g">
                                     <rect key="frame" x="0.0" y="0.0" width="790" height="264"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                    <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" id="2aZ-EB-s1W">
+                                    <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="2aZ-EB-s1W">
                                         <rect key="frame" x="0.0" y="0.0" width="790" height="264"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     </view>
@@ -213,7 +209,7 @@
                         <blurEffect style="dark"/>
                     </visualEffectView>
                     <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="hCt-le-AOc">
-                        <rect key="frame" x="377" y="114" width="37" height="37"/>
+                        <rect key="frame" x="376.5" y="113.5" width="37" height="37"/>
                     </activityIndicatorView>
                 </subviews>
             </view>
